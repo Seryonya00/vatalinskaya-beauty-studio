@@ -51,27 +51,62 @@
             transition: transform 0.1s ease-out;
         }
 
-        /* --- Хедер (Центрований заголовок) --- */
+        /* --- Хедер з телефоном, Instagram та центрованою назвою --- */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 18px 5%;
+            justify-content: space-between;
+            padding: 15px 5%;
             background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
         }
 
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .header-phone {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .header-phone:hover {
+            color: var(--accent-gold);
+        }
+
+        .header-insta-link {
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .header-insta-link:hover {
+            color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
         .header-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             font-family: var(--font-title);
             font-size: 1.3rem;
             color: var(--text-primary);
             letter-spacing: 3px;
             text-transform: uppercase;
             text-align: center;
+            white-space: nowrap;
         }
 
         /* --- Типографіка --- */
@@ -122,7 +157,6 @@
             white-space: nowrap;
             color: var(--accent-gold);
             pointer-events: none;
-            text-align: center;
         }
 
         .side-nav-item:hover .side-nav-label,
@@ -397,35 +431,62 @@
         }
         .work-card:hover .work-card-overlay { opacity: 1; }
 
-        /* --- 4. Карусель Відгуків зі стрілками --- */
+        /* --- 4. 3D Карусель відгуків (По колу з об'ємом) --- */
         .reviews-container {
             position: relative;
             display: flex;
             align-items: center;
             width: 100%;
+            justify-content: center;
         }
 
-        .reviews-carousel {
+        .reviews-stage {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 340px;
             display: flex;
-            overflow-x: auto;
-            gap: 30px;
-            padding: 10px 5px 30px;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
         }
 
-        .reviews-carousel::-webkit-scrollbar { display: none; }
-
-        .review-card {
-            min-width: 380px;
-            flex: 0 0 380px;
+        .review-card-3d {
+            position: absolute;
+            width: 100%;
+            max-width: 480px;
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            padding: 40px;
-            border-radius: 16px;
-            scroll-snap-align: center;
-            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.7) translateZ(-200px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card-3d.active {
+            opacity: 1;
+            z-index: 3;
+            transform: translateX(0) scale(1) translateZ(0);
+            pointer-events: all;
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 25px var(--accent-gold-glow);
+        }
+
+        .review-card-3d.prev-card {
+            opacity: 0.35;
+            z-index: 2;
+            transform: translateX(-55%) scale(0.8) rotateY(15deg);
+        }
+
+        .review-card-3d.next-card {
+            opacity: 0.35;
+            z-index: 2;
+            transform: translateX(55%) scale(0.8) rotateY(-15deg);
         }
 
         .review-author {
@@ -469,11 +530,72 @@
             box-shadow: 0 0 20px var(--accent-gold-glow);
         }
 
-        .review-arrow.prev { left: -25px; }
-        .review-arrow.next { right: -25px; }
+        .review-arrow.prev { left: 0; }
+        .review-arrow.next { right: 0; }
         .review-arrow svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
 
-        /* --- 5. Блок Контактів --- */
+        /* --- 5. Модальне вікно (Анімація macOS App Launch) --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-window {
+            background: rgba(22, 22, 24, 0.95);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            width: 90%;
+            max-width: 480px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px var(--accent-gold-glow);
+            position: relative;
+            transform: scale(0.1) translateY(200px);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+        }
+
+        .modal-overlay.active .modal-window {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        /* --- 6. Блок Контактів --- */
         #contacts-form {
             background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1920') center/cover fixed;
             position: relative;
@@ -523,7 +645,7 @@
             gap: 20px;
         }
 
-        .lux-form input, .lux-form textarea {
+        .lux-form input, .lux-form textarea, .lux-form select {
             width: 100%;
             padding: 18px 20px;
             background: rgba(255, 255, 255, 0.03);
@@ -535,7 +657,7 @@
             transition: var(--transition);
         }
 
-        .lux-form input:focus, .lux-form textarea:focus {
+        .lux-form input:focus, .lux-form textarea:focus, .lux-form select:focus {
             border-color: var(--accent-gold);
             background: rgba(255, 255, 255, 0.08);
         }
@@ -555,10 +677,12 @@
             .contact-wrapper { grid-template-columns: 1fr; }
             .hero-title { font-size: 3.2rem; }
             .side-nav { display: none; }
-            .review-card { min-width: 290px; flex: 0 0 290px; padding: 25px; }
+            .header-phone { display: none; }
             
-            /* На мобільній версії приховуємо стрілки відгуків */
+            /* На мобільних вимикаємо стрілки та оптимізуємо 3D картки */
             .review-arrow { display: none !important; }
+            .review-card-3d.prev-card { transform: translateX(-20%) scale(0.75); opacity: 0.15; }
+            .review-card-3d.next-card { transform: translateX(20%) scale(0.75); opacity: 0.15; }
         }
     </style>
 </head>
@@ -566,8 +690,16 @@
 
     <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Шапка з центрованою назвою -->
+    <!-- Шапка з телефоном, Instagram та центрованою назвою -->
     <header>
+        <div class="header-left">
+            <a href="tel:+380991112233" class="header-phone">+38 (099) 111-22-33</a>
+            <a href="https://www.instagram.com/vatalinskaya_beauty/" target="_blank" rel="noopener" class="header-insta-link" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+            </a>
+        </div>
         <span class="header-title">vatalinskaya beauty studio</span>
     </header>
 
@@ -597,7 +729,7 @@
 
     <!-- Нижня панель навігації (Dock) -->
     <nav class="bottom-nav">
-        <!-- Послуги (Замінено на іконку силуету дівчини з зірочками) -->
+        <!-- Послуги (Іконка силуету дівчини з зірочками) -->
         <a href="#services" class="b-nav-item">
             <span class="b-nav-tooltip">Послуги</span>
             <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -617,7 +749,7 @@
             <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg>
         </a>
         
-        <!-- Головна (Замінено на Стрілку Вгору) -->
+        <!-- Головна (Стрілка Вгору) -->
         <a href="#hero" class="b-nav-item home-btn">
             <span class="b-nav-tooltip" style="top:-55px;">Головна</span>
             <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -639,16 +771,16 @@
         </a>
     </nav>
 
-    <!-- 1. Главный экран -->
+    <!-- 1. Головний екран -->
     <section id="hero">
         <div class="reveal">
-            <!-- Логотип розміщено над текстом -->
+            <!-- Логотип над текстом -->
             <img src="Logo one.PNG" alt="vatalinskaya beauty studio logo" class="hero-logo-img">
             <h1 class="hero-title">Естетика та досконалість</h1>
             <p style="max-width: 650px; margin: 0 auto 40px; color: var(--text-secondary);">
                 Простір високої б'юті-культури. Ми створюємо індивідуальні образи, підкреслюючи вашу природну елегантність.
             </p>
-            <a href="#contacts-form" class="btn-lux">Записатися онлайн</a>
+            <button onclick="openBookingModal()" class="btn-lux">Записатися онлайн</button>
         </div>
     </section>
 
@@ -691,28 +823,36 @@
         </div>
     </section>
 
-    <!-- 3. Наші роботи -->
+    <!-- 3. Наші роботи (З посиланнями на Instagram) -->
     <section id="works">
         <div class="section-header reveal">
             <h2 class="section-title">НАШІ РОБОТИ</h2>
         </div>
         <div class="work-grid reveal">
             <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80');">
-                <div class="work-card-overlay"><span class="btn-lux">Instagram</span></div>
+                <div class="work-card-overlay">
+                    <a href="https://www.instagram.com/vatalinskaya_beauty/" target="_blank" rel="noopener" class="btn-lux">Instagram</a>
+                </div>
             </div>
             <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80');">
-                <div class="work-card-overlay"><span class="btn-lux">Instagram</span></div>
+                <div class="work-card-overlay">
+                    <a href="https://www.instagram.com/vatalinskaya_beauty/" target="_blank" rel="noopener" class="btn-lux">Instagram</a>
+                </div>
             </div>
             <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?w=600&q=80');">
-                <div class="work-card-overlay"><span class="btn-lux">Instagram</span></div>
+                <div class="work-card-overlay">
+                    <a href="https://www.instagram.com/vatalinskaya_beauty/" target="_blank" rel="noopener" class="btn-lux">Instagram</a>
+                </div>
             </div>
             <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?w=600&q=80');">
-                <div class="work-card-overlay"><span class="btn-lux">Instagram</span></div>
+                <div class="work-card-overlay">
+                    <a href="https://www.instagram.com/vatalinskaya_beauty/" target="_blank" rel="noopener" class="btn-lux">Instagram</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Відгуки (Зі стрілками для десктопу) -->
+    <!-- 4. Відгуки (3D карусель по колу) -->
     <section id="reviews">
         <div class="section-header reveal">
             <h2 class="section-title">ВІДГУКИ КЛІЄНТІВ</h2>
@@ -722,8 +862,8 @@
                 <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
             </button>
             
-            <div class="reviews-carousel" id="reviewsCarousel">
-                <div class="review-card">
+            <div class="reviews-stage">
+                <div class="review-card-3d">
                     <div class="stars">★★★★★</div>
                     <p style="color: var(--text-secondary); font-style: italic;">«Неймовірна атмосфера та бездоганний сервіс. Фарбування перевершило всі очікування. Найкращий простір у місті!»</p>
                     <div class="review-author">
@@ -735,7 +875,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card-3d">
                     <div class="stars">★★★★★</div>
                     <p style="color: var(--text-secondary); font-style: italic;">«Обожнюю стиль та уважність майстрів до деталей. Завжди виходжу від вас із ідеальним настроєм та манікюром.»</p>
                     <div class="review-author">
@@ -747,7 +887,7 @@
                     </div>
                 </div>
                 
-                <div class="review-card">
+                <div class="review-card-3d">
                     <div class="stars">★★★★★</div>
                     <p style="color: var(--text-secondary); font-style: italic;">«Робила реконструкцію волосся. Ефект просто вау! Дуже приємний персонал і смачна кава.»</p>
                     <div class="review-author">
@@ -781,8 +921,7 @@
                 <p>Адреса: вул. Сумська, 77, Харків</p>
                 
                 <div style="margin-top: 40px; display: flex; gap: 15px;">
-                    <a href="#" style="color: var(--text-primary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                    <a href="#" style="color: var(--text-primary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.325V1.325C24 .597 23.403 0 22.675 0z"/></svg></a>
+                    <a href="https://www.instagram.com/vatalinskaya_beauty/" target="_blank" rel="noopener" style="color: var(--text-primary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
                 </div>
             </div>
             
@@ -796,6 +935,29 @@
             </div>
         </div>
     </section>
+
+    <!-- Модальне вікно запису (Анімація macOS Style) -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeBookingModal()">✕</button>
+            <h3 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 10px; text-align: center;">ОНЛАЙН ЗАПИС</h3>
+            <p style="color: var(--text-secondary); text-align: center; margin-bottom: 25px; font-size: 0.9rem;">Оберіть зручний час та послугу</p>
+            
+            <form class="lux-form" onsubmit="event.preventDefault(); alert('Дякуємо! Ми зв\'яжемося з вами для підтвердження.'); closeBookingModal();">
+                <input type="text" placeholder="Ваше ім'я" required>
+                <input type="tel" placeholder="Номер телефону" required>
+                <select required>
+                    <option value="" disabled selected style="background:#161618;">Оберіть послугу</option>
+                    <option value="hair" style="background:#161618;">Фарбування волосся</option>
+                    <option value="style" style="background:#161618;">Стрижка / Укладка</option>
+                    <option value="reconstruction" style="background:#161618;">Реконструкція волосся</option>
+                    <option value="nails" style="background:#161618;">Нігтьовий сервіс</option>
+                    <option value="brows" style="background:#161618;">Послуги бровіста</option>
+                </select>
+                <button type="submit" class="btn-lux" style="width: 100%; margin-top: 10px;">Підтвердити запис</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Підвал -->
     <footer>
@@ -811,7 +973,7 @@
             glow.style.top = e.clientY + 'px';
         });
 
-        // Поява елементів при скролі (Scroll Reveal)
+        // Поява елементів при скролі
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -822,21 +984,58 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Логіка прокручування відгуків кнопками-стрілками
-        const reviewsCarousel = document.getElementById('reviewsCarousel');
-        const prevBtn = document.getElementById('prevReview');
-        const nextBtn = document.getElementById('nextReview');
+        // Модальне вікно запису
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.add('active');
+        }
 
-        if (prevBtn && nextBtn && reviewsCarousel) {
-            prevBtn.addEventListener('click', () => {
-                reviewsCarousel.scrollBy({ left: -390, behavior: 'smooth' });
-            });
-            nextBtn.addEventListener('click', () => {
-                reviewsCarousel.scrollBy({ left: 390, behavior: 'smooth' });
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+        }
+
+        document.getElementById('bookingModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('bookingModal')) {
+                closeBookingModal();
+            }
+        });
+
+        // 3D Карусель відгуків (Перекрутка по колу)
+        let currentReview = 0;
+        const reviewCards = document.querySelectorAll('.review-card-3d');
+        const totalReviews = reviewCards.length;
+
+        function update3DReviews() {
+            reviewCards.forEach((card, index) => {
+                card.classList.remove('active', 'prev-card', 'next-card');
+                
+                if (index === currentReview) {
+                    card.classList.add('active');
+                } else if (index === (currentReview - 1 + totalReviews) % totalReviews) {
+                    card.classList.add('prev-card');
+                } else if (index === (currentReview + 1) % totalReviews) {
+                    card.classList.add('next-card');
+                }
             });
         }
 
-        // Активний пункт у меню (боковому та нижньому)
+        const prevBtn = document.getElementById('prevReview');
+        const nextBtn = document.getElementById('nextReview');
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentReview = (currentReview - 1 + totalReviews) % totalReviews;
+                update3DReviews();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentReview = (currentReview + 1) % totalReviews;
+                update3DReviews();
+            });
+        }
+
+        update3DReviews();
+
+        // Підсвічування активних пунктів навігації
         const sections = document.querySelectorAll('section');
         const sideNavItems = document.querySelectorAll('.side-nav-item');
         const bottomNavItems = document.querySelectorAll('.b-nav-item');
