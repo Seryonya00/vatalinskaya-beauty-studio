@@ -3,247 +3,927 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VATALINSKAYA BEAUTY STUDIO</title>
+    <title>VATALINSKAYA TATYANA | Beauty Studio</title>
+    <!-- Премиум шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #121214;
+            --bg-dark: #0a0a0c;
+            --bg-card: rgba(18, 18, 22, 0.85);
             --accent-gold: #d4af37;
+            --accent-gold-light: #f3e5ab;
+            --accent-glow: rgba(212, 175, 55, 0.35);
             --text-primary: #ffffff;
             --text-secondary: #a0a0a6;
             --font-title: 'Cormorant Garamond', serif;
             --font-body: 'Montserrat', sans-serif;
-            --transition: all 0.3s ease;
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-primary);
             font-family: var(--font-body);
-            padding: 40px 0;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* --- СЕКЦИЯ НАШИ РАБОТЫ --- */
-        #works {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .works-title {
-            font-family: var(--font-title);
-            font-size: 2.2rem;
-            color: #d4af37;
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
-
-        /* Шапка Instagram над сеткой */
-        .insta-bar {
+        /* --- ВЕРХНЯЯ ШАПКА С МЕНЮ --- */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 2000;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
+            padding: 0 5%;
         }
 
-        .insta-user-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .header-logo {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--text-primary);
             text-decoration: none;
-            color: #ffffff;
-            transition: var(--transition);
+            text-transform: uppercase;
         }
 
-        .insta-user-info:hover {
-            opacity: 0.85;
+        .header-logo span {
+            color: var(--accent-gold);
         }
 
-        /* 3D Иконка Instagram */
-        .insta-3d-icon {
-            width: 36px;
-            height: 36px;
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-            border-radius: 10px;
+        .top-nav {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(212, 36, 159, 0.3);
+            gap: 30px;
+            list-style: none;
         }
 
-        .insta-3d-icon svg {
-            width: 22px;
-            height: 22px;
-            fill: #ffffff;
-        }
-
-        .insta-handle {
-            font-weight: 600;
-            font-size: 1.05rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* Кнопка Подписаться / Слідкувати */
-        .btn-follow {
-            background-color: #eef1f4;
-            color: #111111;
-            padding: 10px 24px;
+        .top-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
             font-size: 0.85rem;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             transition: var(--transition);
         }
 
-        .btn-follow:hover {
-            background-color: #ffffff;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+        .top-nav a:hover, .top-nav a.active {
+            color: var(--accent-gold);
         }
 
-        /* Сетка работ (3 колонки х 2 ряда) */
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .btn-header-book {
+            padding: 10px 24px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
         }
 
-        .work-card {
-            position: relative;
-            aspect-ratio: 1 / 1;
-            background-size: cover;
-            background-position: center;
-            border-radius: 2px;
-            overflow: hidden;
+        .btn-header-book:hover {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        /* --- БОКОВОЕ МЕНЮ (Копия референса с точкой) --- */
+        .side-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .side-nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .side-nav-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            opacity: 0;
+            transform: translateX(10px);
+            transition: var(--transition);
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .side-nav-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            transition: var(--transition);
+        }
+
+        .side-nav-item:hover .side-nav-label,
+        .side-nav-item.active .side-nav-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .side-nav-item:hover .side-nav-dot,
+        .side-nav-item.active .side-nav-dot {
+            background: var(--accent-gold);
+            box-shadow: 0 0 12px var(--accent-gold), 0 0 20px var(--accent-gold);
+            transform: scale(1.4);
+        }
+
+        /* --- ОБЩИЕ СТИЛИ СЕКЦИЙ --- */
+        section {
+            padding: 130px 8% 80px 8%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 3.2rem;
+            font-family: var(--font-title);
+            font-weight: 400;
+        }
+
+        .btn-lux {
+            display: inline-block;
+            padding: 16px 38px;
+            border: 1px solid var(--accent-gold);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn-lux:hover {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        /* Анимация проявления при скролле */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 1. HERO SECTION --- */
+        #hero {
+            background: linear-gradient(180deg, rgba(10,10,12,0.4) 0%, rgba(10,10,12,1) 100%), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            text-align: center;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 4.8rem;
+            font-family: var(--font-title);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero-desc {
+            max-width: 650px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 35px;
+        }
+
+        /* --- 2. ПРАЙС С ТАБАМИ --- */
+        .price-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 10px 24px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
             transition: var(--transition);
         }
 
-        .work-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        .tab-btn.active, .tab-btn:hover {
+            color: #000;
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
         }
 
-        /* Иконка типы медиа в верхнем правом углу (Видео / Карусель) */
-        .media-badge {
+        .price-content {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .price-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .price-name {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+        }
+
+        .price-val {
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        /* --- 3. НАШИ РАБОТЫ (INSTAGRAM + 3D IPHONE) --- */
+        .works-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* 3D Смартфон */
+        .phone-wrapper {
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .iphone-mockup {
+            width: 310px;
+            height: 610px;
+            background: #000;
+            border-radius: 46px;
+            border: 4px solid #28282d;
+            box-shadow: 0 0 0 2px var(--accent-gold), 0 25px 60px rgba(0,0,0,0.9), 0 0 40px var(--accent-glow);
+            position: relative;
+            transform: rotateY(-15deg) rotateX(8deg);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .phone-wrapper:hover .iphone-mockup {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+
+        /* Островок (Dynamic Island) */
+        .phone-notch {
             position: absolute;
             top: 12px;
-            right: 12px;
-            width: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85px;
             height: 20px;
+            background: #000;
+            border-radius: 12px;
+            z-index: 100;
+        }
+
+        /* Экран телефона и инстаграм */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding-top: 40px;
+            background: #000;
+            color: #fff;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-gold) transparent;
+        }
+
+        .insta-header {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        .insta-profile-pic {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            padding: 2px;
+            margin: 0 auto 10px auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .insta-handle {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .insta-bio {
+            font-size: 0.7rem;
+            color: #ccc;
+            margin: 8px 0;
+            line-height: 1.3;
+        }
+
+        .btn-insta-follow {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 6px 0;
+            background: var(--accent-gold);
+            color: #000;
+            font-weight: 600;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .insta-feed-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            padding: 2px;
+        }
+
+        .insta-feed-item {
+            aspect-ratio: 1;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Правая колонка: Логотип из референса */
+        .brand-logo-card {
+            text-align: center;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 50px 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-diamond-box {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 30px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.6));
         }
 
-        .media-badge svg {
+        /* Мазок кистью сзади */
+        .logo-brush-bg {
+            position: absolute;
+            width: 140%;
+            height: 70%;
+            background: linear-gradient(135deg, #c4a77d 0%, #8a6d3b 100%);
+            transform: rotate(-15deg);
+            opacity: 0.6;
+            filter: blur(4px);
+            border-radius: 40%;
+        }
+
+        /* Золотой ромб */
+        .logo-diamond {
+            position: absolute;
+            width: 85px;
+            height: 85px;
+            border: 2px solid var(--accent-gold);
+            transform: rotate(45deg);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .logo-letters {
+            position: relative;
+            z-index: 2;
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .brand-title-main {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+
+        .brand-subtitle-main {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        /* --- 4. СПЕЦИАЛИСТЫ --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 15px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-8px);
+        }
+
+        .team-img {
             width: 100%;
-            height: 100%;
-            fill: #ffffff;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            filter: grayscale(20%);
         }
 
-        /* Адаптивность для мобильных */
-        @media (max-width: 768px) {
-            .works-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+        .team-card:hover .team-img {
+            filter: grayscale(0%);
+        }
+
+        .team-name {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+        }
+
+        .team-role {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- 5. АДРЕС И КОНТАКТЫ --- */
+        .contacts-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            filter: invert(90%) hue-rotate(180deg) contrast(100%);
+        }
+
+        /* --- 6. ОТЗЫВЫ --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .lux-form input, .lux-form textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            margin-bottom: 15px;
+            font-family: var(--font-body);
+            outline: none;
+        }
+
+        .lux-form input:focus, .lux-form textarea:focus {
+            border-color: var(--accent-gold);
+        }
+
+        /* --- ПОДВАЛ --- */
+        footer {
+            background: #050507;
+            padding: 50px 8%;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* --- МОБИЛЬНАЯ АДАПТАЦИЯ (ИСПРАВЛЕНИЕ БАГОВ) --- */
+        @media (max-width: 1024px) {
+            .team-grid { grid-template-columns: repeat(3, 1fr); }
+            .works-container, .contacts-wrapper, .reviews-grid { grid-template-columns: 1fr; }
+            .side-nav { display: none; } /* Скрываем боковые точки на мобилке */
             
-            .works-title {
-                font-size: 1.8rem;
+            .top-nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 12, 0.98);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                border-bottom: 1px solid var(--glass-border);
             }
 
-            .btn-follow {
-                padding: 8px 16px;
-                font-size: 0.8rem;
+            .top-nav.open {
+                transform: translateY(0);
             }
+
+            .burger-menu {
+                display: flex;
+            }
+
+            .hero-title { font-size: 3.2rem; }
+            section { padding: 100px 5% 50px 5%; }
+            .iphone-mockup { width: 280px; height: 550px; }
         }
 
-        @media (max-width: 480px) {
-            .works-grid {
-                grid-template-columns: repeat(1, 1fr);
-            }
+        @media (max-width: 600px) {
+            .team-grid { grid-template-columns: repeat(1, 1fr); }
+            .hero-title { font-size: 2.5rem; }
+            .btn-header-book { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- БЛОК НАШИ РАБОТЫ -->
-    <section id="works">
-        <h2 class="works-title">Наші роботи:</h2>
+    <!-- ВЕРХНЯЯ ШАПКА -->
+    <header class="top-header">
+        <a href="#hero" class="header-logo">VATALINSKAYA <span>BEAUTY</span></a>
+        
+        <ul class="top-nav" id="topNav">
+            <li><a href="#hero">Главная</a></li>
+            <li><a href="#services">Прайс</a></li>
+            <li><a href="#works">Работы</a></li>
+            <li><a href="#team">Мастера</a></li>
+            <li><a href="#contacts">Адрес</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+        </ul>
 
-        <!-- Шапка с Instagram профилем -->
-        <div class="insta-bar">
-            <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" class="insta-user-info">
-                <div class="insta-3d-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </div>
-                <span class="insta-handle">@vatalinskaya_beauty_studio</span>
-            </a>
+        <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" class="btn-header-book">Записаться</a>
 
-            <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" class="btn-follow">Слідкувати</a>
+        <div class="burger-menu" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- БОКОВОЕ МЕНЮ (Референс 2) -->
+    <nav class="side-nav">
+        <a href="#hero" class="side-nav-item active">
+            <span class="side-nav-label">ГЛАВНАЯ</span>
+            <span class="side-nav-dot"></span>
+        </a>
+        <a href="#services" class="side-nav-item">
+            <span class="side-nav-label">ПРАЙС</span>
+            <span class="side-nav-dot"></span>
+        </a>
+        <a href="#works" class="side-nav-item">
+            <span class="side-nav-label">ГАЛЕРЕЯ</span>
+            <span class="side-nav-dot"></span>
+        </a>
+        <a href="#team" class="side-nav-item">
+            <span class="side-nav-label">МАСТЕРА</span>
+            <span class="side-nav-dot"></span>
+        </a>
+        <a href="#contacts" class="side-nav-item">
+            <span class="side-nav-label">АДРЕС</span>
+            <span class="side-nav-dot"></span>
+        </a>
+        <a href="#reviews" class="side-nav-item">
+            <span class="side-nav-label">ОТЗЫВЫ</span>
+            <span class="side-nav-dot"></span>
+        </a>
+    </nav>
+
+    <!-- 1. ГЛАВНАЯ -->
+    <section id="hero">
+        <div class="reveal">
+            <span class="section-subtitle">Харьков • Премиум студия</span>
+            <h1 class="hero-title">VATALINSKAYA TATYANA<br>BEAUTY STUDIO</h1>
+            <p class="hero-desc">Пространство эстетики, премиального ухода и бескомпромиссного качества в самом центре Харькова.</p>
+            <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" class="btn-lux">Онлайн запись</a>
+        </div>
+    </section>
+
+    <!-- 2. ПРАЙС -->
+    <section id="services">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Услуги</span>
+            <h2 class="section-title">Прайс-лист</h2>
         </div>
 
-        <!-- Сетка из 6 работ -->
-        <div class="works-grid">
-            <!-- Работа 1 -->
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80');">
-                <div class="media-badge">
-                    <!-- Иконка видео (треугольник) -->
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <div class="price-tabs reveal">
+            <button class="tab-btn active" onclick="openTab(event, 'hair')">Волосы</button>
+            <button class="tab-btn" onclick="openTab(event, 'nails')">Ногти</button>
+            <button class="tab-btn" onclick="openTab(event, 'face')">Брови & Макияж</button>
+        </div>
+
+        <div id="hair" class="price-content active reveal">
+            <div class="price-item"><span class="price-name">Стрижка и укладка</span><span class="price-val">от 900 ₴</span></div>
+            <div class="price-item"><span class="price-name">Сложное окрашивание</span><span class="price-val">от 2 800 ₴</span></div>
+            <div class="price-item"><span class="price-name">Премиум восстановление волос</span><span class="price-val">от 1 500 ₴</span></div>
+        </div>
+
+        <div id="nails" class="price-content">
+            <div class="price-item"><span class="price-name">Маникюр с покрытием</span><span class="price-val">от 700 ₴</span></div>
+            <div class="price-item"><span class="price-name">Педикюр</span><span class="price-val">от 900 ₴</span></div>
+            <div class="price-item"><span class="price-name">Наращивание ногтей</span><span class="price-val">от 1 200 ₴</span></div>
+        </div>
+
+        <div id="face" class="price-content">
+            <div class="price-item"><span class="price-name">Ламинирование бровей</span><span class="price-val">от 650 ₴</span></div>
+            <div class="price-item"><span class="price-name">Ламинирование ресниц</span><span class="price-val">от 800 ₴</span></div>
+            <div class="price-item"><span class="price-name">Вечерний макияж</span><span class="price-val">от 1 500 ₴</span></div>
+        </div>
+    </section>
+
+    <!-- 3. НАШИ РАБОТЫ (INSTAGRAM + 3D PHONE) -->
+    <section id="works">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Портфолио</span>
+            <h2 class="section-title">Наши Работы</h2>
+        </div>
+
+        <div class="works-container reveal">
+            <!-- Слева: 3D Интерактивный Смартфон -->
+            <div class="phone-wrapper">
+                <div class="iphone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="insta-header">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=150&q=80" class="insta-profile-pic" alt="Logo">
+                            <div class="insta-handle">vatalinskaya_beauty_studio</div>
+                            <div class="insta-bio">VATALINSKAYA TATYANA BEAUTY STUDIO<br>Салон красоты в Харькове ✨</div>
+                            <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" class="btn-insta-follow">Открыть в Instagram</a>
+                        </div>
+                        <div class="insta-feed-grid">
+                            <div class="insta-feed-item" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&q=80');"></div>
+                            <div class="insta-feed-item" style="background-image: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?w=300&q=80');"></div>
+                            <div class="insta-feed-item" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?w=300&q=80');"></div>
+                            <div class="insta-feed-item" style="background-image: url('https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?w=300&q=80');"></div>
+                            <div class="insta-feed-item" style="background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=300&q=80');"></div>
+                            <div class="insta-feed-item" style="background-image: url('https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=300&q=80');"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Работа 2 -->
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80');">
-                <div class="media-badge">
-                    <!-- Иконка карусели -->
-                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg>
+            <!-- Справа: Логотип из Картинки 1 -->
+            <div class="brand-logo-card">
+                <div class="logo-diamond-box">
+                    <div class="logo-brush-bg"></div>
+                    <div class="logo-diamond"></div>
+                    <span class="logo-letters">VT</span>
                 </div>
-            </div>
-
-            <!-- Работа 3 -->
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=600&q=80');">
-                <div class="media-badge">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-            </div>
-
-            <!-- Работа 4 -->
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?auto=format&fit=crop&w=600&q=80');">
-                <div class="media-badge">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-            </div>
-
-            <!-- Работа 5 -->
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?auto=format&fit=crop&w=600&q=80');">
-                <div class="media-badge">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-            </div>
-
-            <!-- Работа 6 -->
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?auto=format&fit=crop&w=600&q=80');">
-                <div class="media-badge">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
+                <h3 class="brand-title-main">VATALINSKAYA TATYANA</h3>
+                <p class="brand-subtitle-main">BEAUTY STUDIO</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 25px;">Следите за нашими свежими работами, акциями и бьюти-трансформациями в режиме реального времени.</p>
+                <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" class="btn-lux">Подписаться в Instagram</a>
             </div>
         </div>
     </section>
 
+    <!-- 4. МАСТЕРА (До 5 человек) -->
+    <section id="team">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Команда</span>
+            <h2 class="section-title">Наши Специалисты</h2>
+        </div>
+        <div class="team-grid reveal">
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=80" class="team-img" alt="Мастер">
+                <h4 class="team-name">Татьяна</h4>
+                <span class="team-role">Основатель / Топ-стилист</span>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=400&q=80" class="team-img" alt="Мастер">
+                <h4 class="team-name">Елена</h4>
+                <span class="team-role">Колорист</span>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&q=80" class="team-img" alt="Мастер">
+                <h4 class="team-name">Анна</h4>
+                <span class="team-role">Нейл-мастер</span>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" class="team-img" alt="Мастер">
+                <h4 class="team-name">Виктория</h4>
+                <span class="team-role">Бровист</span>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" class="team-img" alt="Мастер">
+                <h4 class="team-name">Ольга</h4>
+                <span class="team-role">Визажист</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. АДРЕС И КАРТА -->
+    <section id="contacts">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Локация</span>
+            <h2 class="section-title">Наш Адрес</h2>
+        </div>
+        <div class="contacts-wrapper reveal">
+            <div>
+                <h3 style="font-family: var(--font-title); font-size: 2rem; margin-bottom: 20px;">г. Харьков</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">ул. Сумская, 77 (уточним данные)</p>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">Режим работы: Пн — Вс: 09:00 — 21:00</p>
+                <p style="color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 25px;">+38 (099) 111-22-33</p>
+                <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" class="btn-lux">Записаться на прием</a>
+            </div>
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163777.20037380967!2d36.14574343163351!3d50.00572007797825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a09f63ab0f8b%3A0x2d4c18681aa4be0a!2z0KXQsNGA0YzQutC-0LIsINCl0LDRgNGM0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0Yw!5e0!3m2!1sru!2sua!4v1690000000000!5m2!1sru!2sua"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ОТЗЫВЫ -->
+    <section id="reviews">
+        <div class="section-header reveal">
+            <span class="section-subtitle">Отзывы</span>
+            <h2 class="section-title">Что говорят клиенты</h2>
+        </div>
+        <div class="reviews-grid reveal">
+            <div>
+                <div class="review-card">
+                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;">Екатерина</h4>
+                    <p style="color: var(--text-secondary); font-style: italic;">«Татьяна — настоящий мастер своего дела! Результат окрашивания просто потрясающий, волосы живые и блестящие.»</p>
+                </div>
+                <div class="review-card">
+                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;">Мария</h4>
+                    <p style="color: var(--text-secondary); font-style: italic;">«Прекрасный салон, уютная атмосфера и отличный сервис. Однозначно рекомендую всем!»</p>
+                </div>
+            </div>
+            <div>
+                <form class="lux-form" onsubmit="event.preventDefault(); alert('Спасибо за отзыв!');">
+                    <input type="text" placeholder="Ваше Имя" required>
+                    <input type="email" placeholder="Ваш Email" required>
+                    <textarea rows="4" placeholder="Ваш Отзыв" required></textarea>
+                    <button type="submit" class="btn-lux" style="width: 100%;">Отправить отзыв</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <div style="font-family: var(--font-title); font-size: 1.5rem; color: var(--accent-gold);">VATALINSKAYA TATYANA</div>
+        <div style="color: var(--text-secondary); font-size: 0.8rem;">+38 (099) 111-22-33 | Харьков</div>
+        <div style="color: var(--text-secondary); font-size: 0.8rem;">© 2026 VATALINSKAYA BEAUTY STUDIO</div>
+    </footer>
+
+    <script>
+        // 1. Переключение мобильного меню
+        function toggleNav() {
+            document.getElementById('topNav').classList.toggle('open');
+        }
+
+        // 2. Scroll Reveal (Анимация проявления)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 3. Табы Прайса
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.price-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // 4. Синхронизация подсветки в верхнем и боковом меню при скролле
+        const sections = document.querySelectorAll('section');
+        const sideNavItems = document.querySelectorAll('.side-nav-item');
+        const topNavItems = document.querySelectorAll('.top-nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (pageYOffset >= section.offsetTop - section.clientHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sideNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+
+            topNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
