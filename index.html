@@ -15,7 +15,7 @@
             --accent-gold: #d4af37;
             --accent-gold-glow: rgba(212, 175, 55, 0.25);
             --text-primary: #f5f5f7;
-            --text-secondary: #a1a1a6;
+            --text-secondary: #c1c1c6; /* Зробили іконки яскравішими */
             --font-title: 'Cormorant Garamond', serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --glass-border: rgba(255, 255, 255, 0.08);
@@ -169,25 +169,24 @@
             transform: scale(1.6);
         }
 
-        /* --- Нижня панель (Dock) - ОНОВЛЕНО --- */
+        /* --- Нижня панель (Dock) - ВИПРАВЛЕНО СИМЕТРІЮ ТА ПОЗИЦІЮ --- */
         .bottom-nav {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             align-items: center;
-            justify-content: center; /* Центруємо всі елементи */
-            gap: 24px; /* Однакове розташування між іконками */
-            background: rgba(22, 22, 24, 0.92);
+            justify-content: space-between; /* Рівномірний розподіл іконок по ширині */
+            background: rgba(20, 20, 22, 0.95);
             backdrop-filter: blur(20px);
-            padding: 8px 24px;
+            padding: 12px 28px;
             border-radius: 60px;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             z-index: 1001;
-            width: max-content; /* Дозволяє підлаштовувати ширину під контент */
-            max-width: 95%;
+            width: 440px; /* Фіксована ширина для ідеального простору */
+            max-width: 92vw;
         }
 
         .b-nav-item {
@@ -197,16 +196,16 @@
             justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             transition: var(--transition);
             flex-shrink: 0;
         }
 
         .b-nav-item svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             fill: none;
             stroke: currentColor;
             transition: var(--transition);
@@ -214,33 +213,39 @@
 
         .b-nav-item:hover, .b-nav-item.active {
             color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        /* ОНОВЛЕНО: піднято вище */
+        /* ВИПРАВЛЕНО: Золота кнопка суворо по центру та вище над плашкою */
         .b-nav-item.home-btn {
             background: var(--accent-gold);
             color: #000;
-            width: 56px;
-            height: 56px;
-            transform: translateY(-26px); /* Ще вище */
-            box-shadow: 0 10px 25px var(--accent-gold-glow);
-            margin: 0;
+            width: 58px;
+            height: 58px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -48px); /* Піднята ще вище по центру */
+            box-shadow: 0 10px 30px var(--accent-gold-glow);
+            border: 3px solid var(--bg-dark); /* Відділення від фону */
         }
 
         .b-nav-item.home-btn svg {
             stroke: #000;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
         }
 
         .b-nav-item.home-btn:hover {
-            transform: translateY(-30px); /* Анімація вище */
+            transform: translate(-50%, -53px);
             box-shadow: 0 15px 35px var(--accent-gold-glow);
+            background: var(--accent-gold);
+            color: #000;
         }
 
         .b-nav-tooltip {
             position: absolute;
-            top: -40px;
+            top: -42px;
             background: var(--bg-card);
             color: var(--accent-gold);
             font-size: 10px;
@@ -330,21 +335,20 @@
 
         .btn-lux:hover::before { left: 0; }
 
-        /* --- Hero Section - ОНОВЛЕНО --- */
+        /* --- Hero Section --- */
         #hero {
             background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,1) 100%), 
                         url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80') center/cover;
             text-align: center;
             align-items: center;
-            padding-top: 60px; /* Піднімаємо контент вище */
+            padding-top: 60px;
         }
 
-        /* ОНОВЛЕНО: Логотип і відступи */
         .hero-logo-img {
             max-height: 280px;
             width: auto;
-            margin-top: 0px; /* Ближче до верху */
-            margin-bottom: 12px; /* Ближче до заголовка */
+            margin-top: 0px;
+            margin-bottom: 12px;
             object-fit: contain;
             filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
             transition: var(--transition);
@@ -353,18 +357,17 @@
         .hero-title {
             font-size: 4.8rem;
             line-height: 1.1;
-            margin-bottom: 10px; /* Ближче до опису */
+            margin-bottom: 10px;
             background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* ОНОВЛЕНО: Контакти ближче одне до одного */
         .hero-contacts {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px; /* Зменшена відстань між телефоном і іконками */
+            gap: 12px;
             margin-top: 5px;
         }
 
@@ -633,7 +636,7 @@
         .social-icon-link { color: var(--text-primary); transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); }
         .social-icon-link:hover { color: var(--accent-gold); border-color: var(--accent-gold); transform: translateY(-4px); box-shadow: 0 5px 15px var(--accent-gold-glow); }
 
-        footer { background: #050505; padding: 40px 10% 120px; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-secondary); font-size: 12px; max-width: 100vw; overflow-x: hidden; }
+        footer { background: #050505; padding: 40px 10% 140px; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-secondary); font-size: 12px; max-width: 100vw; overflow-x: hidden; }
 
         /* --- Мобільна адаптація --- */
         @media (max-width: 1024px) {
@@ -661,17 +664,18 @@
             .review-card-3d.prev-card { transform: translateX(-35%) scale(0.85) rotateY(10deg); opacity: 0.25; }
             .review-card-3d.next-card { transform: translateX(35%) scale(0.85) rotateY(-10deg); opacity: 0.25; }
 
-            /* Оновлено для мобільних */
-            .bottom-nav { padding: 8px 16px; width: max-content; max-width: 95%; gap: 14px; }
-            .b-nav-item { width: 36px; height: 36px; }
-            .b-nav-item svg { width: 18px; height: 18px; }
-            .b-nav-item.home-btn { width: 48px; height: 48px; transform: translateY(-20px); }
-            .b-nav-item.home-btn:hover { transform: translateY(-24px); }
+            /* Мобільний розмір для панелі */
+            .bottom-nav { width: 360px; padding: 10px 20px; }
+            .b-nav-item { width: 38px; height: 38px; }
+            .b-nav-item svg { width: 19px; height: 19px; }
+            .b-nav-item.home-btn { width: 50px; height: 50px; transform: translate(-50%, -42px); }
+            .b-nav-item.home-btn:hover { transform: translate(-50%, -46px); }
             .contact-map iframe { min-height: 300px; }
         }
 
         @media (max-width: 480px) {
             .header-title { font-size: 1.05rem; letter-spacing: 1.5px; }
+            .bottom-nav { width: 92vw; padding: 8px 15px; }
             .review-card-3d.prev-card { transform: translateX(-20%) scale(0.8) rotateY(5deg); opacity: 0.15; }
             .review-card-3d.next-card { transform: translateX(20%) scale(0.8) rotateY(-5deg); opacity: 0.15; }
         }
@@ -702,11 +706,14 @@
         <a href="#contacts" class="side-nav-item"><span class="side-nav-label">Контакти</span><span class="side-nav-dot"></span></a>
     </nav>
 
+    <!-- Нижнє меню (Dock) із симетричним розташуванням та центральною кнопкою -->
     <nav class="bottom-nav">
-        <!-- Навігація Dock -->
-        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5"/><path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12"/><path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8"/><path d="M10 15 C 11 17 12.5 18.5 14 19.5"/><path d="M19 2.5Q19 5 21.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none"/><path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none"/><path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5"/><path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12"/><path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8"/><path d="M10 15 C 11 17 12.5 18.5 14 19.5"/><path d="M19 2.5Q19 5 21.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none"/><path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none"/><path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none"/></svg></a>
         <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
+        
+        <!-- Золота кнопка суворо по центру зверху -->
         <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-48px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
+
         <a href="#reviews" class="b-nav-item"><span class="b-nav-tooltip">Відгуки</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="currentColor" stroke="none"/></svg></a>
         <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip">Написати</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
         <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
@@ -717,7 +724,6 @@
         <div class="reveal">
             <img src="image/logo.png" alt="vatalinskaya beauty studio logo" class="hero-logo-img">
             <h1 class="hero-title">Естетика та досконалість</h1>
-            <!-- Відступи тексту зменшено -->
             <p style="max-width: 650px; margin: 0 auto 12px; color: var(--text-secondary);">
                 Простір високої б'юті-культури. Ми створюємо індивідуальні образи, підкреслюючи вашу природну елегантність.
             </p>
@@ -982,7 +988,7 @@
         // Активна навігація (бічна та dock)
         const sections = document.querySelectorAll('section');
         const sideNavItems = document.querySelectorAll('.side-nav-item');
-        const dockNavItems = document.querySelectorAll('.b-nav-item:not(.home-btn)'); // home-btn завжди веде наверх
+        const dockNavItems = document.querySelectorAll('.b-nav-item:not(.home-btn)');
         
         window.addEventListener('scroll', () => {
             let current = '';
@@ -1009,7 +1015,7 @@
         const prevBtn = document.getElementById('prevReview');
         const nextBtn = document.getElementById('nextReview');
         const stage = document.getElementById('reviewsStage');
-        let currentIndex = 1; // Центральна картка за замовчуванням
+        let currentIndex = 1;
         
         function updateCarousel() {
             cards.forEach((card, index) => {
@@ -1050,7 +1056,6 @@
             else if (diffX < -50) { currentIndex = (currentIndex + 1) % cards.length; updateCarousel(); isDragging = false; }
         });
 
-        // Ініціалізація
         updateCarousel();
     </script>
 </body>
