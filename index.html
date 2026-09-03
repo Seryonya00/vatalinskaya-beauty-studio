@@ -336,12 +336,15 @@
             align-items: center;
         }
 
+        /* --- ОНОВЛЕНИЙ ЛОГОТИП --- */
         .hero-logo-img {
-            max-height: 110px;
+            max-height: 280px;
             width: auto;
-            margin-bottom: 25px;
+            margin-top: 40px;
+            margin-bottom: 35px;
             object-fit: contain;
             filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
+            transition: var(--transition);
         }
 
         .hero-title {
@@ -353,7 +356,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Оновлені контакти в Hero (відображаються на всіх пристроях) */
+        /* Оновлені контакти в Hero */
         .hero-contacts {
             display: flex;
             flex-direction: column;
@@ -507,7 +510,6 @@
             justify-content: center;
             perspective: 1000px;
             cursor: grab;
-            /* overflow: hidden; - Видалено, щоб не обрізалися краї відгуків */
         }
 
         .reviews-stage:active { cursor: grabbing; }
@@ -641,6 +643,13 @@
             .contact-map { order: 3; min-height: 300px; width: 100%; }
 
             .contact-character-img { max-height: 380px; }
+            
+            /* Адаптація збільшеного логотипу для мобільних пристроїв */
+            .hero-logo-img { 
+                max-height: 180px; 
+                margin-top: 20px;
+            }
+
             .hero-title { font-size: 3.2rem; }
             .section-title { font-size: 2.5rem; }
             .side-nav { display: none; }
@@ -691,7 +700,7 @@
     </nav>
 
     <nav class="bottom-nav">
-        <!-- Навігація Dock (Кнопку "Записатися онлайн" видалено за п'ятою правкою) -->
+        <!-- Навігація Dock -->
         <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5"/><path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12"/><path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8"/><path d="M10 15 C 11 17 12.5 18.5 14 19.5"/><path d="M19 2.5Q19 5 21.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none"/><path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none"/><path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none"/></svg></a>
         <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
         <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-55px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
@@ -709,12 +718,10 @@
                 Простір високої б'юті-культури. Ми створюємо індивідуальні образи, підкреслюючи вашу природну елегантність.
             </p>
             
-            <!-- Текст замість клікабельної кнопки (за п'ятою правкою) -->
             <div style="font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-bottom: 20px;">
                 Записатися онлайн
             </div>
 
-            <!-- БЛОК КОНТАКТІВ (за третьою правкою) -->
             <div class="hero-contacts">
                 <a href="tel:+380505366959" class="hero-phone">+38 (050) 536-69-59</a>
                 <div class="hero-socials">
