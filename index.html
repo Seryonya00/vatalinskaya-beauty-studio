@@ -185,9 +185,8 @@
             border: 1px solid var(--glass-border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             z-index: 1001;
-            width: 440px;
+            width: 480px;
             max-width: 92vw;
-            overflow: visible;
         }
 
         .b-nav-item {
@@ -197,16 +196,16 @@
             justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             transition: var(--transition);
             flex-shrink: 0;
         }
 
         .b-nav-item svg {
-            width: 22px;
-            height: 22px;
+            width: 26px;
+            height: 26px;
             fill: none;
             stroke: currentColor;
             transition: var(--transition);
@@ -217,36 +216,32 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
+        /* Центральна жовта кнопка тепер всередині панелі */
         .b-nav-item.home-btn {
             background: var(--accent-gold);
             color: #000;
-            width: 58px;
-            height: 58px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -90px); 
-            box-shadow: 0 10px 30px var(--accent-gold-glow);
-            border: none; 
-            z-index: 10; 
+            width: 52px;
+            height: 52px;
+            box-shadow: 0 5px 20px var(--accent-gold-glow);
+            border: none;
         }
 
         .b-nav-item.home-btn svg {
             stroke: #000;
-            width: 26px;
-            height: 26px;
+            width: 28px;
+            height: 28px;
         }
 
         .b-nav-item.home-btn:hover {
-            transform: translate(-50%, -95px);
-            box-shadow: 0 15px 35px var(--accent-gold-glow);
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px var(--accent-gold-glow);
             background: var(--accent-gold);
             color: #000;
         }
 
         .b-nav-tooltip {
             position: absolute;
-            top: -42px;
+            top: -45px;
             background: var(--bg-card);
             color: var(--accent-gold);
             font-size: 10px;
@@ -685,19 +680,17 @@
             .review-card-3d.prev-card { transform: translateX(-35%) scale(0.85) rotateY(10deg); opacity: 0.25; }
             .review-card-3d.next-card { transform: translateX(35%) scale(0.85) rotateY(-10deg); opacity: 0.25; }
 
-            .bottom-nav { width: 360px; padding: 10px 20px; }
-            .b-nav-item { width: 38px; height: 38px; }
-            .b-nav-item svg { width: 19px; height: 19px; }
-            .b-nav-item.home-btn { width: 50px; height: 50px; transform: translate(-50%, -75px); }
-            .b-nav-item.home-btn:hover { transform: translate(-50%, -80px); }
+            .bottom-nav { width: 380px; padding: 10px 18px; }
+            .b-nav-item { width: 42px; height: 42px; }
+            .b-nav-item svg { width: 22px; height: 22px; }
+            .b-nav-item.home-btn { width: 44px; height: 44px; }
+            .b-nav-item.home-btn svg { width: 24px; height: 24px; }
             .contact-map iframe { min-height: 300px; }
         }
 
         @media (max-width: 480px) {
             .header-title { font-size: 1.05rem; letter-spacing: 1.5px; }
-            .bottom-nav { width: 92vw; padding: 8px 15px; }
-            .review-card-3d.prev-card { transform: translateX(-20%) scale(0.8) rotateY(5deg); opacity: 0.15; }
-            .review-card-3d.next-card { transform: translateX(20%) scale(0.8) rotateY(-5deg); opacity: 0.15; }
+            .bottom-nav { width: 92vw; padding: 8px 12px; }
         }
     </style>
 </head>
@@ -726,16 +719,14 @@
         <a href="#contacts" class="side-nav-item"><span class="side-nav-label">Контакти</span><span class="side-nav-dot"></span></a>
     </nav>
 
-    <!-- Нижнє меню (Dock) -->
+    <!-- Нижнє меню (Dock) з рівномірним розподілом і центральною кнопкою всередині -->
     <nav class="bottom-nav">
-        <!-- 2 іконки зліва -->
         <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5"/><path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12"/><path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8"/><path d="M10 15 C 11 17 12.5 18.5 14 19.5"/><path d="M19 2.5Q19 5 21.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none"/><path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none"/><path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none"/></svg></a>
         <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
         
-        <!-- Центральна винесена кнопка -->
-        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-48px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
+        <!-- Центральна жовта кнопка (внутрішня) -->
+        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
 
-        <!-- 2 іконки справа -->
         <a href="#reviews" class="b-nav-item"><span class="b-nav-tooltip">Відгуки</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="currentColor" stroke="none"/></svg></a>
         <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
     </nav>
@@ -1015,7 +1006,7 @@
         // Активна навігація (бічна та dock)
         const sections = document.querySelectorAll('section');
         const sideNavItems = document.querySelectorAll('.side-nav-item');
-        const dockNavItems = document.querySelectorAll('.b-nav-item:not(.home-btn)');
+        const dockNavItems = document.querySelectorAll('.b-nav-item');
         
         window.addEventListener('scroll', () => {
             let current = '';
