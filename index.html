@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vatalinskaya beauty studio | Харьков</title>
-    <!-- Премиальные шрифты -->
+    <title>vatalinskaya beauty studio | Харків</title>
+    <!-- Преміальні шрифти -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
             line-height: 1.6;
         }
 
-        /* Интерактивный светильник */
+        /* Інтерактивне світіння курсора */
         .cursor-glow {
             position: fixed;
             width: 400px;
@@ -51,41 +51,37 @@
             transition: transform 0.1s ease-out;
         }
 
-        /* --- Хедер и Логотип --- */
+        /* --- Хедер (Центрований заголовок) --- */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
             display: flex;
             align-items: center;
-            padding: 15px 5%;
+            justify-content: center;
+            padding: 18px 5%;
             background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
         }
 
-        .header-logo-img {
-            height: 50px;
-            margin-right: 15px;
-            object-fit: contain;
-        }
-
         .header-title {
             font-family: var(--font-title);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-primary);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            text-align: center;
         }
 
-        /* --- Типографика --- */
+        /* --- Типографіка --- */
         h1, h2, h3, h4 {
             font-family: var(--font-title);
             font-weight: 300;
             letter-spacing: 1px;
         }
 
-        /* --- Боковое меню (Desktop) --- */
+        /* --- Бічне меню (Desktop) --- */
         .side-nav {
             position: fixed;
             right: 40px;
@@ -101,7 +97,7 @@
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: center; /* Центрирование исправлено */
+            justify-content: center;
             text-decoration: none;
             color: var(--text-secondary);
         }
@@ -142,7 +138,7 @@
             transform: scale(1.6);
         }
 
-        /* --- Нижняя панель (Dock) --- */
+        /* --- Нижня панель (Dock) --- */
         .bottom-nav {
             position: fixed;
             bottom: 25px;
@@ -176,15 +172,16 @@
         .b-nav-item svg {
             width: 22px;
             height: 22px;
-            fill: currentColor;
+            fill: none;
+            stroke: currentColor;
             transition: var(--transition);
         }
 
         .b-nav-item:hover, .b-nav-item.active {
-            color: var(--text-primary);
+            color: var(--accent-gold);
         }
 
-        /* Центральная кнопка Home */
+        /* Кнопка Вгору (замість Домика) */
         .b-nav-item.home-btn {
             background: var(--accent-gold);
             color: #000;
@@ -194,16 +191,17 @@
             box-shadow: 0 10px 25px var(--accent-gold-glow);
         }
 
+        .b-nav-item.home-btn svg {
+            stroke: #000;
+            width: 24px;
+            height: 24px;
+        }
+
         .b-nav-item.home-btn:hover {
             transform: translateY(-20px);
             box-shadow: 0 15px 35px var(--accent-gold-glow);
         }
 
-        .b-nav-item.home-btn svg {
-            width: 26px; height: 26px;
-        }
-
-        /* Tooltip для нижней панели */
         .b-nav-tooltip {
             position: absolute;
             top: -40px;
@@ -227,7 +225,7 @@
             transform: translateY(0);
         }
 
-        /* --- Секции --- */
+        /* --- Секції --- */
         section {
             position: relative;
             z-index: 1;
@@ -295,22 +293,30 @@
 
         /* --- 1. Hero Section --- */
         #hero {
-            background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,1) 100%), 
+            background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,1) 100%), 
                         url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80') center/cover;
             text-align: center;
             align-items: center;
         }
 
+        .hero-logo-img {
+            max-height: 110px;
+            width: auto;
+            margin-bottom: 25px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
+        }
+
         .hero-title {
-            font-size: 5.5rem;
-            line-height: 1.05;
+            font-size: 4.8rem;
+            line-height: 1.1;
             margin-bottom: 25px;
             background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- 2. Меню Услуг (Визуальные карточки) --- */
+        /* --- 2. Меню Послуг --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -340,7 +346,7 @@
             border-radius: 12px;
             object-fit: cover;
             margin-bottom: 15px;
-            filter: brightness(0.8);
+            filter: brightness(0.85);
             transition: var(--transition);
         }
 
@@ -355,7 +361,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- 3. Инстаграм / Работы --- */
+        /* --- 3. Наші роботи --- */
         .work-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -391,22 +397,29 @@
         }
         .work-card:hover .work-card-overlay { opacity: 1; }
 
-        /* --- 4. Карусель Отзывов --- */
+        /* --- 4. Карусель Відгуків зі стрілками --- */
+        .reviews-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
         .reviews-carousel {
             display: flex;
             overflow-x: auto;
             gap: 30px;
-            padding-bottom: 30px;
+            padding: 10px 5px 30px;
             scroll-snap-type: x mandatory;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-gold) rgba(255,255,255,0.05);
+            scroll-behavior: smooth;
+            scrollbar-width: none;
         }
 
-        .reviews-carousel::-webkit-scrollbar { height: 6px; }
-        .reviews-carousel::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 10px; }
+        .reviews-carousel::-webkit-scrollbar { display: none; }
 
         .review-card {
-            min-width: 400px;
+            min-width: 380px;
+            flex: 0 0 380px;
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
             padding: 40px;
@@ -431,7 +444,36 @@
 
         .stars { color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 15px; }
 
-        /* --- 5. Блок Контактов и Формы --- */
+        .review-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(22, 22, 24, 0.9);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .review-arrow:hover {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent-gold-glow);
+        }
+
+        .review-arrow.prev { left: -25px; }
+        .review-arrow.next { right: -25px; }
+        .review-arrow svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
+
+        /* --- 5. Блок Контактів --- */
         #contacts-form {
             background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1920') center/cover fixed;
             position: relative;
@@ -441,7 +483,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, rgba(15,15,17,0.95) 0%, rgba(15,15,17,0.8) 100%);
+            background: linear-gradient(90deg, rgba(15,15,17,0.95) 0%, rgba(15,15,17,0.85) 100%);
             z-index: 0;
         }
 
@@ -500,19 +542,23 @@
 
         footer {
             background: #050505;
-            padding: 40px 10% 120px; /* Отступ снизу для нижней панели */
+            padding: 40px 10% 120px;
             border-top: 1px solid var(--glass-border);
             text-align: center;
             color: var(--text-secondary);
             font-size: 12px;
         }
 
+        /* Адаптивність для мобільних та планшетів */
         @media (max-width: 1024px) {
             .work-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-wrapper { grid-template-columns: 1fr; }
-            .hero-title { font-size: 3.5rem; }
-            .side-nav { display: none; } /* Скрываем боковое меню на планшетах/телефонах */
-            .review-card { min-width: 300px; padding: 25px; }
+            .hero-title { font-size: 3.2rem; }
+            .side-nav { display: none; }
+            .review-card { min-width: 290px; flex: 0 0 290px; padding: 25px; }
+            
+            /* На мобільній версії приховуємо стрілки відгуків */
+            .review-arrow { display: none !important; }
         }
     </style>
 </head>
@@ -520,20 +566,19 @@
 
     <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Шапка с Логотипом -->
+    <!-- Шапка з центрованою назвою -->
     <header>
-        <img src="Logo one.PNG" alt="Logo" class="header-logo-img">
         <span class="header-title">vatalinskaya beauty studio</span>
     </header>
 
-    <!-- Боковое меню (только для ПК) -->
+    <!-- Бокове меню (для ПК) -->
     <nav class="side-nav">
         <a href="#hero" class="side-nav-item active">
-            <span class="side-nav-label">Главная</span>
+            <span class="side-nav-label">Головна</span>
             <span class="side-nav-dot"></span>
         </a>
         <a href="#services" class="side-nav-item">
-            <span class="side-nav-label">Услуги</span>
+            <span class="side-nav-label">Послуги</span>
             <span class="side-nav-dot"></span>
         </a>
         <a href="#works" class="side-nav-item">
@@ -541,98 +586,115 @@
             <span class="side-nav-dot"></span>
         </a>
         <a href="#reviews" class="side-nav-item">
-            <span class="side-nav-label">Отзывы</span>
+            <span class="side-nav-label">Відгуки</span>
             <span class="side-nav-dot"></span>
         </a>
         <a href="#contacts-form" class="side-nav-item">
-            <span class="side-nav-label">Контакты</span>
+            <span class="side-nav-label">Контакти</span>
             <span class="side-nav-dot"></span>
         </a>
     </nav>
 
-    <!-- Нижняя навигация (Dock) -->
+    <!-- Нижня панель навігації (Dock) -->
     <nav class="bottom-nav">
+        <!-- Послуги (Замінено на іконку силуету дівчини з зірочками) -->
         <a href="#services" class="b-nav-item">
-            <span class="b-nav-tooltip">Услуги</span>
-            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm0-8c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg>
-        </a>
-        <a href="#works" class="b-nav-item">
-            <span class="b-nav-tooltip">Галерея</span>
-            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        </a>
-        
-        <a href="#hero" class="b-nav-item home-btn">
-            <span class="b-nav-tooltip" style="top:-55px;">Главная</span>
-            <svg viewBox="0 0 24 24"><path d="M12 3L4 9v12h5v-7h6v7h5V9z"/></svg>
+            <span class="b-nav-tooltip">Послуги</span>
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5" />
+                <path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12" />
+                <path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8" />
+                <path d="M10 15 C 11 17 12.5 18.5 14 19.5" />
+                <path d="M19 2.5Q19 5 21.5 5Q19 5 19 7.5Q19 5 16.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none" />
+                <path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none" />
+                <path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none" />
+            </svg>
         </a>
 
-        <a href="#reviews" class="b-nav-item">
-            <span class="b-nav-tooltip">Отзывы</span>
-            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        <!-- Галерея -->
+        <a href="#works" class="b-nav-item">
+            <span class="b-nav-tooltip">Галерея</span>
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg>
         </a>
+        
+        <!-- Головна (Замінено на Стрілку Вгору) -->
+        <a href="#hero" class="b-nav-item home-btn">
+            <span class="b-nav-tooltip" style="top:-55px;">Головна</span>
+            <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+        </a>
+
+        <!-- Відгуки -->
+        <a href="#reviews" class="b-nav-item">
+            <span class="b-nav-tooltip">Відгуки</span>
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="currentColor" stroke="none"/></svg>
+        </a>
+
+        <!-- Контакти -->
         <a href="#contacts-form" class="b-nav-item">
-            <span class="b-nav-tooltip">Связь</span>
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span class="b-nav-tooltip">Зв'язок</span>
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor" stroke="none"/></svg>
         </a>
     </nav>
 
     <!-- 1. Главный экран -->
     <section id="hero">
         <div class="reveal">
-            <h1 class="hero-title">Эстетика и совершенство</h1>
+            <!-- Логотип розміщено над текстом -->
+            <img src="Logo one.PNG" alt="vatalinskaya beauty studio logo" class="hero-logo-img">
+            <h1 class="hero-title">Естетика та досконалість</h1>
             <p style="max-width: 650px; margin: 0 auto 40px; color: var(--text-secondary);">
-                Пространство высокой бьюти-культуры. Мы создаем индивидуальные образы, подчеркивая вашу природную элегантность.
+                Простір високої б'юті-культури. Ми створюємо індивідуальні образи, підкреслюючи вашу природну елегантність.
             </p>
-            <a href="#contacts-form" class="btn-lux">Записаться онлайн</a>
+            <a href="#contacts-form" class="btn-lux">Записатися онлайн</a>
         </div>
     </section>
 
-    <!-- 2. МЕНЮ УСЛУГ (Визуальные карточки) -->
+    <!-- 2. МЕНЮ ПОСЛУГ -->
     <section id="services">
         <div class="section-header reveal">
-            <h2 class="section-title">МЕНЮ УСЛУГ</h2>
+            <h2 class="section-title">МЕНЮ ПОСЛУГ</h2>
         </div>
 
         <div class="services-grid reveal">
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=80" alt="Окрашивание" class="service-img">
-                <h3 class="service-title">Окрашивание волос</h3>
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Подробнее</span>
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=80" alt="Фарбування волосся" class="service-img">
+                <h3 class="service-title">Фарбування волосся</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
             
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f10d5e42?w=400&q=80" alt="Стрижки" class="service-img">
-                <h3 class="service-title">Стрижки & Укладки</h3>
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Подробнее</span>
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f10d5e42?w=400&q=80" alt="Стрижки та укладки" class="service-img">
+                <h3 class="service-title">Стрижки та укладки</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
             
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80" alt="Реконструкция" class="service-img">
-                <h3 class="service-title">Реконструкция волос</h3>
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Подробнее</span>
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80" alt="Реконструкція волосся" class="service-img">
+                <h3 class="service-title">Реконструкція волосся</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
             
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80" alt="Ногти" class="service-img">
-                <h3 class="service-title">Ногтевой сервис</h3>
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Подробнее</span>
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80" alt="Нігтьовий сервіс" class="service-img">
+                <h3 class="service-title">Нігтьовий сервіс</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
 
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80" alt="Брови" class="service-img">
-                <h3 class="service-title">Услуги бровиста</h3>
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Подробнее</span>
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80" alt="Послуги бровіста" class="service-img">
+                <h3 class="service-title">Послуги бровіста</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
-        </div>
-        <div style="text-align: center; margin-top: 50px;" class="reveal">
-            <button class="btn-lux">Полный прайс</button>
         </div>
     </section>
 
-    <!-- 3. Наши работы -->
+    <!-- 3. Наші роботи -->
     <section id="works">
         <div class="section-header reveal">
-            <h2 class="section-title">НАШИ РАБОТЫ</h2>
+            <h2 class="section-title">НАШІ РОБОТИ</h2>
         </div>
         <div class="work-grid reveal">
             <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80');">
@@ -650,61 +712,73 @@
         </div>
     </section>
 
-    <!-- 4. Отзывы (Слайдер) -->
+    <!-- 4. Відгуки (Зі стрілками для десктопу) -->
     <section id="reviews">
         <div class="section-header reveal">
-            <h2 class="section-title">ОТЗЫВЫ КЛИЕНТОВ</h2>
+            <h2 class="section-title">ВІДГУКИ КЛІЄНТІВ</h2>
         </div>
-        <div class="reviews-carousel reveal">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p style="color: var(--text-secondary); font-style: italic;">«Невероятная атмосфера и безупречный сервис. Окрашивание превзошло все ожидания. Лучшее пространство в городе!»</p>
-                <div class="review-author">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Анастасия" class="author-avatar">
-                    <div>
-                        <h4 style="color: var(--text-primary); margin: 0;">Анастасия</h4>
-                        <span style="font-size: 11px; color: var(--accent-gold);">Постоянный клиент</span>
+        <div class="reviews-container reveal">
+            <button class="review-arrow prev" id="prevReview" aria-label="Попередній відгук">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+            </button>
+            
+            <div class="reviews-carousel" id="reviewsCarousel">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p style="color: var(--text-secondary); font-style: italic;">«Неймовірна атмосфера та бездоганний сервіс. Фарбування перевершило всі очікування. Найкращий простір у місті!»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Анастасія" class="author-avatar">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin: 0;">Анастасія</h4>
+                            <span style="font-size: 11px; color: var(--accent-gold);">Постійний клієнт</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p style="color: var(--text-secondary); font-style: italic;">«Обожнюю стиль та уважність майстрів до деталей. Завжди виходжу від вас із ідеальним настроєм та манікюром.»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Катерина" class="author-avatar">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin: 0;">Катерина</h4>
+                            <span style="font-size: 11px; color: var(--accent-gold);">VIP гість</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p style="color: var(--text-secondary); font-style: italic;">«Робила реконструкцію волосся. Ефект просто вау! Дуже приємний персонал і смачна кава.»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Марія" class="author-avatar">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin: 0;">Марія</h4>
+                            <span style="font-size: 11px; color: var(--accent-gold);">Гість студії</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p style="color: var(--text-secondary); font-style: italic;">«Обожаю стиль и внимательность мастеров к деталям. Всегда выхожу от вас с идеальным настроением и маникюром.»</p>
-                <div class="review-author">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Екатерина" class="author-avatar">
-                    <div>
-                        <h4 style="color: var(--text-primary); margin: 0;">Екатерина</h4>
-                        <span style="font-size: 11px; color: var(--accent-gold);">VIP гость</span>
-                    </div>
-                </div>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p style="color: var(--text-secondary); font-style: italic;">«Делала реконструкцию волос. Эффект просто вау! Очень приятный персонал и вкусный кофе.»</p>
-                <div class="review-author">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Мария" class="author-avatar">
-                    <div>
-                        <h4 style="color: var(--text-primary); margin: 0;">Мария</h4>
-                        <span style="font-size: 11px; color: var(--accent-gold);">Гость студии</span>
-                    </div>
-                </div>
-            </div>
+
+            <button class="review-arrow next" id="nextReview" aria-label="Наступний відгук">
+                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
+            </button>
         </div>
     </section>
 
-    <!-- 5. Контакты и Обратная связь -->
+    <!-- 5. Контакти та Форма -->
     <section id="contacts-form">
         <div class="contact-wrapper reveal">
             <div class="contact-info">
-                <h2>CONTACTS</h2>
-                <p>Email us or<br>call by phone</p>
+                <h2>КОНТАКТИ</h2>
+                <p>Напишіть нам або<br>зателефонуйте</p>
                 
                 <span class="highlight" style="margin-top: 30px;">
                     +38 (099) 111-22-33<br>
                     vatalinskaya.studio@gmail.com
                 </span>
                 
-                <p>Address: ул. Сумская, 77, Харьков</p>
+                <p>Адреса: вул. Сумська, 77, Харків</p>
                 
                 <div style="margin-top: 40px; display: flex; gap: 15px;">
                     <a href="#" style="color: var(--text-primary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
@@ -713,31 +787,31 @@
             </div>
             
             <div>
-                <form class="lux-form" onsubmit="event.preventDefault(); alert('Спасибо за обращение!');">
-                    <input type="text" placeholder="Name" required>
-                    <input type="tel" placeholder="Phone" required>
-                    <textarea rows="5" placeholder="Text" required></textarea>
-                    <button type="submit" class="btn-lux" style="align-self: flex-start;">Send</button>
+                <form class="lux-form" onsubmit="event.preventDefault(); alert('Дякуємо за звернення!');">
+                    <input type="text" placeholder="Ім'я" required>
+                    <input type="tel" placeholder="Телефон" required>
+                    <textarea rows="5" placeholder="Повідомлення" required></textarea>
+                    <button type="submit" class="btn-lux" style="align-self: flex-start;">Надіслати</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Подвал -->
+    <!-- Підвал -->
     <footer>
         <div style="font-family: var(--font-title); font-size: 1.5rem; color: var(--accent-gold); margin-bottom: 10px;">VATALINSKAYA BEAUTY STUDIO</div>
-        <div>© 2026 Все права защищены</div>
+        <div>© 2026 Усі права захищені</div>
     </footer>
 
     <script>
-        // Свечение курсора
+        // Світіння курсора
         const glow = document.getElementById('cursorGlow');
         document.addEventListener('mousemove', (e) => {
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
         });
 
-        // Плавное появление (Scroll Reveal)
+        // Поява елементів при скролі (Scroll Reveal)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -748,7 +822,21 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Активный пункт в меню (боковом и нижнем)
+        // Логіка прокручування відгуків кнопками-стрілками
+        const reviewsCarousel = document.getElementById('reviewsCarousel');
+        const prevBtn = document.getElementById('prevReview');
+        const nextBtn = document.getElementById('nextReview');
+
+        if (prevBtn && nextBtn && reviewsCarousel) {
+            prevBtn.addEventListener('click', () => {
+                reviewsCarousel.scrollBy({ left: -390, behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                reviewsCarousel.scrollBy({ left: 390, behavior: 'smooth' });
+            });
+        }
+
+        // Активний пункт у меню (боковому та нижньому)
         const sections = document.querySelectorAll('section');
         const sideNavItems = document.querySelectorAll('.side-nav-item');
         const bottomNavItems = document.querySelectorAll('.b-nav-item');
@@ -756,7 +844,7 @@
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
-                if (pageYOffset >= section.offsetTop - section.clientHeight / 3) {
+                if (window.pageYOffset >= section.offsetTop - section.clientHeight / 3) {
                     current = section.getAttribute('id');
                 }
             });
