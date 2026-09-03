@@ -777,27 +777,27 @@
             <h2 class="section-title">МЕНЮ ПОСЛУГ</h2>
         </div>
         <div class="services-grid reveal">
-            <div class="service-card">
+            <div class="service-card" data-service="Фарбування волосся">
                 <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=80" alt="Фарбування волосся" class="service-img">
                 <h3 class="service-title">Фарбування волосся</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
-            <div class="service-card">
+            <div class="service-card" data-service="Стрижки та укладки">
                 <img src="https://images.unsplash.com/photo-1595476108010-b4d1f10d5e42?w=400&q=80" alt="Стрижки та укладки" class="service-img">
                 <h3 class="service-title">Стрижки та укладки</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
-            <div class="service-card">
+            <div class="service-card" data-service="Реконструкція волосся">
                 <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80" alt="Реконструкція волосся" class="service-img">
                 <h3 class="service-title">Реконструкція волосся</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
-            <div class="service-card">
+            <div class="service-card" data-service="Нігтьовий сервіс">
                 <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80" alt="Нігтьовий сервіс" class="service-img">
                 <h3 class="service-title">Нігтьовий сервіс</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
-            <div class="service-card">
+            <div class="service-card" data-service="Послуги бровіста">
                 <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80" alt="Послуги бровіста" class="service-img">
                 <h3 class="service-title">Послуги бровіста</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
@@ -940,7 +940,7 @@
             <form class="lux-form" onsubmit="event.preventDefault(); alert('Ваш запит надіслано!'); closeModal();">
                 <input type="text" placeholder="Ваше ім'я" required>
                 <input type="tel" placeholder="Телефон" required>
-                <select required>
+                <select id="serviceSelect" required>
                     <option value="" disabled selected>Оберіть послугу</option>
                     <option>Фарбування волосся</option>
                     <option>Стрижки та укладки</option>
@@ -1000,10 +1000,16 @@
             }
         });
 
-        // Модальне вікно
+        // Модальне вікно та автовибір послуги
         const modal = document.getElementById('modal');
+        const serviceSelect = document.getElementById('serviceSelect');
+
         document.querySelectorAll('.service-card').forEach(card => {
             card.addEventListener('click', () => {
+                const serviceName = card.getAttribute('data-service');
+                if (serviceName && serviceSelect) {
+                    serviceSelect.value = serviceName;
+                }
                 modal.classList.add('active');
             });
         });
