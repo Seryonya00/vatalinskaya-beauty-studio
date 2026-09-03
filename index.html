@@ -107,6 +107,12 @@
             text-transform: uppercase;
             text-align: center;
             white-space: nowrap;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .header-title:hover {
+            color: var(--accent-gold);
         }
 
         /* --- Типографіка --- */
@@ -215,7 +221,7 @@
             color: var(--accent-gold);
         }
 
-        /* Кнопка Вгору (замість Домика) */
+        /* Кнопка Вгору */
         .b-nav-item.home-btn {
             background: var(--accent-gold);
             color: #000;
@@ -431,13 +437,15 @@
         }
         .work-card:hover .work-card-overlay { opacity: 1; }
 
-        /* --- 4. 3D Карусель відгуків (По колу з об'ємом) --- */
+        /* --- 4. 3D Карусель відгуків --- */
         .reviews-container {
             position: relative;
             display: flex;
             align-items: center;
             width: 100%;
             justify-content: center;
+            touch-action: pan-y; /* Дозволяє скрол сторінки по вертикалі, перехоплюючи свайпи по горизонталі */
+            user-select: none;
         }
 
         .reviews-stage {
@@ -450,6 +458,11 @@
             align-items: center;
             justify-content: center;
             perspective: 1000px;
+            cursor: grab;
+        }
+
+        .reviews-stage:active {
+            cursor: grabbing;
         }
 
         .review-card-3d {
@@ -534,7 +547,7 @@
         .review-arrow.next { right: 0; }
         .review-arrow svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
 
-        /* --- 5. Модальне вікно (Анімація macOS App Launch) --- */
+        /* --- 5. Модальне вікно --- */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -671,7 +684,7 @@
             font-size: 12px;
         }
 
-        /* Адаптивність для мобільних та планшетів */
+        /* --- МОБІЛЬНІ СТИЛІ (Мобільна адаптація) --- */
         @media (max-width: 1024px) {
             .work-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-wrapper { grid-template-columns: 1fr; }
@@ -679,10 +692,42 @@
             .side-nav { display: none; }
             .header-phone { display: none; }
             
-            /* На мобільних вимикаємо стрілки та оптимізуємо 3D картки */
+            /* Приховуємо значок Instagram у хедері для мобільної версії */
+            .header-insta-link { display: none !important; }
+
+            /* Приховуємо стрілки у відгуках для мобільної версії */
             .review-arrow { display: none !important; }
-            .review-card-3d.prev-card { transform: translateX(-20%) scale(0.75); opacity: 0.15; }
-            .review-card-3d.next-card { transform: translateX(20%) scale(0.75); opacity: 0.15; }
+
+            /* Налаштування розмірів 3D-карток відгуків на мобільних пристроях */
+            .review-card-3d {
+                max-width: 88%;
+                padding: 25px;
+            }
+
+            .review-card-3d.prev-card { 
+                transform: translateX(-35%) scale(0.85) rotateY(10deg); 
+                opacity: 0.25; 
+            }
+            .review-card-3d.next-card { 
+                transform: translateX(35%) scale(0.85) rotateY(-10deg); 
+                opacity: 0.25; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 1.1rem;
+                letter-spacing: 1.5px;
+            }
+
+            .review-card-3d.prev-card { 
+                transform: translateX(-20%) scale(0.8) rotateY(5deg); 
+                opacity: 0.15; 
+            }
+            .review-card-3d.next-card { 
+                transform: translateX(20%) scale(0.8) rotateY(-5deg); 
+                opacity: 0.15; 
+            }
         }
     </style>
 </head>
@@ -700,7 +745,8 @@
                 </svg>
             </a>
         </div>
-        <span class="header-title">vatalinskaya beauty studio</span>
+        <!-- Клікабельна назва студії, яка веде в Instagram -->
+        <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="header-title">vatalinskaya beauty studio</a>
     </header>
 
     <!-- Бокове меню (для ПК) -->
@@ -729,7 +775,6 @@
 
     <!-- Нижня панель навігації (Dock) -->
     <nav class="bottom-nav">
-        <!-- Послуги (Іконка силуету дівчини з зірочками) -->
         <a href="#services" class="b-nav-item">
             <span class="b-nav-tooltip">Послуги</span>
             <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -743,13 +788,11 @@
             </svg>
         </a>
 
-        <!-- Галерея -->
         <a href="#works" class="b-nav-item">
             <span class="b-nav-tooltip">Галерея</span>
             <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg>
         </a>
         
-        <!-- Головна (Стрілка Вгору) -->
         <a href="#hero" class="b-nav-item home-btn">
             <span class="b-nav-tooltip" style="top:-55px;">Головна</span>
             <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -758,13 +801,11 @@
             </svg>
         </a>
 
-        <!-- Відгуки -->
         <a href="#reviews" class="b-nav-item">
             <span class="b-nav-tooltip">Відгуки</span>
             <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="currentColor" stroke="none"/></svg>
         </a>
 
-        <!-- Контакти -->
         <a href="#contacts-form" class="b-nav-item">
             <span class="b-nav-tooltip">Зв'язок</span>
             <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor" stroke="none"/></svg>
@@ -774,7 +815,6 @@
     <!-- 1. Головний екран -->
     <section id="hero">
         <div class="reveal">
-            <!-- Логотип над текстом -->
             <img src="Logo one.PNG" alt="vatalinskaya beauty studio logo" class="hero-logo-img">
             <h1 class="hero-title">Естетика та досконалість</h1>
             <p style="max-width: 650px; margin: 0 auto 40px; color: var(--text-secondary);">
@@ -823,7 +863,7 @@
         </div>
     </section>
 
-    <!-- 3. Наші роботи (З оновленими посиланнями на Instagram) -->
+    <!-- 3. Наші роботи -->
     <section id="works">
         <div class="section-header reveal">
             <h2 class="section-title">НАШІ РОБОТИ</h2>
@@ -852,17 +892,17 @@
         </div>
     </section>
 
-    <!-- 4. Відгуки (3D карусель по колу) -->
+    <!-- 4. Відгуки (3D карусель із підтримкою свайпів) -->
     <section id="reviews">
         <div class="section-header reveal">
             <h2 class="section-title">ВІДГУКИ КЛІЄНТІВ</h2>
         </div>
-        <div class="reviews-container reveal">
+        <div class="reviews-container reveal" id="reviewsContainer">
             <button class="review-arrow prev" id="prevReview" aria-label="Попередній відгук">
                 <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
             </button>
             
-            <div class="reviews-stage">
+            <div class="reviews-stage" id="reviewsStage">
                 <div class="review-card-3d">
                     <div class="stars">★★★★★</div>
                     <p style="color: var(--text-secondary); font-style: italic;">«Неймовірна атмосфера та бездоганний сервіс. Фарбування перевершило всі очікування. Найкращий простір у місті!»</p>
@@ -936,7 +976,7 @@
         </div>
     </section>
 
-    <!-- Модальне вікно запису (Анімація macOS Style) -->
+    <!-- Модальне вікно запису -->
     <div class="modal-overlay" id="bookingModal">
         <div class="modal-window">
             <button class="modal-close" onclick="closeBookingModal()">✕</button>
@@ -999,7 +1039,7 @@
             }
         });
 
-        // 3D Карусель відгуків (Перекрутка по колу)
+        // 3D Карусель відгуків (Перекрутка по колу з підтримкою свайпів)
         let currentReview = 0;
         const reviewCards = document.querySelectorAll('.review-card-3d');
         const totalReviews = reviewCards.length;
@@ -1018,19 +1058,68 @@
             });
         }
 
+        function nextReview() {
+            currentReview = (currentReview + 1) % totalReviews;
+            update3DReviews();
+        }
+
+        function prevReview() {
+            currentReview = (currentReview - 1 + totalReviews) % totalReviews;
+            update3DReviews();
+        }
+
+        // Обробка кнопок для десктопу
         const prevBtn = document.getElementById('prevReview');
         const nextBtn = document.getElementById('nextReview');
 
         if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                currentReview = (currentReview - 1 + totalReviews) % totalReviews;
-                update3DReviews();
-            });
+            prevBtn.addEventListener('click', prevReview);
+            nextBtn.addEventListener('click', nextReview);
+        }
 
-            nextBtn.addEventListener('click', () => {
-                currentReview = (currentReview + 1) % totalReviews;
-                update3DReviews();
-            });
+        // --- Логіка Свайпів (Touch & Mouse Drag) ---
+        const stage = document.getElementById('reviewsStage');
+        let startX = 0;
+        let isDragging = false;
+
+        // Тач-події для мобільних пристроїв
+        stage.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        stage.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            const endX = e.changedTouches[0].clientX;
+            handleSwipe(startX, endX);
+            isDragging = false;
+        }, { passive: true });
+
+        // Миша для перетягування (на випадок симулятора мобільного пристрою на ПК)
+        stage.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+        });
+
+        stage.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            handleSwipe(startX, e.clientX);
+            isDragging = false;
+        });
+
+        stage.addEventListener('mouseleave', () => {
+            isDragging = false;
+        });
+
+        function handleSwipe(start, end) {
+            const diff = start - end;
+            if (Math.abs(diff) > 40) { // Поріг чутливості свайпу
+                if (diff > 0) {
+                    nextReview(); // Свайп вліво -> наступний відгук
+                } else {
+                    prevReview(); // Свайп вправо -> попередній відгук
+                }
+            }
         }
 
         update3DReviews();
