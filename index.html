@@ -212,225 +212,6 @@
             transition: var(--transition);
         }
 
-        .b-navВот полный исправленный код. Основная ошибка заключалась в том, что в модальном окне «Види робіт» у первой карточки (Airtouch) путь к картинке был указан правильно (`image/airtouch.png`), а у остальных картинок папка `image/` была пропущена, из-за чего они бы не отобразились на сайте[cite: 1]. 
-
-Я исправил пути для всех изображений в карусели, чтобы они корректно подтягивались из папки `image/`.
-
-```html
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>vatalinskaya beauty studio | Харків</title>
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap)" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: rgba(22, 22, 24, 0.75);
-            --accent-gold: #d4af37;
-            --accent-gold-glow: rgba(212, 175, 55, 0.25);
-            --text-primary: #f5f5f7;
-            --text-secondary: #c1c1c6;
-            --font-title: 'Cormorant Garamond', serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        html, body {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden !important;
-            position: relative;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            line-height: 1.6;
-        }
-
-        /* --- ПАРАЛАКС ФОН З ІКОНКАМИ ЗЛІВА --- */
-        .parallax-bg-container {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .p-item {
-            position: absolute;
-            pointer-events: none;
-            will-change: transform;
-            opacity: 0.18;
-            transition: opacity 0.3s ease;
-        }
-
-        .p-item-glow {
-            opacity: 0.25;
-            filter: drop-shadow(0 0 25px var(--accent-gold-glow));
-        }
-
-        .cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--accent-gold-glow) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            transition: transform 0.1s ease-out;
-        }
-
-        /* --- Хедер --- */
-        header {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 5%;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            height: 60px;
-        }
-
-        .header-title {
-            font-family: var(--font-title);
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-align: center;
-            white-space: nowrap;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .header-title:hover {
-            color: var(--accent-gold);
-        }
-
-        h1, h2, h3, h4 {
-            font-family: var(--font-title);
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        /* --- Бічне меню (Desktop) --- */
-        .side-nav {
-            position: fixed;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .side-nav-item {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-secondary);
-        }
-
-        .side-nav-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-
-        .side-nav-label {
-            position: absolute;
-            right: 25px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0;
-            transform: translateX(10px);
-            transition: var(--transition);
-            white-space: nowrap;
-            color: var(--accent-gold);
-            pointer-events: none;
-        }
-
-        .side-nav-item:hover .side-nav-label,
-        .side-nav-item.active .side-nav-label {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .side-nav-item:hover .side-nav-dot,
-        .side-nav-item.active .side-nav-dot {
-            background: var(--accent-gold);
-            box-shadow: 0 0 15px var(--accent-gold);
-            transform: scale(1.6);
-        }
-
-        /* --- Нижня панель (Dock) --- */
-        .bottom-nav {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(20, 20, 22, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 12px 28px;
-            border-radius: 60px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-            z-index: 1001;
-            width: 440px;
-            max-width: 92vw;
-            overflow: visible;
-        }
-
-        .b-nav-item {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
-
-        .b-nav-item svg {
-            width: 22px;
-            height: 22px;
-            fill: none;
-            stroke: currentColor;
-            transition: var(--transition);
-        }
-
         .b-nav-item:hover, .b-nav-item.active {
             color: var(--accent-gold);
             background: rgba(255, 255, 255, 0.05);
@@ -558,7 +339,7 @@
         /* --- Hero Section --- */
         #hero {
             background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,1) 100%), 
-                        url('[https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80](https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80)') center/cover;
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80') center/cover;
             text-align: center;
             align-items: center;
             padding-top: 60px;
@@ -890,10 +671,11 @@
         }
         .v-card-3d img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            height: 240px;
+            object-fit: contain;
             border-radius: 12px;
             margin-bottom: 12px;
+            background: rgba(0, 0, 0, 0.3);
         }
         .v-card-3d h4 {
             font-size: 1.3rem;
@@ -924,7 +706,7 @@
         .lux-form input:focus, .lux-form textarea:focus, .lux-form select:focus { border-color: var(--accent-gold); background: rgba(255, 255, 255, 0.08); }
 
         /* --- Блок Контактів --- */
-        #contacts { background: url('[https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1920](https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1920)') center/cover fixed; position: relative; border-top: 1px solid var(--glass-border); overflow: hidden; }
+        #contacts { background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1920') center/cover fixed; position: relative; border-top: 1px solid var(--glass-border); overflow: hidden; }
         #contacts::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,15,17,0.96) 0%, rgba(15,15,17,0.85) 100%); z-index: 0; }
 
         .contact-wrapper { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 0.8fr 1fr; gap: 30px; max-width: 1300px; margin: 0 auto; width: 100%; align-items: center; }
@@ -1009,7 +791,7 @@
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <header>
-        <a href="[https://www.instagram.com/vatalinskaya_beauty_studio/](https://www.instagram.com/vatalinskaya_beauty_studio/)" target="_blank" rel="noopener" class="header-title">vatalinskaya beauty studio</a>
+        <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="header-title">vatalinskaya beauty studio</a>
     </header>
 
     <nav class="side-nav">
@@ -1048,16 +830,16 @@
             <div class="hero-contacts">
                 <a href="tel:+380505366959" class="hero-phone">+38 (050) 536-69-59</a>
                 <div class="hero-socials">
-                    <a href="[https://www.instagram.com/vatalinskaya_beauty_studio/](https://www.instagram.com/vatalinskaya_beauty_studio/)" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
+                    <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                     </a>
-                    <a href="[https://t.me/TatyanaVat](https://t.me/TatyanaVat)" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
+                    <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                     </a>
                     <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
                     </a>
-                    <a href="[https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0](https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0)" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                    <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     </a>
                 </div>
@@ -1072,29 +854,29 @@
         </div>
         <div class="services-grid reveal">
             <!-- Перша послуга з новим фото (IMG_0733.JPG) -->
-            <div class="service-card" onclick="openSubServicesModal()">
+            <div class="service-card">
                 <img src="image/bghear.jpg" alt="Фарбування волосся" class="service-img">
                 <h3 class="service-title">Фарбування волосся</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
             
-            <div class="service-card" onclick="openBookingModal()">
-                <img src="[https://images.unsplash.com/photo-1595476108010-b4d1f10d5e42?w=400&q=80](https://images.unsplash.com/photo-1595476108010-b4d1f10d5e42?w=400&q=80)" alt="Стрижки та укладки" class="service-img">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f10d5e42?w=400&q=80" alt="Стрижки та укладки" class="service-img">
                 <h3 class="service-title">Стрижки та укладки</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
-            <div class="service-card" onclick="openBookingModal()">
-                <img src="[https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80](https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80)" alt="Реконструкція волосся" class="service-img">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80" alt="Реконструкція волосся" class="service-img">
                 <h3 class="service-title">Реконструкція волосся</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
-            <div class="service-card" onclick="openBookingModal()">
-                <img src="[https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80](https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80)" alt="Нігтьовий сервіс" class="service-img">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80" alt="Нігтьовий сервіс" class="service-img">
                 <h3 class="service-title">Нігтьовий сервіс</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
-            <div class="service-card" onclick="openBookingModal()">
-                <img src="[https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80](https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80)" alt="Послуги бровіста" class="service-img">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80" alt="Послуги бровіста" class="service-img">
                 <h3 class="service-title">Послуги бровіста</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
@@ -1107,17 +889,17 @@
             <h2 class="section-title">НАШІ РОБОТИ</h2>
         </div>
         <div class="work-grid reveal">
-            <div class="work-card" style="background-image: url('[https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80](https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80)');">
-                <div class="work-card-overlay"><a href="[https://www.instagram.com/vatalinskaya_beauty_studio/](https://www.instagram.com/vatalinskaya_beauty_studio/)" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
             </div>
-            <div class="work-card" style="background-image: url('[https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80](https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80)');">
-                <div class="work-card-overlay"><a href="[https://www.instagram.com/vatalinskaya_beauty_studio/](https://www.instagram.com/vatalinskaya_beauty_studio/)" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
             </div>
-            <div class="work-card" style="background-image: url('[https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?w=600&q=80](https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?w=600&q=80)');">
-                <div class="work-card-overlay"><a href="[https://www.instagram.com/vatalinskaya_beauty_studio/](https://www.instagram.com/vatalinskaya_beauty_studio/)" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
             </div>
-            <div class="work-card" style="background-image: url('[https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?w=600&q=80](https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?w=600&q=80)');">
-                <div class="work-card-overlay"><a href="[https://www.instagram.com/vatalinskaya_beauty_studio/](https://www.instagram.com/vatalinskaya_beauty_studio/)" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
             </div>
         </div>
     </section>
@@ -1134,7 +916,7 @@
                     <div class="stars">★★★★★</div>
                     <p style="color: var(--text-secondary); font-style: italic;">«Неймовірна атмосфера та бездоганний сервіс. Фарбування перевершило всі очікування. Найкращий простір у місті!»</p>
                     <div class="review-author">
-                        <img src="[https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80](https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80)" alt="Анастасія" class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Анастасія" class="author-avatar">
                         <div><h4 style="color: var(--text-primary); margin: 0;">Анастасія</h4><span style="font-size: 11px; color: var(--accent-gold);">Постійний клієнт</span></div>
                     </div>
                 </div>
@@ -1142,7 +924,7 @@
                     <div class="stars">★★★★★</div>
                     <p style="color: var(--text-secondary); font-style: italic;">«Обожнюю стиль та уважність майстрів до деталей. Завжди виходжу від вас із ідеальним настроєм та манікюром.»</p>
                     <div class="review-author">
-                        <img src="[https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80](https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80)" alt="Катерина" class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Катерина" class="author-avatar">
                         <div><h4 style="color: var(--text-primary); margin: 0;">Катерина</h4><span style="font-size: 11px; color: var(--accent-gold);">VIP гість</span></div>
                     </div>
                 </div>
@@ -1150,7 +932,7 @@
                     <div class="stars">★★★★★</div>
                     <p style="color: var(--text-secondary); font-style: italic;">«Робила реконструкцію волосся. Ефект просто вау! Дуже приємний персонал і смачна кава.»</p>
                     <div class="review-author">
-                        <img src="[https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80](https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80)" alt="Марія" class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Марія" class="author-avatar">
                         <div><h4 style="color: var(--text-primary); margin: 0;">Марія</h4><span style="font-size: 11px; color: var(--accent-gold);">Гість студії</span></div>
                     </div>
                 </div>
@@ -1181,7 +963,7 @@
             
             <div class="contact-map">
                 <iframe 
-                    src="[https://maps.google.com/maps?q=Vatalinskaya+Beauty+Studio,+вулиця+Ахсарова,+16,+Харків&t=&z=16&ie=UTF8&iwloc=&output=embed](https://maps.google.com/maps?q=Vatalinskaya+Beauty+Studio,+вулиця+Ахсарова,+16,+Харків&t=&z=16&ie=UTF8&iwloc=&output=embed)" 
+                    src="https://maps.google.com/maps?q=Vatalinskaya+Beauty+Studio,+вулиця+Ахсарова,+16,+Харків&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
@@ -1201,247 +983,290 @@
                 </a>
 
                 <div class="social-links">
-                    <a href="[https://www.instagram.com/vatalinskaya_beauty_studio/](https://www.instagram.com/vatalinskaya_beauty_studio/)" target="_blank" rel="noopener" class="social-icon-link" title="Instagram">
+                    <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="social-icon-link" title="Instagram">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                     </a>
-                    <a href="[https://t.me/TatyanaVat](https://t.me/TatyanaVat)" target="_blank" rel="noopener" class="social-icon-link" title="Telegram">
+                    <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="social-icon-link" title="Telegram">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                     </a>
                     <a href="viber://chat?number=380505366959" class="social-icon-link" title="Viber" target="_blank" rel="noopener">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
                     </a>
-                    <a href="[https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0](https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0)" target="_blank" rel="noopener" class="social-icon-link" title="WhatsApp">
+                    <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="social-icon-link" title="WhatsApp">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     </a>
                 </div>
+                
+                <p>Адреса: 
+                    <a href="https://www.google.com/maps?cid=12373482686863652190&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=ru-RU&source=embed" class="address-link" target="_blank" rel="noopener">вул. Ахсарова, 16, Харків, Харківська область, 61051</a>
+                </p>
+                
             </div>
+            
         </div>
     </section>
 
     <footer>
-        &copy; <span id="year"></span> vatalinskaya beauty studio. Всі права захищено.<br>
-        м. Харків, вулиця Ахсарова, 16
+        <p>&copy; 2026 vatalinskaya beauty studio. Всі права захищені.</p>
     </footer>
 
-    <!-- Модальне вікно запису -->
-    <div class="modal-overlay" id="bookingModal">
+    <!-- Стандартне модальне вікно для запису -->
+    <div class="modal-overlay" id="modal">
         <div class="modal-window">
-            <button class="modal-close" onclick="closeBookingModal()">✕</button>
-            <h3 style="margin-bottom: 25px; font-size: 1.8rem; text-align: center; color: var(--accent-gold);">Онлайн запис</h3>
-            <form class="lux-form" onsubmit="event.preventDefault(); alert('Вашу заявку прийнято. Ми зв\'яжемося з вами найближчим часом!'); closeBookingModal(); this.reset();">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h3 style="margin-bottom: 20px; font-size: 1.8rem;">Запис на послугу</h3>
+            <form class="lux-form" onsubmit="event.preventDefault(); alert('Ваш запит надіслано!'); closeModal();">
                 <input type="text" placeholder="Ваше ім'я" required>
-                <input type="tel" placeholder="Номер телефону" required>
-                <select required style="appearance: none;">
+                <input type="tel" placeholder="Телефон" required>
+                <select required id="booking-service-select">
                     <option value="" disabled selected>Оберіть послугу</option>
-                    <option value="color">Фарбування волосся</option>
-                    <option value="cut">Стрижки та укладки</option>
-                    <option value="care">Реконструкція волосся</option>
-                    <option value="nails">Нігтьовий сервіс</option>
-                    <option value="brows">Послуги бровіста</option>
+                    <option>Фарбування волосся</option>
+                    <option>Стрижки та укладки</option>
+                    <option>Реконструкція волосся</option>
+                    <option>Нігтьовий сервіс</option>
+                    <option>Послуги бровіста</option>
                 </select>
-                <button type="submit" class="btn-lux" style="margin-top: 10px; width: 100%; text-align: center;">Записатися</button>
+                <button type="submit" class="btn-lux" style="margin-top: 10px;">Підтвердити запис</button>
             </form>
         </div>
     </div>
 
-    <!-- МОДАЛЬНЕ ВІКНО ПІДМЕНЮ (Вертикальна карусель) -->
+    <!-- НОВЕ Модальне вікно підменю з ВЕРТИКАЛЬНОЮ КАРУСЕЛЛЮ (Види робіт) -->
     <div class="modal-overlay" id="sub-services-modal">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeSubServicesModal()">✕</button>
             <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Види робіт</h3>
             
-            <div class="v-carousel-container" id="vContainer">
-                <button class="v-arrow up" id="vPrev"><svg viewBox="0 0 24 24"><path d="M7 14l5-5 5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+            <div class="v-carousel-container">
+                <button class="v-arrow up" id="prevSubService"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
                 
-                <div class="v-stage" id="vStage">
-                    <!-- Усі зображення тепер використовують префікс 'image/' -->
+                <div class="v-stage" id="subServicesStage">
                     <div class="v-card-3d">
                         <img src="image/airtouch.png" alt="Airtouch">
                         <h4>Airtouch</h4>
                     </div>
                     <div class="v-card-3d">
-                        <img src="image/IMG_0697.jpg" alt="Рельефный блонд">
+                        <img src="IMG_0697.jpg" alt="Рельефный блонд">
                         <h4>Рельефный блонд</h4>
                     </div>
                     <div class="v-card-3d">
-                        <img src="image/IMG_0704.jpg" alt="Total blond">
+                        <img src="IMG_0704.jpg" alt="Total blond">
                         <h4>Total blond</h4>
                     </div>
                     <div class="v-card-3d">
-                        <img src="image/IMG_0705.JPG" alt="Выход из черного">
+                        <img src="IMG_0705.JPG" alt="Выход из черного">
                         <h4>Выход из черного</h4>
                     </div>
                     <div class="v-card-3d">
-                        <img src="image/IMG_0711.JPG" alt="Уходовые процедуры">
+                        <img src="IMG_0711.JPG" alt="Уходовые процедуры">
                         <h4>Уходовые процедуры</h4>
                     </div>
                 </div>
 
-                <button class="v-arrow down" id="vNext"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+                <button class="v-arrow down" id="nextSubService"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
             </div>
-
+            
             <button class="btn-lux" style="margin-top: 20px; width: 100%; text-align: center;" onclick="openBookingFromSub()">Записатися</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Cursor Glow
-        const cursorGlow = document.getElementById('cursorGlow');
-        document.addEventListener('mousemove', (e) => {
-            requestAnimationFrame(() => {
-                cursorGlow.style.left = `${e.clientX}px`;
-                cursorGlow.style.top = `${e.clientY}px`;
-            });
-        });
-
-        // Parallax Elements
-        const pItems = document.querySelectorAll('.p-item');
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 2;
-            const y = (e.clientY / window.innerHeight - 0.5) * 2;
-            pItems.forEach(item => {
-                const speed = parseFloat(item.getAttribute('data-speed'));
-                item.style.transform = `translate(${x * speed * 100}px, ${y * speed * 100}px) rotate(${x * speed * 20}deg)`;
-            });
-        });
-
-        const characterImg = document.getElementById('characterParallax');
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 2;
-            const y = (e.clientY / window.innerHeight - 0.5) * 2;
-            characterImg.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
-        });
-
-        // Scroll Animations
+        // Анімація скролу (Reveal)
         const reveals = document.querySelectorAll('.reveal');
-        const sideNavItems = document.querySelectorAll('.side-nav-item');
-        const bottomNavItems = document.querySelectorAll('.b-nav-item');
-        
         const revealOnScroll = () => {
-            const wHeight = window.innerHeight;
-            const revealPoint = 100;
-
-            reveals.forEach(reveal => {
-                const top = reveal.getBoundingClientRect().top;
-                if (top < wHeight - revealPoint) {
-                    reveal.classList.add('active');
-                }
+            const windowHeight = window.innerHeight;
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) el.classList.add('active');
             });
-
-            // Active Menu Sync
-            let currentSec = '';
-            document.querySelectorAll('section').forEach(sec => {
-                const secTop = sec.offsetTop;
-                if (window.scrollY >= secTop - 250) {
-                    currentSec = sec.getAttribute('id');
-                }
-            });
-
-            const updateNav = (items) => {
-                items.forEach(item => {
-                    item.classList.remove('active');
-                    if(item.getAttribute('href') === `#${currentSec}`) {
-                        item.classList.add('active');
-                    }
-                });
-            };
-            
-            updateNav(sideNavItems);
-            updateNav(bottomNavItems);
         };
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-        // Horizontal 3D Reviews Carousel (Desktop Only logic for drag, but layout works on mobile)
-        const reviewsStage = document.getElementById('reviewsStage');
-        const reviewsCards = document.querySelectorAll('.review-card-3d');
-        const btnPrevRev = document.getElementById('prevReview');
-        const btnNextRev = document.getElementById('nextReview');
-        let currentRev = 0;
+        // Світіння за курсором
+        const glow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = `${e.clientX}px`;
+            glow.style.top = `${e.clientY}px`;
+        });
 
-        function updateReviews() {
-            reviewsCards.forEach((card, i) => {
-                card.classList.remove('active', 'prev-card', 'next-card');
-                if (i === currentRev) card.classList.add('active');
-                else if (i === (currentRev - 1 + reviewsCards.length) % reviewsCards.length) card.classList.add('prev-card');
-                else if (i === (currentRev + 1) % reviewsCards.length) card.classList.add('next-card');
+        // Паралакс іконок на фоні
+        const parallaxItems = document.querySelectorAll('.p-item');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5);
+            const y = (e.clientY / window.innerHeight - 0.5);
+            
+            parallaxItems.forEach(item => {
+                const speed = parseFloat(item.getAttribute('data-speed'));
+                item.style.transform = `translate(${x * 100 * speed}px, ${y * 100 * speed}px)`;
             });
-        }
-        updateReviews();
+        });
 
-        btnNextRev.addEventListener('click', () => { currentRev = (currentRev + 1) % reviewsCards.length; updateReviews(); });
-        btnPrevRev.addEventListener('click', () => { currentRev = (currentRev - 1 + reviewsCards.length) % reviewsCards.length; updateReviews(); });
+        // Паралакс ефект для персонажа (Тетяна) у блоці контактів
+        const characterImg = document.getElementById('characterParallax');
+        const contactSection = document.getElementById('contacts');
+        
+        window.addEventListener('scroll', () => {
+            if(!characterImg || window.innerWidth < 1024) return;
+            const rect = contactSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const scrollProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                const maxTranslate = 40; 
+                const yOffset = (scrollProgress - 0.5) * maxTranslate;
+                characterImg.style.transform = `translateY(${yOffset}px)`;
+            }
+        });
 
-        let startX = 0, isDraggingRev = false;
-        reviewsStage.addEventListener('mousedown', (e) => { isDraggingRev = true; startX = e.clientX; });
-        window.addEventListener('mouseup', () => { isDraggingRev = false; });
-        reviewsStage.addEventListener('mousemove', (e) => {
-            if(!isDraggingRev) return;
-            const diff = e.clientX - startX;
-            if (diff > 50) { currentRev = (currentRev - 1 + reviewsCards.length) % reviewsCards.length; updateReviews(); isDraggingRev = false; }
-            else if (diff < -50) { currentRev = (currentRev + 1) % reviewsCards.length; updateReviews(); isDraggingRev = false; }
+        // Відкриття модальних вікон
+        const modal = document.getElementById('modal');
+        const subModal = document.getElementById('sub-services-modal');
+
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.addEventListener('click', () => {
+                if (index === 0) { 
+                    // Перша картка відкриває підменю (вертикальну карусель)
+                    subModal.classList.add('active');
+                    updateVCarousel();
+                } else {
+                    // Решта карток відкривають стандартний запис
+                    modal.classList.add('active');
+                }
+            });
         });
         
-        reviewsStage.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
-        reviewsStage.addEventListener('touchend', (e) => {
-            const diff = e.changedTouches[0].clientX - startX;
-            if (diff > 40) { currentRev = (currentRev - 1 + reviewsCards.length) % reviewsCards.length; updateReviews(); }
-            else if (diff < -40) { currentRev = (currentRev + 1) % reviewsCards.length; updateReviews(); }
-        });
-
-        // Booking Modal
-        function openBookingModal() { document.getElementById('bookingModal').classList.add('active'); }
-        function closeBookingModal() { document.getElementById('bookingModal').classList.remove('active'); }
-
-        // --- ВЕРТИКАЛЬНА 3D КАРУСЕЛЬ ДЛЯ ПІДМЕНЮ (Фарбування волосся) ---
-        const subModal = document.getElementById('sub-services-modal');
-        function openSubServicesModal() { 
-            subModal.classList.add('active'); 
-            updateVCarousel(); // Оновити при відкритті
-        }
+        function closeModal() { modal.classList.remove('active'); }
         function closeSubServicesModal() { subModal.classList.remove('active'); }
+        
+        modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+        subModal.addEventListener('click', (e) => { if(e.target === subModal) closeSubServicesModal(); });
+
         function openBookingFromSub() {
             closeSubServicesModal();
-            setTimeout(openBookingModal, 400); // Відкриваємо форму запису після закриття підменю
+            setTimeout(() => { 
+                document.getElementById('booking-service-select').selectedIndex = 1; // Вибирає "Фарбування волосся"
+                modal.classList.add('active'); 
+            }, 300);
         }
 
-        const vCards = document.querySelectorAll('.v-card-3d');
-        const vBtnPrev = document.getElementById('vPrev'); // Up
-        const vBtnNext = document.getElementById('vNext'); // Down
-        let currentV = 0;
-
-        function updateVCarousel() {
-            vCards.forEach((card, i) => {
-                card.classList.remove('active', 'prev-card', 'next-card');
-                if (i === currentV) card.classList.add('active');
-                else if (i === (currentV - 1 + vCards.length) % vCards.length) card.classList.add('prev-card');
-                else if (i === (currentV + 1) % vCards.length) card.classList.add('next-card');
+        // Активна навігація (бічна та dock)
+        const sections = document.querySelectorAll('section');
+        const sideNavItems = document.querySelectorAll('.side-nav-item');
+        const dockNavItems = document.querySelectorAll('.b-nav-item:not(.home-btn)');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                const secTop = sec.offsetTop;
+                if (pageYOffset >= secTop - 250) {
+                    current = sec.getAttribute('id');
+                }
             });
-        }
+            
+            sideNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) item.classList.add('active');
+            });
 
-        vBtnPrev.addEventListener('click', () => { currentV = (currentV - 1 + vCards.length) % vCards.length; updateVCarousel(); });
-        vBtnNext.addEventListener('click', () => { currentV = (currentV + 1) % vCards.length; updateVCarousel(); });
-
-        // Swipe для вертикальної каруселі
-        const vStage = document.getElementById('vStage');
-        let startY = 0, isDraggingV = false;
-
-        vStage.addEventListener('mousedown', (e) => { isDraggingV = true; startY = e.clientY; });
-        window.addEventListener('mouseup', () => { isDraggingV = false; });
-        vStage.addEventListener('mousemove', (e) => {
-            if(!isDraggingV) return;
-            const diff = e.clientY - startY;
-            if (diff > 40) { currentV = (currentV - 1 + vCards.length) % vCards.length; updateVCarousel(); isDraggingV = false; }
-            else if (diff < -40) { currentV = (currentV + 1) % vCards.length; updateVCarousel(); isDraggingV = false; }
+            dockNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) item.classList.add('active');
+            });
         });
 
-        vStage.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, {passive: true});
-        vStage.addEventListener('touchend', (e) => {
-            const diff = e.changedTouches[0].clientY - startY;
-            if (diff > 40) { currentV = (currentV - 1 + vCards.length) % vCards.length; updateVCarousel(); }
-            else if (diff < -40) { currentV = (currentV + 1) % vCards.length; updateVCarousel(); }
+        // 3D Карусель відгуків (ГОРИЗОНТАЛЬНА)
+        const cards = document.querySelectorAll('.review-card-3d');
+        const prevBtn = document.getElementById('prevReview');
+        const nextBtn = document.getElementById('nextReview');
+        const stage = document.getElementById('reviewsStage');
+        let currentIndex = 1;
+        
+        function updateCarousel() {
+            cards.forEach((card, index) => {
+                card.className = 'review-card-3d';
+                if (index === currentIndex) card.classList.add('active');
+                else if (index === currentIndex - 1 || (currentIndex === 0 && index === cards.length - 1)) {
+                    card.classList.add('prev-card');
+                }
+                else if (index === currentIndex + 1 || (currentIndex === cards.length - 1 && index === 0)) {
+                    card.classList.add('next-card');
+                }
+            });
+        }
+        
+        nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % cards.length; updateCarousel(); });
+        prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + cards.length) % cards.length; updateCarousel(); });
+        
+        let startX = 0;
+        let isDragging = false;
+        
+        stage.addEventListener('mousedown', e => { startX = e.pageX; isDragging = true; });
+        stage.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, {passive: true});
+        
+        window.addEventListener('mouseup', () => { isDragging = false; });
+        window.addEventListener('touchend', () => { isDragging = false; });
+        
+        stage.addEventListener('mousemove', e => {
+            if(!isDragging) return;
+            const diffX = e.pageX - startX;
+            if (diffX > 50) { currentIndex = (currentIndex - 1 + cards.length) % cards.length; updateCarousel(); isDragging = false; }
+            else if (diffX < -50) { currentIndex = (currentIndex + 1) % cards.length; updateCarousel(); isDragging = false; }
+        });
+        
+        stage.addEventListener('touchmove', e => {
+            if(!isDragging) return;
+            const diffX = e.touches[0].clientX - startX;
+            if (diffX > 50) { currentIndex = (currentIndex - 1 + cards.length) % cards.length; updateCarousel(); isDragging = false; }
+            else if (diffX < -50) { currentIndex = (currentIndex + 1) % cards.length; updateCarousel(); isDragging = false; }
+        });
+        updateCarousel();
+
+
+        // ВЕРТИКАЛЬНА 3D Карусель для послуг
+        const vCards = document.querySelectorAll('.v-card-3d');
+        const vPrevBtn = document.getElementById('prevSubService');
+        const vNextBtn = document.getElementById('nextSubService');
+        const vStage = document.getElementById('subServicesStage');
+        let vCurrentIndex = 0;
+        
+        function updateVCarousel() {
+            vCards.forEach((card, index) => {
+                card.className = 'v-card-3d';
+                if (index === vCurrentIndex) card.classList.add('active');
+                else if (index === vCurrentIndex - 1 || (vCurrentIndex === 0 && index === vCards.length - 1)) {
+                    card.classList.add('prev-card');
+                }
+                else if (index === vCurrentIndex + 1 || (vCurrentIndex === vCards.length - 1 && index === 0)) {
+                    card.classList.add('next-card');
+                }
+            });
+        }
+        
+        vPrevBtn.addEventListener('click', () => { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); });
+        vNextBtn.addEventListener('click', () => { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); });
+        
+        let startY = 0;
+        let vIsDragging = false;
+        
+        vStage.addEventListener('mousedown', e => { startY = e.pageY; vIsDragging = true; });
+        vStage.addEventListener('touchstart', e => { startY = e.touches[0].clientY; vIsDragging = true; }, {passive: true});
+        
+        window.addEventListener('mouseup', () => { vIsDragging = false; });
+        window.addEventListener('touchend', () => { vIsDragging = false; });
+        
+        vStage.addEventListener('mousemove', e => {
+            if(!vIsDragging) return;
+            const diffY = e.pageY - startY;
+            // Гортання вниз
+            if (diffY < -50) { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); vIsDragging = false; }
+            // Гортання вгору
+            else if (diffY > 50) { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); vIsDragging = false; }
+        });
+        
+        vStage.addEventListener('touchmove', e => {
+            if(!vIsDragging) return;
+            const diffY = e.touches[0].clientY - startY;
+            if (diffY < -50) { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); vIsDragging = false; }
+            else if (diffY > 50) { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); vIsDragging = false; }
         });
 
     </script>
