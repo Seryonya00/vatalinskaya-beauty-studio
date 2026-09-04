@@ -1031,16 +1031,16 @@
         </div>
     </div>
 
-    <!-- НОВЕ Модальне вікно підменю з ВЕРТИКАЛЬНОЮ КАРУСЕЛЛЮ (Види робіт) -->
-    <div class="modal-overlay" id="sub-services-modal">
+    <!-- Модальні вікна підменю з ВЕРТИКАЛЬНОЮ КАРУСЕЛЛЮ (Види робіт) -->
+    
+    <!-- Підменю 1: Фарбування волосся -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-0">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
-            <button class="modal-close" onclick="closeSubServicesModal()">✕</button>
-            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Види робіт</h3>
-            
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Види робіт (Фарбування)</h3>
             <div class="v-carousel-container">
-                <button class="v-arrow up" id="prevSubService"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
-                
-                <div class="v-stage" id="subServicesStage">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
                     <div class="v-card-3d">
                         <img src="image/airtouch.png" alt="Airtouch">
                         <h4>Airtouch</h4>
@@ -1062,11 +1062,149 @@
                         <h4>Процедури догляду</h4>
                     </div>
                 </div>
-
-                <button class="v-arrow down" id="nextSubService"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
             </div>
-            
-            <button class="btn-lux" style="margin-top: 20px; width: 100%; text-align: center;" onclick="openBookingFromSub()">Записатися</button>
+            <button class="btn-lux" style="margin-top: 20px; width: 100%; text-align: center;" onclick="openBookingFromSub(1)">Записатися</button>
+        </div>
+    </div>
+
+    <!-- Підменю 2: Стрижки та укладки -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-1">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Види робіт (Стрижки та укладки)</h3>
+            <div class="v-carousel-container">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
+                    <div class="v-card-3d">
+                        <img src="image/airtouch.png" alt="Airtouch">
+                        <h4>Airtouch</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/blonderelef.png" alt="Рельефный блонд">
+                        <h4>Рельєфний блонд</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/toralblond.jpg" alt="Total blond">
+                        <h4>Toral blond</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/dark.jpg" alt="Выход из черного">
+                        <h4>Вихід з чорного</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/skincare.jpg" alt="Уходовые процедуры">
+                        <h4>Процедури догляду</h4>
+                    </div>
+                </div>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            <button class="btn-lux" style="margin-top: 20px; width: 100%; text-align: center;" onclick="openBookingFromSub(2)">Записатися</button>
+        </div>
+    </div>
+
+    <!-- Підменю 3: Реконструкція волосся -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-2">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Види робіт (Реконструкція волосся)</h3>
+            <div class="v-carousel-container">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
+                    <div class="v-card-3d">
+                        <img src="image/airtouch.png" alt="Airtouch">
+                        <h4>Airtouch</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/blonderelef.png" alt="Рельефный блонд">
+                        <h4>Рельєфний блонд</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/toralblond.jpg" alt="Total blond">
+                        <h4>Toral blond</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/dark.jpg" alt="Выход из черного">
+                        <h4>Вихід з чорного</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/skincare.jpg" alt="Уходовые процедуры">
+                        <h4>Процедури догляду</h4>
+                    </div>
+                </div>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            <button class="btn-lux" style="margin-top: 20px; width: 100%; text-align: center;" onclick="openBookingFromSub(3)">Записатися</button>
+        </div>
+    </div>
+
+    <!-- Підменю 4: Нігтьовий сервіс -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-3">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Види робіт (Нігтьовий сервіс)</h3>
+            <div class="v-carousel-container">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
+                    <div class="v-card-3d">
+                        <img src="image/airtouch.png" alt="Airtouch">
+                        <h4>Airtouch</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/blonderelef.png" alt="Рельефный блонд">
+                        <h4>Рельєфний блонд</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/toralblond.jpg" alt="Total blond">
+                        <h4>Toral blond</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/dark.jpg" alt="Выход из черного">
+                        <h4>Вихід з чорного</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/skincare.jpg" alt="Уходовые процедуры">
+                        <h4>Процедури догляду</h4>
+                    </div>
+                </div>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            <button class="btn-lux" style="margin-top: 20px; width: 100%; text-align: center;" onclick="openBookingFromSub(4)">Записатися</button>
+        </div>
+    </div>
+
+    <!-- Підменю 5: Послуги бровіста -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-4">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Види робіт (Послуги бровіста)</h3>
+            <div class="v-carousel-container">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
+                    <div class="v-card-3d">
+                        <img src="image/airtouch.png" alt="Airtouch">
+                        <h4>Airtouch</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/blonderelef.png" alt="Рельефный блонд">
+                        <h4>Рельєфний блонд</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/toralblond.jpg" alt="Total blond">
+                        <h4>Toral blond</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/dark.jpg" alt="Выход из черного">
+                        <h4>Вихід з чорного</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/skincare.jpg" alt="Уходовые процедуры">
+                        <h4>Процедури догляду</h4>
+                    </div>
+                </div>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            <button class="btn-lux" style="margin-top: 20px; width: 100%; text-align: center;" onclick="openBookingFromSub(5)">Записатися</button>
         </div>
     </div>
 
@@ -1116,37 +1254,6 @@
                 characterImg.style.transform = `translateY(${yOffset}px)`;
             }
         });
-
-        // Відкриття модальних вікон
-        const modal = document.getElementById('modal');
-        const subModal = document.getElementById('sub-services-modal');
-
-        document.querySelectorAll('.service-card').forEach((card, index) => {
-            card.addEventListener('click', () => {
-                if (index === 0) { 
-                    // Перша картка відкриває підменю (вертикальну карусель)
-                    subModal.classList.add('active');
-                    updateVCarousel();
-                } else {
-                    // Решта карток відкривають стандартний запис
-                    modal.classList.add('active');
-                }
-            });
-        });
-        
-        function closeModal() { modal.classList.remove('active'); }
-        function closeSubServicesModal() { subModal.classList.remove('active'); }
-        
-        modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
-        subModal.addEventListener('click', (e) => { if(e.target === subModal) closeSubServicesModal(); });
-
-        function openBookingFromSub() {
-            closeSubServicesModal();
-            setTimeout(() => { 
-                document.getElementById('booking-service-select').selectedIndex = 1; // Вибирає "Фарбування волосся"
-                modal.classList.add('active'); 
-            }, 300);
-        }
 
         // Активна навігація (бічна та dock)
         const sections = document.querySelectorAll('section');
@@ -1221,52 +1328,95 @@
         updateCarousel();
 
 
-        // ВЕРТИКАЛЬНА 3D Карусель для послуг
-        const vCards = document.querySelectorAll('.v-card-3d');
-        const vPrevBtn = document.getElementById('prevSubService');
-        const vNextBtn = document.getElementById('nextSubService');
-        const vStage = document.getElementById('subServicesStage');
-        let vCurrentIndex = 0;
-        
-        function updateVCarousel() {
-            vCards.forEach((card, index) => {
-                card.className = 'v-card-3d';
-                if (index === vCurrentIndex) card.classList.add('active');
-                else if (index === vCurrentIndex - 1 || (vCurrentIndex === 0 && index === vCards.length - 1)) {
-                    card.classList.add('prev-card');
-                }
-                else if (index === vCurrentIndex + 1 || (vCurrentIndex === vCards.length - 1 && index === 0)) {
-                    card.classList.add('next-card');
+        // --- Модальні вікна та Підменю ---
+        const modal = document.getElementById('modal');
+        function closeModal() { modal.classList.remove('active'); }
+        modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+
+        const subModals = document.querySelectorAll('.sub-menu-modal');
+
+        function closeAllSubModals() {
+            subModals.forEach(m => m.classList.remove('active'));
+        }
+
+        subModals.forEach(m => {
+            m.addEventListener('click', (e) => { if(e.target === m) closeAllSubModals(); });
+        });
+
+        function openBookingFromSub(serviceIndex) {
+            closeAllSubModals();
+            setTimeout(() => {
+                document.getElementById('booking-service-select').selectedIndex = serviceIndex;
+                modal.classList.add('active');
+            }, 300);
+        }
+
+        // ВЕРТИКАЛЬНА 3D Карусель для кожного підменю
+        const vCarousels = [];
+
+        subModals.forEach((subModal) => {
+            const vCards = subModal.querySelectorAll('.v-card-3d');
+            const vPrevBtn = subModal.querySelector('.v-arrow.up');
+            const vNextBtn = subModal.querySelector('.v-arrow.down');
+            const vStage = subModal.querySelector('.v-stage');
+            let vCurrentIndex = 0;
+
+            function updateVCarousel() {
+                vCards.forEach((card, index) => {
+                    card.className = 'v-card-3d';
+                    if (index === vCurrentIndex) card.classList.add('active');
+                    else if (index === vCurrentIndex - 1 || (vCurrentIndex === 0 && index === vCards.length - 1)) {
+                        card.classList.add('prev-card');
+                    }
+                    else if (index === vCurrentIndex + 1 || (vCurrentIndex === vCards.length - 1 && index === 0)) {
+                        card.classList.add('next-card');
+                    }
+                });
+            }
+
+            if (vPrevBtn && vNextBtn && vStage) {
+                vPrevBtn.addEventListener('click', () => { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); });
+                vNextBtn.addEventListener('click', () => { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); });
+
+                let startY = 0;
+                let vIsDragging = false;
+
+                vStage.addEventListener('mousedown', e => { startY = e.pageY; vIsDragging = true; });
+                vStage.addEventListener('touchstart', e => { startY = e.touches[0].clientY; vIsDragging = true; }, {passive: true});
+
+                window.addEventListener('mouseup', () => { vIsDragging = false; });
+                window.addEventListener('touchend', () => { vIsDragging = false; });
+
+                vStage.addEventListener('mousemove', e => {
+                    if(!vIsDragging) return;
+                    const diffY = e.pageY - startY;
+                    if (diffY < -50) { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); vIsDragging = false; }
+                    else if (diffY > 50) { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); vIsDragging = false; }
+                });
+
+                vStage.addEventListener('touchmove', e => {
+                    if(!vIsDragging) return;
+                    const diffY = e.touches[0].clientY - startY;
+                    if (diffY < -50) { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); vIsDragging = false; }
+                    else if (diffY > 50) { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); vIsDragging = false; }
+                });
+            }
+
+            vCarousels.push(updateVCarousel);
+        });
+
+        // Відкриття підменю при кліку на картку послуги
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.addEventListener('click', () => {
+                if (subModals[index]) {
+                    subModals[index].classList.add('active');
+                    vCarousels[index](); // Оновлюємо стан каруселі для поточного вікна
+                } else {
+                    // Fallback
+                    modal.classList.add('active');
+                    document.getElementById('booking-service-select').selectedIndex = index + 1;
                 }
             });
-        }
-        
-        vPrevBtn.addEventListener('click', () => { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); });
-        vNextBtn.addEventListener('click', () => { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); });
-        
-        let startY = 0;
-        let vIsDragging = false;
-        
-        vStage.addEventListener('mousedown', e => { startY = e.pageY; vIsDragging = true; });
-        vStage.addEventListener('touchstart', e => { startY = e.touches[0].clientY; vIsDragging = true; }, {passive: true});
-        
-        window.addEventListener('mouseup', () => { vIsDragging = false; });
-        window.addEventListener('touchend', () => { vIsDragging = false; });
-        
-        vStage.addEventListener('mousemove', e => {
-            if(!vIsDragging) return;
-            const diffY = e.pageY - startY;
-            // Гортання вниз
-            if (diffY < -50) { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); vIsDragging = false; }
-            // Гортання вгору
-            else if (diffY > 50) { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); vIsDragging = false; }
-        });
-        
-        vStage.addEventListener('touchmove', e => {
-            if(!vIsDragging) return;
-            const diffY = e.touches[0].clientY - startY;
-            if (diffY < -50) { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); vIsDragging = false; }
-            else if (diffY > 50) { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); vIsDragging = false; }
         });
 
     </script>
