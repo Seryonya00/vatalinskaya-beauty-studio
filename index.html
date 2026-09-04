@@ -185,8 +185,9 @@
             border: 1px solid var(--glass-border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             z-index: 1001;
-            width: 480px;
+            width: 440px;
             max-width: 92vw;
+            overflow: visible;
         }
 
         .b-nav-item {
@@ -196,16 +197,16 @@
             justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
-            width: 48px;
-            height: 48px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             transition: var(--transition);
             flex-shrink: 0;
         }
 
         .b-nav-item svg {
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
             fill: none;
             stroke: currentColor;
             transition: var(--transition);
@@ -216,32 +217,36 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Центральна жовта кнопка тепер всередині панелі */
         .b-nav-item.home-btn {
             background: var(--accent-gold);
             color: #000;
-            width: 52px;
-            height: 52px;
-            box-shadow: 0 5px 20px var(--accent-gold-glow);
-            border: none;
+            width: 58px;
+            height: 58px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -90px); 
+            box-shadow: 0 10px 30px var(--accent-gold-glow);
+            border: none; 
+            z-index: 10; 
         }
 
         .b-nav-item.home-btn svg {
             stroke: #000;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
         }
 
         .b-nav-item.home-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 25px var(--accent-gold-glow);
+            transform: translate(-50%, -95px);
+            box-shadow: 0 15px 35px var(--accent-gold-glow);
             background: var(--accent-gold);
             color: #000;
         }
 
         .b-nav-tooltip {
             position: absolute;
-            top: -45px;
+            top: -42px;
             background: var(--bg-card);
             color: var(--accent-gold);
             font-size: 10px;
@@ -408,7 +413,6 @@
             height: 22px;
         }
 
-        /* Брендові кольори для іконок соцмереж у Hero */
         .icon-ig { color: #E1306C; }
         .icon-tg { color: #2AABEE; }
         .icon-vb { color: #7360F2; }
@@ -495,7 +499,7 @@
         .work-card:hover { transform: translateY(-8px); border-color: var(--accent-gold); }
         .work-card:hover .work-card-overlay { opacity: 1; }
 
-        /* --- 3D Карусель відгуків --- */
+        /* --- 3D Карусель відгуків (Горизонтальна) --- */
         .reviews-container {
             position: relative;
             display: flex;
@@ -594,7 +598,7 @@
         .review-arrow.next { right: 0; }
         .review-arrow svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
 
-        /* --- Модальне вікно --- */
+        /* --- Модальні вікна --- */
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
         }
@@ -608,10 +612,91 @@
         .modal-overlay.active .modal-window { transform: scale(1) translateY(0); opacity: 1; }
 
         .modal-close {
-            position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-secondary); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition);
+            position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-secondary); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); z-index: 20;
         }
 
         .modal-close:hover { color: var(--accent-gold); border-color: var(--accent-gold); }
+
+        /* --- ВЕРТИКАЛЬНА КАРУСЕЛЬ (Підменю послуг) --- */
+        .v-carousel-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 420px;
+            width: 100%;
+            overflow: hidden;
+            touch-action: pan-x; /* Дозволяє горизонтальний свайп для сторінки, блокує вертикальний */
+            margin-top: 15px;
+        }
+        .v-stage {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            cursor: grab;
+        }
+        .v-stage:active { cursor: grabbing; }
+        .v-card-3d {
+            position: absolute;
+            width: 90%;
+            background: rgba(15, 15, 17, 0.9);
+            border: 1px solid var(--glass-border);
+            padding: 15px;
+            border-radius: 20px;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.7) translateZ(-200px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+        .v-card-3d.active {
+            opacity: 1; z-index: 3;
+            transform: translateY(0) scale(1) translateZ(0);
+            pointer-events: all;
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 25px var(--accent-gold-glow);
+        }
+        .v-card-3d.prev-card {
+            opacity: 0.35; z-index: 2;
+            transform: translateY(-60%) scale(0.85) rotateX(15deg);
+        }
+        .v-card-3d.next-card {
+            opacity: 0.35; z-index: 2;
+            transform: translateY(60%) scale(0.85) rotateX(-15deg);
+        }
+        .v-card-3d img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .v-card-3d h4 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+        .v-arrow {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(22, 22, 24, 0.95);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 10;
+            transition: var(--transition);
+        }
+        .v-arrow:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 20px var(--accent-gold-glow); }
+        .v-arrow.up { top: 0; }
+        .v-arrow.down { bottom: 0; }
+        .v-arrow svg { width: 22px; height: 22px; stroke: currentColor; fill: none; }
 
         /* --- Написати відгук --- */
         #write-review { background: rgba(15, 15, 17, 0.6); border-top: 1px solid var(--glass-border); }
@@ -666,31 +751,30 @@
 
             .contact-character-img { max-height: 380px; }
             
-            .hero-logo-img { 
-                max-height: 180px; 
-                margin-top: 0px; 
-            }
-
+            .hero-logo-img { max-height: 180px; margin-top: 0px; }
             .hero-title { font-size: 3.2rem; }
             .section-title { font-size: 2.5rem; }
             .side-nav { display: none; }
-            .review-arrow { display: none !important; }
+            
+            .review-arrow, .v-arrow { display: none !important; } /* Приховуємо стрілочки на мобільному */
+            
             .review-card-3d { max-width: 88%; padding: 25px; }
-
             .review-card-3d.prev-card { transform: translateX(-35%) scale(0.85) rotateY(10deg); opacity: 0.25; }
             .review-card-3d.next-card { transform: translateX(35%) scale(0.85) rotateY(-10deg); opacity: 0.25; }
 
-            .bottom-nav { width: 380px; padding: 10px 18px; }
-            .b-nav-item { width: 42px; height: 42px; }
-            .b-nav-item svg { width: 22px; height: 22px; }
-            .b-nav-item.home-btn { width: 44px; height: 44px; }
-            .b-nav-item.home-btn svg { width: 24px; height: 24px; }
+            .bottom-nav { width: 360px; padding: 10px 20px; }
+            .b-nav-item { width: 38px; height: 38px; }
+            .b-nav-item svg { width: 19px; height: 19px; }
+            .b-nav-item.home-btn { width: 50px; height: 50px; transform: translate(-50%, -75px); }
+            .b-nav-item.home-btn:hover { transform: translate(-50%, -80px); }
             .contact-map iframe { min-height: 300px; }
         }
 
         @media (max-width: 480px) {
             .header-title { font-size: 1.05rem; letter-spacing: 1.5px; }
-            .bottom-nav { width: 92vw; padding: 8px 12px; }
+            .bottom-nav { width: 92vw; padding: 8px 15px; }
+            .review-card-3d.prev-card { transform: translateX(-20%) scale(0.8) rotateY(5deg); opacity: 0.15; }
+            .review-card-3d.next-card { transform: translateX(20%) scale(0.8) rotateY(-5deg); opacity: 0.15; }
         }
     </style>
 </head>
@@ -710,7 +794,6 @@
     </header>
 
     <nav class="side-nav">
-        <!-- Навігація ПК -->
         <a href="#hero" class="side-nav-item active"><span class="side-nav-label">Головна</span><span class="side-nav-dot"></span></a>
         <a href="#services" class="side-nav-item"><span class="side-nav-label">Послуги</span><span class="side-nav-dot"></span></a>
         <a href="#works" class="side-nav-item"><span class="side-nav-label">Галерея</span><span class="side-nav-dot"></span></a>
@@ -719,13 +802,12 @@
         <a href="#contacts" class="side-nav-item"><span class="side-nav-label">Контакти</span><span class="side-nav-dot"></span></a>
     </nav>
 
-    <!-- Нижнє меню (Dock) з рівномірним розподілом і центральною кнопкою всередині -->
+    <!-- Нижнє меню (Dock) -->
     <nav class="bottom-nav">
         <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5"/><path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12"/><path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8"/><path d="M10 15 C 11 17 12.5 18.5 14 19.5"/><path d="M19 2.5Q19 5 21.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none"/><path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none"/><path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none"/></svg></a>
         <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
         
-        <!-- Центральна жовта кнопка (внутрішня) -->
-        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
+        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-48px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
 
         <a href="#reviews" class="b-nav-item"><span class="b-nav-tooltip">Відгуки</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="currentColor" stroke="none"/></svg></a>
         <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
@@ -770,11 +852,13 @@
             <h2 class="section-title">МЕНЮ ПОСЛУГ</h2>
         </div>
         <div class="services-grid reveal">
+            <!-- Перша послуга з новим фото (IMG_0733.JPG) -->
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=80" alt="Фарбування волосся" class="service-img">
+                <img src="IMG_0733.JPG" alt="Фарбування волосся" class="service-img">
                 <h3 class="service-title">Фарбування волосся</h3>
                 <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
             </div>
+            
             <div class="service-card">
                 <img src="https://images.unsplash.com/photo-1595476108010-b4d1f10d5e42?w=400&q=80" alt="Стрижки та укладки" class="service-img">
                 <h3 class="service-title">Стрижки та укладки</h3>
@@ -872,7 +956,7 @@
         </div>
     </section>
 
-    <!-- 6. Блок Контакти з картою зліва та паралакс-персонажем -->
+    <!-- 6. Блок Контакти -->
     <section id="contacts">
         <div class="contact-wrapper reveal">
             
@@ -925,7 +1009,7 @@
         <p>&copy; 2026 vatalinskaya beauty studio. Всі права захищені.</p>
     </footer>
 
-    <!-- Модальне вікно для послуг -->
+    <!-- Стандартне модальне вікно для запису -->
     <div class="modal-overlay" id="modal">
         <div class="modal-window">
             <button class="modal-close" onclick="closeModal()">✕</button>
@@ -933,7 +1017,7 @@
             <form class="lux-form" onsubmit="event.preventDefault(); alert('Ваш запит надіслано!'); closeModal();">
                 <input type="text" placeholder="Ваше ім'я" required>
                 <input type="tel" placeholder="Телефон" required>
-                <select required>
+                <select required id="booking-service-select">
                     <option value="" disabled selected>Оберіть послугу</option>
                     <option>Фарбування волосся</option>
                     <option>Стрижки та укладки</option>
@@ -943,6 +1027,45 @@
                 </select>
                 <button type="submit" class="btn-lux" style="margin-top: 10px;">Підтвердити запис</button>
             </form>
+        </div>
+    </div>
+
+    <!-- НОВЕ Модальне вікно підменю з ВЕРТИКАЛЬНОЮ КАРУСЕЛЛЮ (Види робіт) -->
+    <div class="modal-overlay" id="sub-services-modal">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeSubServicesModal()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Види робіт</h3>
+            
+            <div class="v-carousel-container">
+                <button class="v-arrow up" id="prevSubService"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                
+                <div class="v-stage" id="subServicesStage">
+                    <div class="v-card-3d">
+                        <img src="IMG_0696.jpg" alt="Airtouch">
+                        <h4>Airtouch</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="IMG_0697.jpg" alt="Рельефный блонд">
+                        <h4>Рельефный блонд</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="IMG_0704.jpg" alt="Total blond">
+                        <h4>Total blond</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="IMG_0705.JPG" alt="Выход из черного">
+                        <h4>Выход из черного</h4>
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="IMG_0711.JPG" alt="Уходовые процедуры">
+                        <h4>Уходовые процедуры</h4>
+                    </div>
+                </div>
+
+                <button class="v-arrow down" id="nextSubService"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            
+            <button class="btn-lux" style="margin-top: 20px; width: 100%; text-align: center;" onclick="openBookingFromSub()">Записатися</button>
         </div>
     </div>
 
@@ -993,20 +1116,41 @@
             }
         });
 
-        // Модальне вікно
+        // Відкриття модальних вікон
         const modal = document.getElementById('modal');
-        document.querySelectorAll('.service-card').forEach(card => {
+        const subModal = document.getElementById('sub-services-modal');
+
+        document.querySelectorAll('.service-card').forEach((card, index) => {
             card.addEventListener('click', () => {
-                modal.classList.add('active');
+                if (index === 0) { 
+                    // Перша картка відкриває підменю (вертикальну карусель)
+                    subModal.classList.add('active');
+                    updateVCarousel();
+                } else {
+                    // Решта карток відкривають стандартний запис
+                    modal.classList.add('active');
+                }
             });
         });
+        
         function closeModal() { modal.classList.remove('active'); }
+        function closeSubServicesModal() { subModal.classList.remove('active'); }
+        
         modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+        subModal.addEventListener('click', (e) => { if(e.target === subModal) closeSubServicesModal(); });
+
+        function openBookingFromSub() {
+            closeSubServicesModal();
+            setTimeout(() => { 
+                document.getElementById('booking-service-select').selectedIndex = 1; // Вибирає "Фарбування волосся"
+                modal.classList.add('active'); 
+            }, 300);
+        }
 
         // Активна навігація (бічна та dock)
         const sections = document.querySelectorAll('section');
         const sideNavItems = document.querySelectorAll('.side-nav-item');
-        const dockNavItems = document.querySelectorAll('.b-nav-item');
+        const dockNavItems = document.querySelectorAll('.b-nav-item:not(.home-btn)');
         
         window.addEventListener('scroll', () => {
             let current = '';
@@ -1028,7 +1172,7 @@
             });
         });
 
-        // 3D Карусель відгуків (Свайп та кнопки)
+        // 3D Карусель відгуків (ГОРИЗОНТАЛЬНА)
         const cards = document.querySelectorAll('.review-card-3d');
         const prevBtn = document.getElementById('prevReview');
         const nextBtn = document.getElementById('nextReview');
@@ -1055,7 +1199,7 @@
         let isDragging = false;
         
         stage.addEventListener('mousedown', e => { startX = e.pageX; isDragging = true; });
-        stage.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; });
+        stage.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, {passive: true});
         
         window.addEventListener('mouseup', () => { isDragging = false; });
         window.addEventListener('touchend', () => { isDragging = false; });
@@ -1073,8 +1217,57 @@
             if (diffX > 50) { currentIndex = (currentIndex - 1 + cards.length) % cards.length; updateCarousel(); isDragging = false; }
             else if (diffX < -50) { currentIndex = (currentIndex + 1) % cards.length; updateCarousel(); isDragging = false; }
         });
-
         updateCarousel();
+
+
+        // ВЕРТИКАЛЬНА 3D Карусель для послуг
+        const vCards = document.querySelectorAll('.v-card-3d');
+        const vPrevBtn = document.getElementById('prevSubService');
+        const vNextBtn = document.getElementById('nextSubService');
+        const vStage = document.getElementById('subServicesStage');
+        let vCurrentIndex = 0;
+        
+        function updateVCarousel() {
+            vCards.forEach((card, index) => {
+                card.className = 'v-card-3d';
+                if (index === vCurrentIndex) card.classList.add('active');
+                else if (index === vCurrentIndex - 1 || (vCurrentIndex === 0 && index === vCards.length - 1)) {
+                    card.classList.add('prev-card');
+                }
+                else if (index === vCurrentIndex + 1 || (vCurrentIndex === vCards.length - 1 && index === 0)) {
+                    card.classList.add('next-card');
+                }
+            });
+        }
+        
+        vPrevBtn.addEventListener('click', () => { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); });
+        vNextBtn.addEventListener('click', () => { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); });
+        
+        let startY = 0;
+        let vIsDragging = false;
+        
+        vStage.addEventListener('mousedown', e => { startY = e.pageY; vIsDragging = true; });
+        vStage.addEventListener('touchstart', e => { startY = e.touches[0].clientY; vIsDragging = true; }, {passive: true});
+        
+        window.addEventListener('mouseup', () => { vIsDragging = false; });
+        window.addEventListener('touchend', () => { vIsDragging = false; });
+        
+        vStage.addEventListener('mousemove', e => {
+            if(!vIsDragging) return;
+            const diffY = e.pageY - startY;
+            // Гортання вниз
+            if (diffY < -50) { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); vIsDragging = false; }
+            // Гортання вгору
+            else if (diffY > 50) { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); vIsDragging = false; }
+        });
+        
+        vStage.addEventListener('touchmove', e => {
+            if(!vIsDragging) return;
+            const diffY = e.touches[0].clientY - startY;
+            if (diffY < -50) { vCurrentIndex = (vCurrentIndex + 1) % vCards.length; updateVCarousel(); vIsDragging = false; }
+            else if (diffY > 50) { vCurrentIndex = (vCurrentIndex - 1 + vCards.length) % vCards.length; updateVCarousel(); vIsDragging = false; }
+        });
+
     </script>
 </body>
 </html>
