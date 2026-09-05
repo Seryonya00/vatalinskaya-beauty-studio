@@ -185,7 +185,7 @@
             border: 1px solid var(--glass-border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             z-index: 1001;
-            width: 620px;
+            width: 580px; /* Трохи зменшив ширину через видалення одного елемента */
             max-width: 95vw;
             overflow: visible;
         }
@@ -566,7 +566,7 @@
 
         .service-img {
             width: 100%;
-            height: 370px; /* Увеличено по вертикали на ~30% */
+            height: 370px;
             border-radius: 12px;
             object-fit: cover;
             margin-bottom: 15px;
@@ -615,105 +615,6 @@
 
         .work-card:hover { transform: translateY(-8px); border-color: var(--accent-gold); }
         .work-card:hover .work-card-overlay { opacity: 1; }
-
-        /* --- 3D Карусель відгуків (Горизонтальна) --- */
-        .reviews-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 100vw;
-            justify-content: center;
-            touch-action: pan-y;
-            user-select: none;
-            overflow: hidden;
-        }
-
-        .reviews-stage {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            height: 340px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1000px;
-            cursor: grab;
-        }
-
-        .reviews-stage:active { cursor: grabbing; }
-
-        .review-card-3d {
-            position: absolute;
-            width: 100%;
-            max-width: 480px;
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            padding: 35px;
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(0.7) translateZ(-200px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .review-card-3d.active {
-            opacity: 1;
-            z-index: 3;
-            transform: translateX(0) scale(1) translateZ(0);
-            pointer-events: all;
-            border-color: var(--accent-gold);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 25px var(--accent-gold-glow);
-        }
-
-        .review-card-3d.prev-card {
-            opacity: 0.35;
-            z-index: 2;
-            transform: translateX(-55%) scale(0.8) rotateY(15deg);
-        }
-
-        .review-card-3d.next-card {
-            opacity: 0.35;
-            z-index: 2;
-            transform: translateX(55%) scale(0.8) rotateY(-15deg);
-        }
-
-        .review-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .author-avatar { width: 50px; height: 50px; border-radius: 50%; background: #2a2a2a; object-fit: cover; }
-        .stars { color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 15px; }
-
-        .review-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(22, 22, 24, 0.9);
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        .review-arrow:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 20px var(--accent-gold-glow); }
-        .review-arrow.prev { left: 0; }
-        .review-arrow.next { right: 0; }
-        .review-arrow svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
 
         /* --- Модальні вікна --- */
         .modal-overlay {
@@ -876,11 +777,7 @@
             .section-title { font-size: 2.5rem; }
             .side-nav { display: none; }
             
-            .review-arrow, .v-arrow { display: none !important; } 
-            
-            .review-card-3d { max-width: 88%; padding: 25px; }
-            .review-card-3d.prev-card { transform: translateX(-35%) scale(0.85) rotateY(10deg); opacity: 0.25; }
-            .review-card-3d.next-card { transform: translateX(35%) scale(0.85) rotateY(-10deg); opacity: 0.25; }
+            .v-arrow { display: none !important; } 
 
             .bottom-nav { width: 95vw; padding: 10px 15px; }
             .b-nav-item { width: 34px; height: 34px; }
@@ -897,8 +794,6 @@
             .b-nav-item { width: 30px; height: 30px; }
             .b-nav-item svg { width: 16px; height: 16px; }
             .nav-dummy { width: 30px !important; }
-            .review-card-3d.prev-card { transform: translateX(-20%) scale(0.8) rotateY(5deg); opacity: 0.15; }
-            .review-card-3d.next-card { transform: translateX(20%) scale(0.8) rotateY(-5deg); opacity: 0.15; }
         }
     </style>
 </head>
@@ -922,18 +817,14 @@
         <a href="#price" class="side-nav-item"><span class="side-nav-label">Прайс</span><span class="side-nav-dot"></span></a>
         <a href="#services" class="side-nav-item"><span class="side-nav-label">Послуги</span><span class="side-nav-dot"></span></a>
         <a href="#works" class="side-nav-item"><span class="side-nav-label">Галерея</span><span class="side-nav-dot"></span></a>
-        <a href="#reviews" class="side-nav-item"><span class="side-nav-label">Відгуки</span><span class="side-nav-dot"></span></a>
         <a href="#write-review" class="side-nav-item"><span class="side-nav-label">Написати відгук</span><span class="side-nav-dot"></span></a>
         <a href="#contacts" class="side-nav-item"><span class="side-nav-label">Контакти</span><span class="side-nav-dot"></span></a>
     </nav>
 
-    <!-- Нижнє меню (Dock) -->
     <nav class="bottom-nav">
         <a href="#price" class="b-nav-item"><span class="b-nav-tooltip">Прайс</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21.53 11.53l-8-8A2 2 0 0 0 12.12 3H5a2 2 0 0 0-2 2v7.12a2 2 0 0 0 .59 1.41l8 8a2 2 0 0 0 2.82 0l7.12-7.12a2 2 0 0 0 0-2.88z"></path><circle cx="8.5" cy="8.5" r="1.5"></circle></svg></a>
         
         <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5"/><path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12"/><path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8"/><path d="M10 15 C 11 17 12.5 18.5 14 19.5"/><path d="M19 2.5Q19 5 21.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none"/><path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none"/><path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none"/></svg></a>
-
-        <a href="#reviews" class="b-nav-item"><span class="b-nav-tooltip">Відгуки</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></a>
         
         <div style="width: 42px;" class="nav-dummy"></div>
 
@@ -946,7 +837,6 @@
         <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
     </nav>
 
-    <!-- 1. Головний екран -->
     <section id="hero">
         <div class="reveal">
             <img src="image/logo.png" alt="vatalinskaya beauty studio logo" class="hero-logo-img">
@@ -979,13 +869,11 @@
         </div>
     </section>
 
-    <!-- 1.5. ПРАЙС -->
     <section id="price">
         <div class="section-header reveal">
             <h2 class="section-title">ПРАЙС</h2>
         </div>
         <div class="price-grid reveal">
-            <!-- Картка 1 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Фарбування коренів / В один тон</h3>
@@ -1002,7 +890,6 @@
                 <p class="price-note">*Для дуже густого, пористого або нарощеного волосся передбачена доплата.</p>
             </div>
 
-            <!-- Картка 2 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Тест-пасмо</h3>
@@ -1012,7 +899,6 @@
                 <div class="price-duration">Тривалість — 30 хвилин</div>
             </div>
 
-            <!-- Картка 3 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Контуринг / Бліки</h3>
@@ -1021,7 +907,6 @@
                 <p class="price-details">Техніка з акцентом на розвітлення пасм біля обличчя та тонування в бажаний колір освітлених пасм.</p>
             </div>
 
-            <!-- Картка 4 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Складне Фарбування</h3>
@@ -1037,7 +922,6 @@
                 <p class="price-note" style="padding-top: 10px;">*Для дуже густого, пористого або нарощеного волосся передбачена доплата.</p>
             </div>
 
-            <!-- Картка 5 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Вихід із темного</h3>
@@ -1054,7 +938,6 @@
                 <div class="price-duration" style="margin-top: 15px;">Тривалість 7-8 годин</div>
             </div>
 
-            <!-- Картка 6 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Холодне відновлення</h3>
@@ -1065,7 +948,6 @@
                 <div class="price-duration">Тривалість — 2 години</div>
             </div>
 
-            <!-- Картка 7 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Ботокс (Гаряча)</h3>
@@ -1075,7 +957,6 @@
                 <div class="price-duration">Тривалість — 2,5 годин</div>
             </div>
 
-            <!-- Картка 8 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Стрижки та укладки</h3>
@@ -1089,7 +970,6 @@
         </div>
     </section>
 
-    <!-- 2. МЕНЮ ПОСЛУГ -->
     <section id="services">
         <div class="section-header reveal">
             <h2 class="section-title">МЕНЮ ПОСЛУГ</h2>
@@ -1121,7 +1001,6 @@
         </div>
     </section>
 
-    <!-- 3. Наші роботи -->
     <section id="works">
         <div class="section-header reveal">
             <h2 class="section-title">НАШІ РОБОТИ</h2>
@@ -1142,44 +1021,6 @@
         </div>
     </section>
 
-    <!-- 4. Відгуки -->
-    <section id="reviews">
-        <div class="section-header reveal">
-            <h2 class="section-title">ВІДГУКИ КЛІЄНТІВ</h2>
-        </div>
-        <div class="reviews-container reveal" id="reviewsContainer">
-            <button class="review-arrow prev" id="prevReview" aria-label="Попередній відгук"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg></button>
-            <div class="reviews-stage" id="reviewsStage">
-                <div class="review-card-3d">
-                    <div class="stars">★★★★★</div>
-                    <p style="color: var(--text-secondary); font-style: italic;">«Неймовірна атмосфера та бездоганний сервіс. Фарбування перевершило всі очікування. Найкращий простір у місті!»</p>
-                    <div class="review-author">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Анастасія" class="author-avatar">
-                        <div><h4 style="color: var(--text-primary); margin: 0;">Анастасія</h4><span style="font-size: 11px; color: var(--accent-gold);">Постійний клієнт</span></div>
-                    </div>
-                </div>
-                <div class="review-card-3d">
-                    <div class="stars">★★★★★</div>
-                    <p style="color: var(--text-secondary); font-style: italic;">«Обожнюю стиль та уважність майстрів до деталей. Завжди виходжу від вас із ідеальним настроєм та манікюром.»</p>
-                    <div class="review-author">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Катерина" class="author-avatar">
-                        <div><h4 style="color: var(--text-primary); margin: 0;">Катерина</h4><span style="font-size: 11px; color: var(--accent-gold);">VIP гість</span></div>
-                    </div>
-                </div>
-                <div class="review-card-3d">
-                    <div class="stars">★★★★★</div>
-                    <p style="color: var(--text-secondary); font-style: italic;">«Робила реконструкцію волосся. Ефект просто вау! Дуже приємний персонал і смачна кава.»</p>
-                    <div class="review-author">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Марія" class="author-avatar">
-                        <div><h4 style="color: var(--text-primary); margin: 0;">Марія</h4><span style="font-size: 11px; color: var(--accent-gold);">Гість студії</span></div>
-                    </div>
-                </div>
-            </div>
-            <button class="review-arrow next" id="nextReview" aria-label="Наступний відгук"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg></button>
-        </div>
-    </section>
-
-    <!-- 5. Блок Написати відгук -->
     <section id="write-review">
         <div class="section-header reveal">
             <h2 class="section-title">НАПИСАТИ ВІДГУК</h2>
@@ -1187,15 +1028,11 @@
         </div>
         <div class="reveal" style="max-width: 600px; margin: 0 auto; width: 100%;">
             <form class="lux-form" onsubmit="event.preventDefault(); alert('Дякуємо за ваш відгук!'); this.reset();">
-                <input type="text" placeholder="Ім'я" required>
-                <input type="tel" placeholder="Телефон" required>
-                <textarea rows="5" placeholder="Повідомлення" required></textarea>
-                <button type="submit" class="btn-lux" style="align-self: center; margin-top: 10px;">Надіслати</button>
+                <button type="submit" class="btn-lux" style="align-self: center; margin-top: 10px;">Написати</button>
             </form>
         </div>
     </section>
 
-    <!-- 6. Блок Контакти -->
     <section id="contacts">
         <div class="contact-wrapper reveal">
             
@@ -1245,10 +1082,9 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 vatalinskaya beauty studio. Всі права захищені.</p>
+        <p>© 2026 vatalinskaya beauty studio. Всі права захищені.</p>
     </footer>
 
-    <!-- Стандартне модальне вікно для запису -->
     <div class="modal-overlay" id="modal">
         <div class="modal-window">
             <button class="modal-close" onclick="closeModal()">✕</button>
@@ -1268,9 +1104,6 @@
         </div>
     </div>
 
-    <!-- Модальні вікна підменю з ВЕРТИКАЛЬНОЮ КАРУСЕЛЛЮ (Види робіт) -->
-    
-    <!-- Підменю 0: Фарбування волосся -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-0">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeAllSubModals()">✕</button>
@@ -1319,7 +1152,6 @@
         </div>
     </div>
 
-    <!-- Підменю 1: Стрижки та укладки -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-1">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeAllSubModals()">✕</button>
@@ -1360,7 +1192,6 @@
         </div>
     </div>
 
-    <!-- Підменю 2: Реконструкція волосся -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-2">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeAllSubModals()">✕</button>
@@ -1395,7 +1226,6 @@
         </div>
     </div>
 
-    <!-- Підменю 3: Послуги бровіста -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-3">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeAllSubModals()">✕</button>
@@ -1507,60 +1337,6 @@
                 if (item.getAttribute('href').includes(current)) item.classList.add('active');
             });
         });
-
-        // 3D Карусель відгуків (ГОРИЗОНТАЛЬНА)
-        const cards = document.querySelectorAll('.review-card-3d');
-        const prevBtn = document.getElementById('prevReview');
-        const nextBtn = document.getElementById('nextReview');
-        const stage = document.getElementById('reviewsStage');
-        let currentIndex = 1;
-        
-        function updateCarousel() {
-            cards.forEach((card, index) => {
-                card.className = 'review-card-3d';
-                if (index === currentIndex) card.classList.add('active');
-                else if (index === currentIndex - 1 || (currentIndex === 0 && index === cards.length - 1)) {
-                    card.classList.add('prev-card');
-                }
-                else if (index === currentIndex + 1 || (currentIndex === cards.length - 1 && index === 0)) {
-                    card.classList.add('next-card');
-                }
-            });
-        }
-        
-        if(prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
-                updateCarousel();
-            });
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
-                updateCarousel();
-            });
-        }
-
-        // Свайпи для горизонтальної каруселі
-        let startX = 0, currentX = 0;
-        if(stage) {
-            stage.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
-            stage.addEventListener('touchmove', e => currentX = e.touches[0].clientX, {passive: true});
-            stage.addEventListener('touchend', () => {
-                if (startX - currentX > 50) nextBtn.click();
-                else if (currentX - startX > 50) prevBtn.click();
-            });
-            
-            let isDragging = false;
-            stage.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; });
-            stage.addEventListener('mousemove', e => { if (isDragging) currentX = e.clientX; });
-            stage.addEventListener('mouseup', () => {
-                isDragging = false;
-                if (startX - currentX > 50) nextBtn.click();
-                else if (currentX - startX > 50) prevBtn.click();
-            });
-            stage.addEventListener('mouseleave', () => isDragging = false);
-        }
-        
-        updateCarousel();
 
         // Управління модальними вікнами
         const mainModal = document.getElementById('modal');
