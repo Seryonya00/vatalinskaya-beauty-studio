@@ -66,7 +66,6 @@
 
         .cursor-glow {
             position: fixed;
-            top: 0; left: 0;
             width: 400px;
             height: 400px;
             background: radial-gradient(circle, var(--accent-gold-glow) 0%, rgba(0,0,0,0) 70%);
@@ -178,7 +177,8 @@
             transform: translateX(-50%);
             display: flex;
             align-items: center;
-            justify-content: space-evenly; /* Змінено для рівномірного відступу */
+            justify-content: center; /* Центрування */
+            gap: 25px; /* Рівна відстань */
             background: rgba(20, 20, 22, 0.95);
             backdrop-filter: blur(20px);
             padding: 12px 28px;
@@ -186,8 +186,9 @@
             border: 1px solid var(--glass-border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             z-index: 1001;
-            width: 620px;
+            width: max-content; /* Автоматична ширина */
             max-width: 95vw;
+            overflow: visible;
         }
 
         .b-nav-item {
@@ -197,8 +198,8 @@
             justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
-            width: 48px;
-            height: 48px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             transition: var(--transition);
             flex-shrink: 0;
@@ -215,6 +216,30 @@
         .b-nav-item:hover, .b-nav-item.active {
             color: var(--accent-gold);
             background: rgba(255, 255, 255, 0.05);
+        }
+
+        .b-nav-item.home-btn {
+            background: var(--accent-gold);
+            color: #000;
+            width: 58px;
+            height: 58px;
+            transform: translateY(-25px); /* Плаваючий ефект замість absolute */
+            box-shadow: 0 10px 30px var(--accent-gold-glow);
+            border: none; 
+            z-index: 10; 
+        }
+
+        .b-nav-item.home-btn svg {
+            stroke: #000;
+            width: 26px;
+            height: 26px;
+        }
+
+        .b-nav-item.home-btn:hover {
+            transform: translateY(-30px);
+            box-shadow: 0 15px 35px var(--accent-gold-glow);
+            background: var(--accent-gold);
+            color: #000;
         }
 
         .b-nav-tooltip {
@@ -692,11 +717,8 @@
         .v-arrow.down { bottom: 0; }
         .v-arrow svg { width: 22px; height: 22px; stroke: currentColor; fill: none; }
 
-        /* --- Написати відгук та форми --- */
+        /* --- Написати відгук --- */
         #write-review { background: rgba(15, 15, 17, 0.6); border-top: 1px solid var(--glass-border); }
-        .lux-form { display: flex; flex-direction: column; gap: 20px; }
-        .lux-form input, .lux-form textarea, .lux-form select { width: 100%; padding: 18px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); color: #fff; font-family: var(--font-body); border-radius: 4px; outline: none; transition: var(--transition); }
-        .lux-form input:focus, .lux-form textarea:focus, .lux-form select:focus { border-color: var(--accent-gold); background: rgba(255, 255, 255, 0.08); }
 
         /* --- Блок Контактів --- */
         #contacts { background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1920') center/cover fixed; position: relative; border-top: 1px solid var(--glass-border); overflow: hidden; }
@@ -752,15 +774,17 @@
             
             .v-arrow { display: none !important; } 
 
-            .bottom-nav { width: 95vw; padding: 10px 15px; }
+            .bottom-nav { gap: 15px; padding: 10px 15px; }
             .b-nav-item { width: 34px; height: 34px; }
             .b-nav-item svg { width: 18px; height: 18px; }
+            .b-nav-item.home-btn { width: 50px; height: 50px; transform: translateY(-15px); }
+            .b-nav-item.home-btn:hover { transform: translateY(-20px); }
             .contact-map iframe { min-height: 300px; }
         }
 
         @media (max-width: 480px) {
             .header-title { font-size: 1.05rem; letter-spacing: 1.5px; }
-            .bottom-nav { padding: 8px 10px; }
+            .bottom-nav { padding: 8px 10px; gap: 10px; }
             .b-nav-item { width: 30px; height: 30px; }
             .b-nav-item svg { width: 16px; height: 16px; }
         }
@@ -792,28 +816,17 @@
 
     <!-- Нижнє меню (Dock) -->
     <nav class="bottom-nav">
-        <a href="#price" class="b-nav-item"><span class="b-nav-tooltip">Прайс</span>
-            <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21.53 11.53l-8-8A2 2 0 0 0 12.12 3H5a2 2 0 0 0-2 2v7.12a2 2 0 0 0 .59 1.41l8 8a2 2 0 0 0 2.82 0l7.12-7.12a2 2 0 0 0 0-2.88z"></path><circle cx="8.5" cy="8.5" r="1.5"></circle></svg>
-        </a>
+        <a href="#price" class="b-nav-item"><span class="b-nav-tooltip">Прайс</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21.53 11.53l-8-8A2 2 0 0 0 12.12 3H5a2 2 0 0 0-2 2v7.12a2 2 0 0 0 .59 1.41l8 8a2 2 0 0 0 2.82 0l7.12-7.12a2 2 0 0 0 0-2.88z"></path><circle cx="8.5" cy="8.5" r="1.5"></circle></svg></a>
         
-        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span>
-            <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3l1.912 5.813a2 2 0 001.275 1.275L21 12l-5.813 1.912a2 2 0 00-1.275 1.275L12 21l-1.912-5.813a2 2 0 00-1.275-1.275L3 12l5.813-1.912a2 2 0 001.275-1.275L12 3z"/>
-                <path d="M5 3l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z"/>
-            </svg>
-        </a>
+        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></a>
 
-        <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span>
-            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg>
-        </a>
+        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-42px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
 
-        <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip">Написати</span>
-            <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-        </a>
+        <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
+        
+        <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip" style="margin-left:-15px;">Написати</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>
 
-        <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span>
-            <svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-        </a>
+        <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
     </nav>
 
     <!-- 1. Головний екран -->
@@ -849,12 +862,13 @@
         </div>
     </section>
 
-    <!-- 2. ПРАЙС -->
+    <!-- 1.5. ПРАЙС -->
     <section id="price">
         <div class="section-header reveal">
             <h2 class="section-title">ПРАЙС</h2>
         </div>
         <div class="price-grid reveal">
+            <!-- Картка 1 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Фарбування коренів / В один тон</h3>
@@ -870,6 +884,8 @@
                 </ul>
                 <p class="price-note">*Для дуже густого, пористого або нарощеного волосся передбачена доплата.</p>
             </div>
+
+            <!-- Картка 2 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Тест-пасмо</h3>
@@ -878,6 +894,8 @@
                 <p class="price-details">Пробне освітлення невеликої пасма волосся для оцінки його стану та реакції на освітлення.<br><br>Допомагає визначити можливості волосся та спрогнозувати максимально безпечний і бажаний результат майбутнього фарбування.</p>
                 <div class="price-duration">Тривалість — 30 хвилин</div>
             </div>
+
+            <!-- Картка 3 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Контуринг / Бліки</h3>
@@ -885,6 +903,8 @@
                 </div>
                 <p class="price-details">Техніка з акцентом на розвітлення пасм біля обличчя та тонування в бажаний колір освітлених пасм.</p>
             </div>
+
+            <!-- Картка 4 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Складне Фарбування</h3>
@@ -899,6 +919,8 @@
                 <div class="price-duration">Тривалість — 5 годин</div>
                 <p class="price-note" style="padding-top: 10px;">*Для дуже густого, пористого або нарощеного волосся передбачена доплата.</p>
             </div>
+
+            <!-- Картка 5 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Вихід із темного</h3>
@@ -914,6 +936,8 @@
                 </ul>
                 <div class="price-duration" style="margin-top: 15px;">Тривалість 7-8 годин</div>
             </div>
+
+            <!-- Картка 6 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Холодне відновлення</h3>
@@ -923,6 +947,8 @@
                 <p class="price-details">Процедура у кілька етапів очищає, зволожує та відновлює волосся зсередини. Насичує білками та амінокислотами, робить волосся гладким, блискучим та еластичним.</p>
                 <div class="price-duration">Тривалість — 2 години</div>
             </div>
+
+            <!-- Картка 7 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Ботокс (Гаряча)</h3>
@@ -931,6 +957,8 @@
                 <p class="price-details">Процедура для вирівнювання та глибокого відновлення волосся. Насичує маслами та амінокислотами, надає ідеальну гладкість, блиск та шовковистість.</p>
                 <div class="price-duration">Тривалість — 2,5 годин</div>
             </div>
+
+            <!-- Картка 8 -->
             <div class="price-card">
                 <div class="price-header">
                     <h3 class="price-title">Стрижки та укладки</h3>
@@ -944,7 +972,7 @@
         </div>
     </section>
 
-    <!-- 3. МЕНЮ ПОСЛУГ -->
+    <!-- 2. МЕНЮ ПОСЛУГ -->
     <section id="services">
         <div class="section-header reveal">
             <h2 class="section-title">МЕНЮ ПОСЛУГ</h2>
@@ -976,7 +1004,7 @@
         </div>
     </section>
 
-    <!-- 4. Наші роботи -->
+    <!-- 3. Наші роботи -->
     <section id="works">
         <div class="section-header reveal">
             <h2 class="section-title">НАШІ РОБОТИ</h2>
@@ -997,18 +1025,18 @@
         </div>
     </section>
 
-    <!-- 5. Блок Написати відгук -->
+    <!-- 4. Блок Написати відгук -->
     <section id="write-review">
         <div class="section-header reveal">
             <h2 class="section-title">НАПИСАТИ ВІДГУК</h2>
             <p style="color: var(--text-secondary); max-width: 500px; margin: 15px auto 0;">Поділіться своїми враженнями від візиту до нашої студії</p>
         </div>
-        <div class="reveal" style="max-width: 600px; margin: 30px auto 0; width: 100%; text-align: center;">
-            <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x4127a7912f60c419:0xabb770f238f4355e!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" target="_blank" rel="noopener" class="btn-lux" style="font-size: 14px; padding: 22px 60px;">НАПИСАТИ</a>
+        <div class="reveal" style="display: flex; justify-content: center; width: 100%;">
+            <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x4127a7912f60c419:0xabb770f238f4355e!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" target="_blank" rel="noopener" class="btn-lux" style="margin-top: 10px;">Написати</a>
         </div>
     </section>
 
-    <!-- 6. Блок Контакти -->
+    <!-- 5. Блок Контакти -->
     <section id="contacts">
         <div class="contact-wrapper reveal">
             
@@ -1082,6 +1110,8 @@
     </div>
 
     <!-- Модальні вікна підменю з ВЕРТИКАЛЬНОЮ КАРУСЕЛЛЮ (Види робіт) -->
+    
+    <!-- Підменю 0: Фарбування волосся -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-0">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeAllSubModals()">✕</button>
@@ -1099,7 +1129,7 @@
                     </div>
                     <div class="v-card-3d with-text">
                         <img src="image/toralblond.jpg" alt="Total blond">
-                        <h4>Total blond</h4>
+                        <h4>Toral blond</h4>
                     </div>
                     <div class="v-card-3d with-text">
                         <img src="image/dark.jpg" alt="Выход из черного">
@@ -1120,84 +1150,63 @@
                 <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                 </a>
+                <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript логика -->
+    <!-- Підключення скриптів для анімацій та навігації -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Эффект за курсором
-            const cursor = document.getElementById('cursorGlow');
-            if (cursor) {
-                document.addEventListener('mousemove', (e) => {
-                    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-                });
-            }
-
-            // ScrollSpy для бокового и нижнего меню (выделение активного пункта)
-            const sections = document.querySelectorAll("section");
-            const sideNavLinks = document.querySelectorAll(".side-nav-item");
-            const bottomNavLinks = document.querySelectorAll(".b-nav-item");
-
-            window.addEventListener("scroll", () => {
-                let current = "hero"; // По умолчанию первый блок
-                
-                sections.forEach((section) => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    // Смещение для корректного срабатывания
-                    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                        current = section.getAttribute("id");
-                    }
-                });
-
-                // Обновляем боковое меню
-                sideNavLinks.forEach((link) => {
-                    link.classList.remove("active");
-                    if (link.getAttribute("href") === "#" + current) {
-                        link.classList.add("active");
-                    }
-                });
-
-                // Обновляем нижнее меню
-                bottomNavLinks.forEach((link) => {
-                    link.classList.remove("active");
-                    if (link.getAttribute("href") === "#" + current) {
-                        link.classList.add("active");
-                    }
-                });
-            });
-
-            // Анимации появления блоков (класс reveal)
+        document.addEventListener("DOMContentLoaded", () => {
+            // Анімація прояву секцій при скролі (reveal)
             const reveals = document.querySelectorAll(".reveal");
-            const revealOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("active");
-                        observer.unobserve(entry.target);
                     }
                 });
-            }, revealOptions);
-            
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
             reveals.forEach(reveal => {
-                revealOnScroll.observe(reveal);
+                revealObserver.observe(reveal);
             });
 
-            // Модальные окна
-            window.closeModal = function() {
-                const modal = document.getElementById('modal');
-                if(modal) modal.classList.remove('active');
-            };
+            // Підсвічування активного пункту бокового меню при скролі
+            const sections = document.querySelectorAll("section");
+            const sideNavItems = document.querySelectorAll(".side-nav-item");
             
-            window.closeAllSubModals = function() {
-                document.querySelectorAll('.sub-menu-modal').forEach(m => m.classList.remove('active'));
-            };
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let currentId = entry.target.getAttribute("id");
+                        sideNavItems.forEach(item => {
+                            item.classList.remove("active");
+                            if (item.getAttribute("href") === "#" + currentId) {
+                                item.classList.add("active");
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.3 }); // Активується, коли 30% секції на екрані
+
+            sections.forEach(section => {
+                navObserver.observe(section);
+            });
         });
+
+        // Функції закриття модальних вікон
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            if (modal) modal.classList.remove('active');
+        }
+        
+        function closeAllSubModals() {
+            document.querySelectorAll('.sub-menu-modal').forEach(m => m.classList.remove('active'));
+        }
     </script>
+
 </body>
 </html>
