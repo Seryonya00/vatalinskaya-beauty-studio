@@ -566,7 +566,7 @@
 
         .service-img {
             width: 100%;
-            height: 370px;
+            height: 370px; /* Увеличено по вертикали на ~30% */
             border-radius: 12px;
             object-fit: cover;
             margin-bottom: 15px;
@@ -922,7 +922,6 @@
         <a href="#price" class="side-nav-item"><span class="side-nav-label">Прайс</span><span class="side-nav-dot"></span></a>
         <a href="#services" class="side-nav-item"><span class="side-nav-label">Послуги</span><span class="side-nav-dot"></span></a>
         <a href="#works" class="side-nav-item"><span class="side-nav-label">Галерея</span><span class="side-nav-dot"></span></a>
-        <a href="#reviews" class="side-nav-item"><span class="side-nav-label">Відгуки</span><span class="side-nav-dot"></span></a>
         <a href="#write-review" class="side-nav-item"><span class="side-nav-label">Написати відгук</span><span class="side-nav-dot"></span></a>
         <a href="#contacts" class="side-nav-item"><span class="side-nav-label">Контакти</span><span class="side-nav-dot"></span></a>
     </nav>
@@ -933,8 +932,6 @@
         
         <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5"/><path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12"/><path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8"/><path d="M10 15 C 11 17 12.5 18.5 14 19.5"/><path d="M19 2.5Q19 5 21.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none"/><path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none"/><path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none"/></svg></a>
 
-        <a href="#reviews" class="b-nav-item"><span class="b-nav-tooltip">Відгуки</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></a>
-        
         <div style="width: 42px;" class="nav-dummy"></div>
 
         <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-48px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
@@ -1142,44 +1139,7 @@
         </div>
     </section>
 
-    <!-- 4. Відгуки -->
-    <section id="reviews">
-        <div class="section-header reveal">
-            <h2 class="section-title">ВІДГУКИ КЛІЄНТІВ</h2>
-        </div>
-        <div class="reviews-container reveal" id="reviewsContainer">
-            <button class="review-arrow prev" id="prevReview" aria-label="Попередній відгук"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg></button>
-            <div class="reviews-stage" id="reviewsStage">
-                <div class="review-card-3d">
-                    <div class="stars">★★★★★</div>
-                    <p style="color: var(--text-secondary); font-style: italic;">«Неймовірна атмосфера та бездоганний сервіс. Фарбування перевершило всі очікування. Найкращий простір у місті!»</p>
-                    <div class="review-author">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Анастасія" class="author-avatar">
-                        <div><h4 style="color: var(--text-primary); margin: 0;">Анастасія</h4><span style="font-size: 11px; color: var(--accent-gold);">Постійний клієнт</span></div>
-                    </div>
-                </div>
-                <div class="review-card-3d">
-                    <div class="stars">★★★★★</div>
-                    <p style="color: var(--text-secondary); font-style: italic;">«Обожнюю стиль та уважність майстрів до деталей. Завжди виходжу від вас із ідеальним настроєм та манікюром.»</p>
-                    <div class="review-author">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Катерина" class="author-avatar">
-                        <div><h4 style="color: var(--text-primary); margin: 0;">Катерина</h4><span style="font-size: 11px; color: var(--accent-gold);">VIP гість</span></div>
-                    </div>
-                </div>
-                <div class="review-card-3d">
-                    <div class="stars">★★★★★</div>
-                    <p style="color: var(--text-secondary); font-style: italic;">«Робила реконструкцію волосся. Ефект просто вау! Дуже приємний персонал і смачна кава.»</p>
-                    <div class="review-author">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Марія" class="author-avatar">
-                        <div><h4 style="color: var(--text-primary); margin: 0;">Марія</h4><span style="font-size: 11px; color: var(--accent-gold);">Гість студії</span></div>
-                    </div>
-                </div>
-            </div>
-            <button class="review-arrow next" id="nextReview" aria-label="Наступний відгук"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg></button>
-        </div>
-    </section>
-
-    <!-- 5. Блок Написати відгук -->
+    <!-- 4. Блок Написати відгук -->
     <section id="write-review">
         <div class="section-header reveal">
             <h2 class="section-title">НАПИСАТИ ВІДГУК</h2>
@@ -1195,7 +1155,7 @@
         </div>
     </section>
 
-    <!-- 6. Блок Контакти -->
+    <!-- 5. Блок Контакти -->
     <section id="contacts">
         <div class="contact-wrapper reveal">
             
@@ -1301,8 +1261,16 @@
                 </div>
                 <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
             </div>
+            
+            <div class="hero-socials" style="margin-top: 25px; justify-content: center;">
+                <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
