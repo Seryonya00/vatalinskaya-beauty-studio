@@ -177,8 +177,7 @@
             transform: translateX(-50%);
             display: flex;
             align-items: center;
-            justify-content: center; /* Центрування */
-            gap: 25px; /* Рівна відстань */
+            justify-content: space-between;
             background: rgba(20, 20, 22, 0.95);
             backdrop-filter: blur(20px);
             padding: 12px 28px;
@@ -186,7 +185,7 @@
             border: 1px solid var(--glass-border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             z-index: 1001;
-            width: max-content; /* Автоматична ширина */
+            width: 620px;
             max-width: 95vw;
             overflow: visible;
         }
@@ -223,7 +222,10 @@
             color: #000;
             width: 58px;
             height: 58px;
-            transform: translateY(-25px); /* Плаваючий ефект замість absolute */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -90px); 
             box-shadow: 0 10px 30px var(--accent-gold-glow);
             border: none; 
             z-index: 10; 
@@ -236,7 +238,7 @@
         }
 
         .b-nav-item.home-btn:hover {
-            transform: translateY(-30px);
+            transform: translate(-50%, -95px);
             box-shadow: 0 15px 35px var(--accent-gold-glow);
             background: var(--accent-gold);
             color: #000;
@@ -564,7 +566,7 @@
 
         .service-img {
             width: 100%;
-            height: 370px; 
+            height: 370px; /* Увеличено по вертикали на ~30% */
             border-radius: 12px;
             object-fit: cover;
             margin-bottom: 15px;
@@ -613,6 +615,105 @@
 
         .work-card:hover { transform: translateY(-8px); border-color: var(--accent-gold); }
         .work-card:hover .work-card-overlay { opacity: 1; }
+
+        /* --- 3D Карусель відгуків (Горизонтальна) --- */
+        .reviews-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 100vw;
+            justify-content: center;
+            touch-action: pan-y;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .reviews-stage {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            cursor: grab;
+        }
+
+        .reviews-stage:active { cursor: grabbing; }
+
+        .review-card-3d {
+            position: absolute;
+            width: 100%;
+            max-width: 480px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.7) translateZ(-200px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .review-card-3d.active {
+            opacity: 1;
+            z-index: 3;
+            transform: translateX(0) scale(1) translateZ(0);
+            pointer-events: all;
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 25px var(--accent-gold-glow);
+        }
+
+        .review-card-3d.prev-card {
+            opacity: 0.35;
+            z-index: 2;
+            transform: translateX(-55%) scale(0.8) rotateY(15deg);
+        }
+
+        .review-card-3d.next-card {
+            opacity: 0.35;
+            z-index: 2;
+            transform: translateX(55%) scale(0.8) rotateY(-15deg);
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .author-avatar { width: 50px; height: 50px; border-radius: 50%; background: #2a2a2a; object-fit: cover; }
+        .stars { color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 15px; }
+
+        .review-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(22, 22, 24, 0.9);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .review-arrow:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 20px var(--accent-gold-glow); }
+        .review-arrow.prev { left: 0; }
+        .review-arrow.next { right: 0; }
+        .review-arrow svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
 
         /* --- Модальні вікна --- */
         .modal-overlay {
@@ -719,6 +820,9 @@
 
         /* --- Написати відгук --- */
         #write-review { background: rgba(15, 15, 17, 0.6); border-top: 1px solid var(--glass-border); }
+        .lux-form { display: flex; flex-direction: column; gap: 20px; }
+        .lux-form input, .lux-form textarea, .lux-form select { width: 100%; padding: 18px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); color: #fff; font-family: var(--font-body); border-radius: 4px; outline: none; transition: var(--transition); }
+        .lux-form input:focus, .lux-form textarea:focus, .lux-form select:focus { border-color: var(--accent-gold); background: rgba(255, 255, 255, 0.08); }
 
         /* --- Блок Контактів --- */
         #contacts { background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1920') center/cover fixed; position: relative; border-top: 1px solid var(--glass-border); overflow: hidden; }
@@ -772,21 +876,29 @@
             .section-title { font-size: 2.5rem; }
             .side-nav { display: none; }
             
-            .v-arrow { display: none !important; } 
+            .review-arrow, .v-arrow { display: none !important; } 
+            
+            .review-card-3d { max-width: 88%; padding: 25px; }
+            .review-card-3d.prev-card { transform: translateX(-35%) scale(0.85) rotateY(10deg); opacity: 0.25; }
+            .review-card-3d.next-card { transform: translateX(35%) scale(0.85) rotateY(-10deg); opacity: 0.25; }
 
-            .bottom-nav { gap: 15px; padding: 10px 15px; }
+            .bottom-nav { width: 95vw; padding: 10px 15px; }
             .b-nav-item { width: 34px; height: 34px; }
             .b-nav-item svg { width: 18px; height: 18px; }
-            .b-nav-item.home-btn { width: 50px; height: 50px; transform: translateY(-15px); }
-            .b-nav-item.home-btn:hover { transform: translateY(-20px); }
+            .nav-dummy { width: 34px !important; }
+            .b-nav-item.home-btn { width: 50px; height: 50px; transform: translate(-50%, -75px); }
+            .b-nav-item.home-btn:hover { transform: translate(-50%, -80px); }
             .contact-map iframe { min-height: 300px; }
         }
 
         @media (max-width: 480px) {
             .header-title { font-size: 1.05rem; letter-spacing: 1.5px; }
-            .bottom-nav { padding: 8px 10px; gap: 10px; }
+            .bottom-nav { padding: 8px 10px; }
             .b-nav-item { width: 30px; height: 30px; }
             .b-nav-item svg { width: 16px; height: 16px; }
+            .nav-dummy { width: 30px !important; }
+            .review-card-3d.prev-card { transform: translateX(-20%) scale(0.8) rotateY(5deg); opacity: 0.15; }
+            .review-card-3d.next-card { transform: translateX(20%) scale(0.8) rotateY(-5deg); opacity: 0.15; }
         }
     </style>
 </head>
@@ -810,6 +922,7 @@
         <a href="#price" class="side-nav-item"><span class="side-nav-label">Прайс</span><span class="side-nav-dot"></span></a>
         <a href="#services" class="side-nav-item"><span class="side-nav-label">Послуги</span><span class="side-nav-dot"></span></a>
         <a href="#works" class="side-nav-item"><span class="side-nav-label">Галерея</span><span class="side-nav-dot"></span></a>
+        <a href="#reviews" class="side-nav-item"><span class="side-nav-label">Відгуки</span><span class="side-nav-dot"></span></a>
         <a href="#write-review" class="side-nav-item"><span class="side-nav-label">Написати відгук</span><span class="side-nav-dot"></span></a>
         <a href="#contacts" class="side-nav-item"><span class="side-nav-label">Контакти</span><span class="side-nav-dot"></span></a>
     </nav>
@@ -818,14 +931,18 @@
     <nav class="bottom-nav">
         <a href="#price" class="b-nav-item"><span class="b-nav-tooltip">Прайс</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21.53 11.53l-8-8A2 2 0 0 0 12.12 3H5a2 2 0 0 0-2 2v7.12a2 2 0 0 0 .59 1.41l8 8a2 2 0 0 0 2.82 0l7.12-7.12a2 2 0 0 0 0-2.88z"></path><circle cx="8.5" cy="8.5" r="1.5"></circle></svg></a>
         
-        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></a>
+        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5 A 2.5 2.5 0 1 1 9.5 5.5"/><path d="M8.5 5.2 C 10.5 3.5 13.5 3.8 15 5.5 C 16.2 7 16 8.5 15 9.8 C 14.2 11 14 11.8 14.5 12.3 C 15 12.8 15.5 13.2 15 14 C 14.5 15.2 13 15.8 11.8 15.2 C 10.5 14.5 9.5 13.2 8.5 12"/><path d="M12.5 9.8 Q 13.5 10.2 14.5 9.8"/><path d="M10 15 C 11 17 12.5 18.5 14 19.5"/><path d="M19 2.5Q19 5 21.5 5Q19 5 19 2.5Z" fill="currentColor" stroke="none"/><path d="M20.5 9Q20.5 12 23.5 12Q20.5 12 20.5 15Q20.5 12 17.5 12Q20.5 12 20.5 9Z" fill="currentColor" stroke="none"/><path d="M18 16.5Q18 18.5 20 18.5Q18 18.5 18 20.5Q18 18.5 16 18.5Q18 18.5 18 16.5Z" fill="currentColor" stroke="none"/></svg></a>
 
-        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-42px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
+        <a href="#reviews" class="b-nav-item"><span class="b-nav-tooltip">Відгуки</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></a>
+        
+        <div style="width: 42px;" class="nav-dummy"></div>
+
+        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-48px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
+
+        <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip" style="margin-left:-15px;">Написати</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>
 
         <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
         
-        <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip" style="margin-left:-15px;">Написати</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>
-
         <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
     </nav>
 
@@ -1025,18 +1142,60 @@
         </div>
     </section>
 
-    <!-- 4. Блок Написати відгук -->
+    <!-- 4. Відгуки -->
+    <section id="reviews">
+        <div class="section-header reveal">
+            <h2 class="section-title">ВІДГУКИ КЛІЄНТІВ</h2>
+        </div>
+        <div class="reviews-container reveal" id="reviewsContainer">
+            <button class="review-arrow prev" id="prevReview" aria-label="Попередній відгук"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg></button>
+            <div class="reviews-stage" id="reviewsStage">
+                <div class="review-card-3d">
+                    <div class="stars">★★★★★</div>
+                    <p style="color: var(--text-secondary); font-style: italic;">«Неймовірна атмосфера та бездоганний сервіс. Фарбування перевершило всі очікування. Найкращий простір у місті!»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Анастасія" class="author-avatar">
+                        <div><h4 style="color: var(--text-primary); margin: 0;">Анастасія</h4><span style="font-size: 11px; color: var(--accent-gold);">Постійний клієнт</span></div>
+                    </div>
+                </div>
+                <div class="review-card-3d">
+                    <div class="stars">★★★★★</div>
+                    <p style="color: var(--text-secondary); font-style: italic;">«Обожнюю стиль та уважність майстрів до деталей. Завжди виходжу від вас із ідеальним настроєм та манікюром.»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Катерина" class="author-avatar">
+                        <div><h4 style="color: var(--text-primary); margin: 0;">Катерина</h4><span style="font-size: 11px; color: var(--accent-gold);">VIP гість</span></div>
+                    </div>
+                </div>
+                <div class="review-card-3d">
+                    <div class="stars">★★★★★</div>
+                    <p style="color: var(--text-secondary); font-style: italic;">«Робила реконструкцію волосся. Ефект просто вау! Дуже приємний персонал і смачна кава.»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Марія" class="author-avatar">
+                        <div><h4 style="color: var(--text-primary); margin: 0;">Марія</h4><span style="font-size: 11px; color: var(--accent-gold);">Гість студії</span></div>
+                    </div>
+                </div>
+            </div>
+            <button class="review-arrow next" id="nextReview" aria-label="Наступний відгук"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg></button>
+        </div>
+    </section>
+
+    <!-- 5. Блок Написати відгук -->
     <section id="write-review">
         <div class="section-header reveal">
             <h2 class="section-title">НАПИСАТИ ВІДГУК</h2>
             <p style="color: var(--text-secondary); max-width: 500px; margin: 15px auto 0;">Поділіться своїми враженнями від візиту до нашої студії</p>
         </div>
-        <div class="reveal" style="display: flex; justify-content: center; width: 100%;">
-            <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x4127a7912f60c419:0xabb770f238f4355e!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" target="_blank" rel="noopener" class="btn-lux" style="margin-top: 10px;">Написати</a>
+        <div class="reveal" style="max-width: 600px; margin: 0 auto; width: 100%;">
+            <form class="lux-form" onsubmit="event.preventDefault(); alert('Дякуємо за ваш відгук!'); this.reset();">
+                <input type="text" placeholder="Ім'я" required>
+                <input type="tel" placeholder="Телефон" required>
+                <textarea rows="5" placeholder="Повідомлення" required></textarea>
+                <button type="submit" class="btn-lux" style="align-self: center; margin-top: 10px;">Надіслати</button>
+            </form>
         </div>
     </section>
 
-    <!-- 5. Блок Контакти -->
+    <!-- 6. Блок Контакти -->
     <section id="contacts">
         <div class="contact-wrapper reveal">
             
@@ -1153,60 +1312,343 @@
                 <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
                 </a>
+                <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Підключення скриптів для анімацій та навігації -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Анімація прояву секцій при скролі (reveal)
-            const reveals = document.querySelectorAll(".reveal");
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-            reveals.forEach(reveal => {
-                revealObserver.observe(reveal);
-            });
-
-            // Підсвічування активного пункту бокового меню при скролі
-            const sections = document.querySelectorAll("section");
-            const sideNavItems = document.querySelectorAll(".side-nav-item");
+    <!-- Підменю 1: Стрижки та укладки -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-1">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Стрижки та укладки</h3>
+            <div class="v-carousel-container">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
+                    <div class="v-card-3d">
+                        <img src="image/strigkaone.jpg" alt="Стрижки та укладки" style="margin: 0; height: 320px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/stigkatwo.jpg" alt="Стрижки та укладки" style="margin: 0; height: 320px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/stigkathree.jpg" alt="Стрижки та укладки" style="margin: 0; height: 320px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/stigkafour.jpg" alt="Стрижки та укладки" style="margin: 0; height: 320px;">
+                    </div>
+                </div>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
             
-            const navObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        let currentId = entry.target.getAttribute("id");
-                        sideNavItems.forEach(item => {
-                            item.classList.remove("active");
-                            if (item.getAttribute("href") === "#" + currentId) {
-                                item.classList.add("active");
-                            }
-                        });
-                    }
-                });
-            }, { threshold: 0.3 }); // Активується, коли 30% секції на екрані
+            <div class="hero-socials" style="margin-top: 25px; justify-content: center;">
+                <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+                <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
 
-            sections.forEach(section => {
-                navObserver.observe(section);
+    <!-- Підменю 2: Реконструкція волосся -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-2">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Реконструкція волосся</h3>
+            <div class="v-carousel-container">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
+                    <div class="v-card-3d">
+                        <img src="image/reconone.jpg" alt="Реконструкція волосся" style="margin: 0; height: 320px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/recontwo.jpg" alt="Реконструкція волосся" style="margin: 0; height: 320px;">
+                    </div>
+                </div>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            
+            <div class="hero-socials" style="margin-top: 25px; justify-content: center;">
+                <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+                <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Підменю 3: Послуги бровіста -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-3">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Послуги бровіста</h3>
+            <div class="v-carousel-container">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
+                    <div class="v-card-3d with-text">
+                        <img src="image/123.jpg" alt="Брови">
+                        <h4>text one</h4>
+                    </div>
+                    <div class="v-card-3d with-text">
+                        <img src="image/345.jpg" alt="Брови">
+                        <h4>text two</h4>
+                    </div>
+                    <div class="v-card-3d with-text">
+                        <img src="image/456.jpg" alt="Брови">
+                        <h4>text three</h4>
+                    </div>
+                </div>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            
+            <div class="hero-socials" style="margin-top: 25px; justify-content: center;">
+                <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+                <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Анімація скролу (Reveal)
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) el.classList.add('active');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Світіння за курсором
+        const glow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = `${e.clientX}px`;
+            glow.style.top = `${e.clientY}px`;
+        });
+
+        // Паралакс іконок на фоні
+        const parallaxItems = document.querySelectorAll('.p-item');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5);
+            const y = (e.clientY / window.innerHeight - 0.5);
+            
+            parallaxItems.forEach(item => {
+                const speed = parseFloat(item.getAttribute('data-speed'));
+                item.style.transform = `translate(${x * 100 * speed}px, ${y * 100 * speed}px)`;
             });
         });
 
-        // Функції закриття модальних вікон
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            if (modal) modal.classList.remove('active');
+        // Паралакс ефект для персонажа (Тетяна) у блоці контактів
+        const characterImg = document.getElementById('characterParallax');
+        const contactSection = document.getElementById('contacts');
+        
+        window.addEventListener('scroll', () => {
+            if(!characterImg || window.innerWidth < 1024) return;
+            const rect = contactSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const scrollProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                const maxTranslate = 40; 
+                const yOffset = (scrollProgress - 0.5) * maxTranslate;
+                characterImg.style.transform = `translateY(${yOffset}px)`;
+            }
+        });
+
+        // Активна навігація (бічна та dock)
+        const sections = document.querySelectorAll('section');
+        const sideNavItems = document.querySelectorAll('.side-nav-item');
+        const dockNavItems = document.querySelectorAll('.b-nav-item:not(.home-btn)');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                const secTop = sec.offsetTop;
+                if (pageYOffset >= secTop - 250) {
+                    current = sec.getAttribute('id');
+                }
+            });
+            
+            sideNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) item.classList.add('active');
+            });
+
+            dockNavItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) item.classList.add('active');
+            });
+        });
+
+        // 3D Карусель відгуків (ГОРИЗОНТАЛЬНА)
+        const cards = document.querySelectorAll('.review-card-3d');
+        const prevBtn = document.getElementById('prevReview');
+        const nextBtn = document.getElementById('nextReview');
+        const stage = document.getElementById('reviewsStage');
+        let currentIndex = 1;
+        
+        function updateCarousel() {
+            cards.forEach((card, index) => {
+                card.className = 'review-card-3d';
+                if (index === currentIndex) card.classList.add('active');
+                else if (index === currentIndex - 1 || (currentIndex === 0 && index === cards.length - 1)) {
+                    card.classList.add('prev-card');
+                }
+                else if (index === currentIndex + 1 || (currentIndex === cards.length - 1 && index === 0)) {
+                    card.classList.add('next-card');
+                }
+            });
         }
         
+        if(prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+                updateCarousel();
+            });
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+        }
+
+        // Свайпи для горизонтальної каруселі
+        let startX = 0, currentX = 0;
+        if(stage) {
+            stage.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
+            stage.addEventListener('touchmove', e => currentX = e.touches[0].clientX, {passive: true});
+            stage.addEventListener('touchend', () => {
+                if (startX - currentX > 50) nextBtn.click();
+                else if (currentX - startX > 50) prevBtn.click();
+            });
+            
+            let isDragging = false;
+            stage.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; });
+            stage.addEventListener('mousemove', e => { if (isDragging) currentX = e.clientX; });
+            stage.addEventListener('mouseup', () => {
+                isDragging = false;
+                if (startX - currentX > 50) nextBtn.click();
+                else if (currentX - startX > 50) prevBtn.click();
+            });
+            stage.addEventListener('mouseleave', () => isDragging = false);
+        }
+        
+        updateCarousel();
+
+        // Управління модальними вікнами
+        const mainModal = document.getElementById('modal');
+        const serviceSelect = document.getElementById('booking-service-select');
+        
+        function openBookingFromSub(serviceValue) {
+            closeAllSubModals();
+            setTimeout(() => {
+                mainModal.classList.add('active');
+                if (serviceSelect && serviceValue) {
+                    serviceSelect.value = serviceValue;
+                }
+            }, 400); 
+        }
+
+        function closeModal() {
+            mainModal.classList.remove('active');
+        }
+
         function closeAllSubModals() {
             document.querySelectorAll('.sub-menu-modal').forEach(m => m.classList.remove('active'));
         }
-    </script>
 
+        // Закриття кліком по фону
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+
+        // ВЕРТИКАЛЬНА КАРУСЕЛЬ для кожного підменю
+        document.querySelectorAll('.v-carousel-container').forEach(container => {
+            const vCards = container.querySelectorAll('.v-card-3d');
+            const vUpBtn = container.querySelector('.v-arrow.up');
+            const vDownBtn = container.querySelector('.v-arrow.down');
+            const vStage = container.querySelector('.v-stage');
+            let vIndex = 0;
+
+            function updateVCarousel() {
+                vCards.forEach((card, idx) => {
+                    card.className = 'v-card-3d'; 
+                    if (card.querySelector('h4')) card.classList.add('with-text');
+
+                    if (idx === vIndex) card.classList.add('active');
+                    else if (idx === vIndex - 1 || (vIndex === 0 && idx === vCards.length - 1)) {
+                        card.classList.add('prev-card');
+                    }
+                    else if (idx === vIndex + 1 || (vIndex === vCards.length - 1 && idx === 0)) {
+                        card.classList.add('next-card');
+                    }
+                });
+            }
+
+            if(vUpBtn && vDownBtn) {
+                vUpBtn.addEventListener('click', () => {
+                    vIndex = (vIndex > 0) ? vIndex - 1 : vCards.length - 1;
+                    updateVCarousel();
+                });
+                vDownBtn.addEventListener('click', () => {
+                    vIndex = (vIndex < vCards.length - 1) ? vIndex + 1 : 0;
+                    updateVCarousel();
+                });
+            }
+
+            // Свайпи (вгору/вниз)
+            let startY = 0, currentY = 0;
+            vStage.addEventListener('touchstart', e => startY = e.touches[0].clientY, {passive: true});
+            vStage.addEventListener('touchmove', e => currentY = e.touches[0].clientY, {passive: true});
+            vStage.addEventListener('touchend', () => {
+                if (startY - currentY > 40) vDownBtn.click();
+                else if (currentY - startY > 40) vUpBtn.click();
+            });
+
+            // Мишка (вгору/вниз)
+            let isVDragging = false;
+            vStage.addEventListener('mousedown', e => { isVDragging = true; startY = e.clientY; });
+            vStage.addEventListener('mousemove', e => { if (isVDragging) currentY = e.clientY; });
+            vStage.addEventListener('mouseup', () => {
+                isVDragging = false;
+                if (startY - currentY > 40) vDownBtn.click();
+                else if (currentY - startY > 40) vUpBtn.click();
+            });
+            vStage.addEventListener('mouseleave', () => isVDragging = false);
+
+            updateVCarousel();
+        });
+    </script>
 </body>
 </html>
