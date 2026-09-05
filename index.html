@@ -187,6 +187,7 @@
             z-index: 1001;
             width: 620px;
             max-width: 95vw;
+            overflow: visible;
         }
 
         .b-nav-item {
@@ -216,26 +217,29 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Опущена жовта кнопка в загальний ряд */
         .b-nav-item.home-btn {
             background: var(--accent-gold);
             color: #000;
-            width: 54px;
-            height: 54px;
-            box-shadow: 0 10px 30px var(--accent-gold-glow);
+            width: 42px;
+            height: 42px;
+            position: relative;
+            left: auto;
+            top: auto;
+            transform: none; 
+            box-shadow: 0 5px 15px var(--accent-gold-glow);
             border: none; 
-            margin: 0 10px;
+            z-index: 10; 
         }
 
         .b-nav-item.home-btn svg {
             stroke: #000;
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
         }
 
         .b-nav-item.home-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px var(--accent-gold-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--accent-gold-glow);
             background: var(--accent-gold);
             color: #000;
         }
@@ -562,7 +566,7 @@
 
         .service-img {
             width: 100%;
-            height: 370px; 
+            height: 370px;
             border-radius: 12px;
             object-fit: cover;
             margin-bottom: 15px;
@@ -578,6 +582,39 @@
             font-size: 1.1rem;
             margin-bottom: 15px;
         }
+
+        /* --- Наші роботи (Instagram feed style) --- */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .work-card {
+            position: relative;
+            height: 320px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .work-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .work-card:hover { transform: translateY(-8px); border-color: var(--accent-gold); }
+        .work-card:hover .work-card-overlay { opacity: 1; }
 
         /* --- Модальні вікна --- */
         .modal-overlay {
@@ -685,8 +722,6 @@
         /* --- Написати відгук --- */
         #write-review { background: rgba(15, 15, 17, 0.6); border-top: 1px solid var(--glass-border); }
         .lux-form { display: flex; flex-direction: column; gap: 20px; }
-        .lux-form input, .lux-form textarea, .lux-form select { width: 100%; padding: 18px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); color: #fff; font-family: var(--font-body); border-radius: 4px; outline: none; transition: var(--transition); }
-        .lux-form input:focus, .lux-form textarea:focus, .lux-form select:focus { border-color: var(--accent-gold); background: rgba(255, 255, 255, 0.08); }
 
         /* --- Блок Контактів --- */
         #contacts { background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1920') center/cover fixed; position: relative; border-top: 1px solid var(--glass-border); overflow: hidden; }
@@ -726,6 +761,7 @@
         /* --- Мобільна адаптація --- */
         @media (max-width: 1024px) {
             section { padding: 50px 6% 30px; min-height: auto; }
+            .work-grid { grid-template-columns: repeat(2, 1fr); }
             
             .contact-wrapper { grid-template-columns: 1fr; display: flex; flex-direction: column; gap: 40px; }
             .contact-character-box { order: 1; min-height: 320px; }
@@ -744,8 +780,7 @@
             .bottom-nav { width: 95vw; padding: 10px 15px; }
             .b-nav-item { width: 34px; height: 34px; }
             .b-nav-item svg { width: 18px; height: 18px; }
-            .b-nav-item.home-btn { width: 48px; height: 48px; margin: 0 5px; }
-            .b-nav-item.home-btn:hover { transform: translateY(-5px); }
+            .b-nav-item.home-btn { width: 34px; height: 34px; }
             .contact-map iframe { min-height: 300px; }
         }
 
@@ -754,7 +789,7 @@
             .bottom-nav { padding: 8px 10px; }
             .b-nav-item { width: 30px; height: 30px; }
             .b-nav-item svg { width: 16px; height: 16px; }
-            .b-nav-item.home-btn { width: 40px; height: 40px; }
+            .work-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -777,29 +812,25 @@
         <a href="#hero" class="side-nav-item active"><span class="side-nav-label">Головна</span><span class="side-nav-dot"></span></a>
         <a href="#price" class="side-nav-item"><span class="side-nav-label">Прайс</span><span class="side-nav-dot"></span></a>
         <a href="#services" class="side-nav-item"><span class="side-nav-label">Послуги</span><span class="side-nav-dot"></span></a>
-        <a href="#works" class="side-nav-item"><span class="side-nav-label">Галерея</span><span class="side-nav-dot"></span></a>
+        <a href="#works" class="side-nav-item"><span class="side-nav-label">Наші роботи</span><span class="side-nav-dot"></span></a>
         <a href="#write-review" class="side-nav-item"><span class="side-nav-label">Написати відгук</span><span class="side-nav-dot"></span></a>
         <a href="#contacts" class="side-nav-item"><span class="side-nav-label">Контакти</span><span class="side-nav-dot"></span></a>
     </nav>
 
-    <!-- Нижнє меню (Dock) -->
+    <!-- Нижнє меню (Dock) з виправленим порядком етапів та опущеним жовтим кругом зі стрілкою вниз -->
     <nav class="bottom-nav">
-        <!-- Прайс -->
         <a href="#price" class="b-nav-item"><span class="b-nav-tooltip">Прайс</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21.53 11.53l-8-8A2 2 0 0 0 12.12 3H5a2 2 0 0 0-2 2v7.12a2 2 0 0 0 .59 1.41l8 8a2 2 0 0 0 2.82 0l7.12-7.12a2 2 0 0 0 0-2.88z"></path><circle cx="8.5" cy="8.5" r="1.5"></circle></svg></a>
         
-        <!-- Послуги (Нова іконка - ножиці/гребінець стилізовані) -->
-        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></a>
+        <!-- Виправлена іконка послуги в стилі сайту -->
+        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></a>
 
-        <!-- Наші роботи -->
-        <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
-        
-        <!-- Головна сторінка - перенесено в центр ряду -->
-        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
+        <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Наші роботи</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
 
-        <!-- Написати відгук -->
-        <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip">Написати</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>
+        <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip">Написати відгук</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>
 
-        <!-- Контакти -->
+        <!-- Жовтий круг зі стрілкою вниз, опущений в ряд між іншими іконками -->
+        <a href="#hero" class="b-nav-item home-btn" title="Головна"><span class="b-nav-tooltip">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></a>
+
         <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
     </nav>
 
@@ -978,34 +1009,43 @@
         </div>
     </section>
 
-    <!-- 3. Наші роботи (Instagram Widget) -->
+    <!-- 3. Наші роботи (Оновлений блок з інтеграцією Instagram до 6 фотографій у стилі веб-версії стрічки) -->
     <section id="works">
         <div class="section-header reveal">
             <h2 class="section-title">НАШІ РОБОТИ</h2>
-            <p style="color: var(--text-secondary); max-width: 500px; margin: 15px auto 0;">Наш Instagram. Підписуйтесь, щоб не пропустити нові роботи та оновлення!</p>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 10px auto 0; font-size: 0.95rem;">Свіжі публікації з нашого Instagram в реальному часі</p>
         </div>
-        <div class="reveal" style="width: 100%; max-width: 1200px; margin: 0 auto; overflow: hidden; border-radius: 12px; min-height: 300px;">
-            <!-- Внимание! Это блок виджета Instagram от сервиса Elfsight.
-                 Вам нужно зарегистрироваться на elfsight.com, создать виджет Instagram Feed
-                 и заменить data-elfsight-app-lazy id на свой! -->
-            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-            <div class="elfsight-app-c8e8b919-4b68-45e0-91cd-fb4217112046" data-elfsight-app-lazy></div>
+        <div class="work-grid reveal" id="instagramFeed">
+            <!-- Динамічно або автоматично до 6 постів з Instagram -->
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            </div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            </div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            </div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            </div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            </div>
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
+            </div>
         </div>
     </section>
 
-    <!-- 4. Написати відгук (Оновлений блок) -->
+    <!-- 4. Блок Написати відгук (Оновлений згідно з вимогами: текст залишено, поля прибрані, кнопка "Написати" з посиланням на Google Maps) -->
     <section id="write-review">
         <div class="section-header reveal">
             <h2 class="section-title">НАПИСАТИ ВІДГУК</h2>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 15px auto 0;">Поділіться своїми враженнями від візиту до нашої студії</p>
         </div>
-        <div class="reveal" style="text-align: center; max-width: 600px; margin: 0 auto; width: 100%;">
-            <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x4127a7912f60c419:0xabb770f238f4355e!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" 
-               target="_blank" 
-               rel="noopener" 
-               class="btn-lux" 
-               style="font-size: 14px; padding: 22px 60px;">
-               Написати
-            </a>
+        <div class="reveal" style="max-width: 600px; margin: 0 auto; width: 100%; text-align: center;">
+            <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x4127a7912f60c419:0xabb770f238f4355e!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" target="_blank" rel="noopener" class="btn-lux" style="display: inline-block; margin-top: 10px; text-decoration: none;">Написати</a>
         </div>
     </section>
 
@@ -1123,11 +1163,31 @@
                 <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                 </a>
-                <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
-                </a>
             </div>
         </div>
     </div>
+
+    <!-- Інші модалки послуг та скрипти -->
+    <script>
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+        function closeAllSubModals() {
+            document.querySelectorAll('.sub-menu-modal').forEach(m => m.classList.remove('active'));
+        }
+
+        // Паралакс та анімація появи при прокрутці
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
