@@ -177,7 +177,8 @@
             transform: translateX(-50%);
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 25px; /* Рівна відстань між усіма елементами */
             background: rgba(20, 20, 22, 0.95);
             backdrop-filter: blur(20px);
             padding: 15px 35px;
@@ -185,7 +186,7 @@
             border: 1px solid var(--glass-border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             z-index: 1001;
-            width: 700px; /* Збільшено на 20% */
+            width: max-content; /* Адаптується під вміст */
             max-width: 95vw;
             overflow: visible;
         }
@@ -197,16 +198,16 @@
             justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
-            width: 50px; /* Збільшено на 20% */
-            height: 50px; /* Збільшено на 20% */
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             transition: var(--transition);
             flex-shrink: 0;
         }
 
         .b-nav-item svg {
-            width: 26px; /* Збільшено на 20% */
-            height: 26px; /* Збільшено на 20% */
+            width: 26px;
+            height: 26px;
             fill: none;
             stroke: currentColor;
             transition: var(--transition);
@@ -220,12 +221,9 @@
         .b-nav-item.home-btn {
             background: var(--accent-gold);
             color: #000;
-            width: 70px; /* Збільшено на 20% */
-            height: 70px; /* Збільшено на 20% */
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -100px); /* Адаптовано відступ */
+            width: 70px;
+            height: 70px;
+            transform: translateY(-30px); /* Піднімає кнопку вгору, не ламаючи сітку */
             box-shadow: 0 10px 30px var(--accent-gold-glow);
             border: none; 
             z-index: 10; 
@@ -233,12 +231,12 @@
 
         .b-nav-item.home-btn svg {
             stroke: #000;
-            width: 31px; /* Збільшено на 20% */
-            height: 31px; /* Збільшено на 20% */
+            width: 31px;
+            height: 31px;
         }
 
         .b-nav-item.home-btn:hover {
-            transform: translate(-50%, -105px);
+            transform: translateY(-35px); /* Ефект при наведенні */
             box-shadow: 0 15px 35px var(--accent-gold-glow);
             background: var(--accent-gold);
             color: #000;
@@ -779,21 +777,21 @@
             
             .v-arrow { display: none !important; } 
 
-            .bottom-nav { width: 95vw; padding: 10px 20px; }
+            .bottom-nav { width: max-content; padding: 10px 25px; gap: 15px; }
             .b-nav-item { width: 40px; height: 40px; }
             .b-nav-item svg { width: 22px; height: 22px; }
-            .nav-dummy { width: 40px !important; }
-            .b-nav-item.home-btn { width: 60px; height: 60px; transform: translate(-50%, -85px); }
-            .b-nav-item.home-btn:hover { transform: translate(-50%, -90px); }
+            .b-nav-item.home-btn { width: 60px; height: 60px; transform: translateY(-20px); }
+            .b-nav-item.home-btn:hover { transform: translateY(-25px); }
             .contact-map iframe { min-height: 300px; }
         }
 
         @media (max-width: 480px) {
             .header-title { font-size: 1.05rem; letter-spacing: 1.5px; }
-            .bottom-nav { padding: 8px 10px; }
+            .bottom-nav { padding: 10px 15px; gap: 10px; width: max-content; }
             .b-nav-item { width: 36px; height: 36px; }
             .b-nav-item svg { width: 20px; height: 20px; }
-            .nav-dummy { width: 36px !important; }
+            .b-nav-item.home-btn { width: 50px; height: 50px; transform: translateY(-15px); }
+            .b-nav-item.home-btn:hover { transform: translateY(-20px); }
         }
     </style>
 </head>
@@ -826,8 +824,6 @@
         
         <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></a>
         
-        <div style="width: 50px;" class="nav-dummy"></div>
-
         <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-50px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
 
         <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
