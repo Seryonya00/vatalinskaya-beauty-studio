@@ -1029,6 +1029,10 @@
                 <h2>КОНТАКТИ</h2>
                 <p>Зв'яжіться з нами у месенджерах або зателефонуйте</p>
                 
+                <a href="https://maps.google.com/?q=Vatalinskaya+Beauty+Studio,+вулиця+Ахсарова,+16,+Харків" target="_blank" rel="noopener" class="highlight-link" style="display: block; margin-bottom: 10px;">
+                    вул. Ахсарова, 16, Харків
+                </a>
+
                 <a href="tel:+380505366959" class="highlight-link">
                     +38 (050) 536-69-59
                 </a>
@@ -1051,6 +1055,26 @@
         </div>
     </section>
 
+    <!-- Modal 0: Фарбування волосся -->
+    <div class="modal-overlay sub-menu-modal" id="sub-modal-0">
+        <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
+            <button class="modal-close" onclick="closeAllSubModals()">✕</button>
+            <h3 style="margin-bottom: 10px; font-size: 1.6rem; text-align: center; color: var(--accent-gold);">Фарбування волосся</h3>
+            <div class="v-carousel-container">
+                <button class="v-arrow up"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg></button>
+                <div class="v-stage">
+                    <div class="v-card-3d">
+                        <img src="image/bghear.jpg" alt="Фарбування волосся" style="margin: 0; height: 320px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/haircut.jpg" alt="Фарбування волосся додаткове" style="margin: 0; height: 320px;">
+                    </div>
+                </div>
+                <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal 1: Стрижки та укладки -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-1">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
@@ -1065,13 +1089,19 @@
                     <div class="v-card-3d">
                         <img src="image/stigkatwo.jpg" alt="Стрижки та укладки" style="margin: 0; height: 320px;">
                     </div>
+                    <div class="v-card-3d">
+                        <img src="image/bghear.jpg" alt="Стрижки та укладки додаткове" style="margin: 0; height: 320px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/haircut.jpg" alt="Стрижки та укладки додаткове 2" style="margin: 0; height: 320px;">
+                    </div>
                 </div>
                 <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
             </div>
         </div>
     </div>
 
-    <!-- Modal 2: Реконструкція волосся (із доданим фото IMG_0711) -->
+    <!-- Modal 2: Реконструкція волосся -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-2">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeAllSubModals()">✕</button>
@@ -1085,13 +1115,16 @@
                     <div class="v-card-3d">
                         <img src="image/IMG_0711.jpg" alt="Реконструкція волосся додаткове" style="margin: 0; height: 320px;">
                     </div>
+                    <div class="v-card-3d">
+                        <img src="image/bghear.jpg" alt="Реконструкція волосся додаткове 2" style="margin: 0; height: 320px;">
+                    </div>
                 </div>
                 <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
             </div>
         </div>
     </div>
 
-    <!-- Modal 3: Послуги бровіста (із фото 123, 345, 456) -->
+    <!-- Modal 3: Послуги бровіста -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-3">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeAllSubModals()">✕</button>
@@ -1129,6 +1162,9 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             const reveals = document.querySelectorAll('.reveal');
+            const sections = document.querySelectorAll('section');
+            const sideNavItems = document.querySelectorAll('.side-nav-item');
+
             const revealOnScroll = () => {
                 const windowHeight = window.innerHeight;
                 reveals.forEach(el => {
@@ -1136,7 +1172,25 @@
                         el.classList.add('active');
                     }
                 });
+
+                // Scroll spy for side navigation
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 250)) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                sideNavItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${currentSection}`) {
+                        item.classList.add('active');
+                    }
+                });
             };
+
             window.addEventListener('scroll', revealOnScroll);
             revealOnScroll();
 
