@@ -781,15 +781,19 @@
             .contact-map iframe { min-height: 300px; }
         }
 
-        @media (max-width: 767px) {
-         #hero { justify-content: center; padding-top: 60px; }
-        .work-card { height: 250px; }
+        media (max-width: 767px) {
+        #hero { 
+        justify-content: center !important; 
+        padding-top: 60px !important; 
+    }
     
-        .hero-logo-img {
-        max-height: 300px !important; /* Поставьте нужную высоту, 10px — это слишком мало, логотип исчезнет */
-        width: auto !important;      /* Чтобы пропорции не сплющило */
+    .work-card {height: 250px !important;}
+    
+    #hero .hero-logo-img { 
+        max-height: 80px !important;
+        width: auto !important;
         margin-top: 0px !important;
-        margin-bottom: 100px !important;
+        margin-bottom: 15px !important;
     }
         
 
