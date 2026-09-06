@@ -781,20 +781,10 @@
             .contact-map iframe { min-height: 300px; }
         }
 
-        media (max-width: 767px) {
-        #hero { 
-        justify-content: center !important; 
-        padding-top: 60px !important; 
-    }
-    
-    .work-card {height: 250px !important;}
-    
-    #hero .hero-logo-img { 
-        max-height: 80px !important;
-        width: auto !important;
-        margin-top: 0px !important;
-        margin-bottom: 15px !important;
-    }
+        @media (max-width: 767px) {
+            #hero { justify-content: center; padding-top: 60px; }
+            .work-card { height: 250px; }
+        }
         
 
         @media (max-width: 480px) {
