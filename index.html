@@ -782,13 +782,15 @@
         }
 
         @media (max-width: 767px) {
-            #hero { justify-content: center; padding-top: 60px; }
-            .work-card { height: 250px; }
-            .hero-logo-img {
-        max-height: 10px;  /* МАСШТАБ: уменьшите или увеличьте эту цифру (было ~234px) */
-        margin-top: 0px;    /* ПОЗИЦИЯ СВЕРХУ: увеличьте, чтобы опустить логотип ниже */
-        margin-bottom: 15px;/* ПОЗИЦИЯ СНИЗУ: расстояние до заголовка */
-        }
+         #hero { justify-content: center; padding-top: 60px; }
+        .work-card { height: 250px; }
+    
+        .hero-logo-img {
+        max-height: 120px !important; /* Поставьте нужную высоту, 10px — это слишком мало, логотип исчезнет */
+        width: auto !important;      /* Чтобы пропорции не сплющило */
+        margin-top: 0px !important;
+        margin-bottom: 15px !important;
+    }
         
 
         @media (max-width: 480px) {
