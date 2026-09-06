@@ -784,7 +784,13 @@
         @media (max-width: 767px) {
             #hero { justify-content: center; padding-top: 60px; }
             .work-card { height: 250px; }
-        }
+            .hero-logo-img {
+              max-height: 220px;       /* Можна зменшити розмір на мобілці, якщо треба */
+              margin-top: -50px;       /* Підняти вище */
+              margin-bottom: 15px;     /* Відстань до заголовка */
+              transform: translateY(0); /* Або використати точковий зсув */
+            }
+        
         
 
         @media (max-width: 480px) {
@@ -1418,4 +1424,13 @@
                     if(diff > 0) {
                         currentIndex = (currentIndex + 1) % cards.length;
                     } else {
-                        currentIndex = (currentIndex - 1 + cards.length) 
+                        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                    }
+                    updateCarousel();
+                    isDragging = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
