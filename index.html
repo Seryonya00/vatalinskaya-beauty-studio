@@ -686,20 +686,24 @@
         }
         .v-card-3d img {
             width: 100%;
-            height: 230px;
-            object-fit: cover;
+            height: 220px;
+            object-fit: contain;
             border-radius: 12px;
             background: rgba(0, 0, 0, 0.3);
         }
-        .v-card-3d h4 {
-            font-size: 1.1rem;
-            color: var(--text-primary);
+        .v-card-text {
             margin-top: 8px;
-        }
-        .v-card-3d p {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            margin-top: 2px;
+            line-height: 1.3;
+            min-height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .v-card-3d h4 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
         }
         .v-arrow {
             position: absolute;
@@ -793,7 +797,7 @@
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <header>
-        <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="header-title">vatalinskaya beauty studio</a>[cite: 7]
+        <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="header-title">vatalinskaya beauty studio</a>
     </header>
 
     <nav class="side-nav">
@@ -806,212 +810,212 @@
     </nav>
 
     <nav class="bottom-nav">
-        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></a>[cite: 7]
+        <a href="#services" class="b-nav-item"><span class="b-nav-tooltip">Послуги</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></a>
         
-        <a href="#price" class="b-nav-item"><span class="b-nav-tooltip">Прайс</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21.53 11.53l-8-8A2 2 0 0 0 12.12 3H5a2 2 0 0 0-2 2v7.12a2 2 0 0 0 .59 1.41l8 8a2 2 0 0 0 2.82 0l7.12-7.12a2 2 0 0 0 0-2.88z"></path><circle cx="8.5" cy="8.5" r="1.5"></circle></svg></a>[cite: 7]
+        <a href="#price" class="b-nav-item"><span class="b-nav-tooltip">Прайс</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor"><path d="M21.53 11.53l-8-8A2 2 0 0 0 12.12 3H5a2 2 0 0 0-2 2v7.12a2 2 0 0 0 .59 1.41l8 8a2 2 0 0 0 2.82 0l7.12-7.12a2 2 0 0 0 0-2.88z"></path><circle cx="8.5" cy="8.5" r="1.5"></circle></svg></a>
         
-        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-50px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>[cite: 7]
+        <a href="#hero" class="b-nav-item home-btn"><span class="b-nav-tooltip" style="top:-50px;">Головна</span><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
 
-        <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>[cite: 7]
+        <a href="#works" class="b-nav-item"><span class="b-nav-tooltip">Галерея</span><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="currentColor" stroke="none"/></svg></a>
 
-        <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip" style="margin-left:-15px;">Написати</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>[cite: 7]
+        <a href="#write-review" class="b-nav-item"><span class="b-nav-tooltip" style="margin-left:-15px;">Написати</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>
         
-        <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>[cite: 7]
+        <a href="#contacts" class="b-nav-item"><span class="b-nav-tooltip">Контакти</span><svg viewBox="0 0 24 24" stroke-width="1.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
     </nav>
 
     <section id="hero">
         <div class="reveal">
-            <img src="image/logo.png" alt="vatalinskaya beauty studio logo" class="hero-logo-img">[cite: 7]
-            <h1 class="hero-title">Естетика та досконалість</h1>[cite: 7]
-            <p style="max-width: 650px; margin: 0 auto 12px; color: var(--text-secondary);">[cite: 7]
-                Простір високої б'юті-культури. Ми створюємо індивідуальні образи, підкреслюючи вашу природну елегантність.[cite: 7]
-            </p>[cite: 7]
+            <img src="image/logo.png" alt="vatalinskaya beauty studio logo" class="hero-logo-img">
+            <h1 class="hero-title">Естетика та досконалість</h1>
+            <p style="max-width: 650px; margin: 0 auto 12px; color: var(--text-secondary);">
+                Простір високої б'юті-культури. Ми створюємо індивідуальні образи, підкреслюючи вашу природну елегантність.
+            </p>
             
-            <div onclick="openModal()" style="cursor: pointer; font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-bottom: 8px;">[cite: 7]
-                Записатися онлайн[cite: 7]
-            </div>[cite: 7]
+            <div onclick="openModal()" style="cursor: pointer; font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-bottom: 8px;">
+                Записатися онлайн
+            </div>
 
-            <div class="hero-contacts">[cite: 7]
-                <a href="tel:+380505366959" class="hero-phone">+38 (050) 536-69-59</a>[cite: 7]
-                <div class="hero-socials">[cite: 7]
-                    <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">[cite: 7]
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>[cite: 7]
-                    </a>[cite: 7]
-                    <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">[cite: 7]
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>[cite: 7]
-                    </a>[cite: 7]
-                    <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">[cite: 7]
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>[cite: 7]
-                    </a>[cite: 7]
-                    <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">[cite: 7]
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>[cite: 7]
-                    </a>[cite: 7]
-                </div>[cite: 7]
-            </div>[cite: 7]
-        </div>[cite: 7]
-    </section>[cite: 7]
+            <div class="hero-contacts">
+                <a href="tel:+380505366959" class="hero-phone">+38 (050) 536-69-59</a>
+                <div class="hero-socials">
+                    <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                    <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
+                    </a>
+                    <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Services section -->
     <section id="services">
         <div class="section-header reveal">
-            <h2 class="section-title">МЕНЮ ПОСЛУГ</h2>[cite: 7]
+            <h2 class="section-title">МЕНЮ ПОСЛУГ</h2>
         </div>
         <div class="services-grid reveal">
             <div class="service-card" onclick="document.getElementById('sub-modal-0').classList.add('active')">
-                <img src="image/bghear.jpg" alt="Фарбування волосся" class="service-img">[cite: 7]
-                <h3 class="service-title">Фарбування волосся</h3>[cite: 7]
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>[cite: 7]
-            </div>[cite: 7]
+                <img src="image/bghear.jpg" alt="Фарбування волосся" class="service-img">
+                <h3 class="service-title">Фарбування волосся</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
+            </div>
             
             <div class="service-card" onclick="document.getElementById('sub-modal-1').classList.add('active')">
-                <img src="image/haircut.jpg" alt="Стрижки та укладки" class="service-img">[cite: 7]
-                <h3 class="service-title">Стрижки та укладки</h3>[cite: 7]
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>[cite: 7]
-            </div>[cite: 7]
+                <img src="image/haircut.jpg" alt="Стрижки та укладки" class="service-img">
+                <h3 class="service-title">Стрижки та укладки</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
+            </div>
 
             <div class="service-card" onclick="document.getElementById('sub-modal-2').classList.add('active')">
-                <img src="image/hairrestoration.jpg" alt="Реконструкція волосся" class="service-img">[cite: 7]
-                <h3 class="service-title">Реконструкція волосся</h3>[cite: 7]
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>[cite: 7]
-            </div>[cite: 7]
+                <img src="image/hairrestoration.jpg" alt="Реконструкція волосся" class="service-img">
+                <h3 class="service-title">Реконструкція волосся</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
+            </div>
 
             <div class="service-card" onclick="document.getElementById('sub-modal-3').classList.add('active')">
-                <img src="image/eyebrows.jpg" alt="Послуги бровіста" class="service-img">[cite: 7]
-                <h3 class="service-title">Послуги бровіста</h3>[cite: 7]
-                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>[cite: 7]
-            </div>[cite: 7]
+                <img src="image/eyebrows.jpg" alt="Послуги бровіста" class="service-img">
+                <h3 class="service-title">Послуги бровіста</h3>
+                <span class="btn-lux" style="padding: 10px 20px; font-size: 9px;">Детальніше</span>
+            </div>
         </div>
     </section>
 
     <!-- Price section -->
     <section id="price">
         <div class="section-header reveal">
-            <h2 class="section-title">ПРАЙС</h2>[cite: 7]
+            <h2 class="section-title">ПРАЙС</h2>
         </div>
         <div class="price-grid reveal">
             <div class="price-card">
                 <div class="price-header">
-                    <h3 class="price-title">Фарбування коренів / В один тон</h3>[cite: 7]
+                    <h3 class="price-title">Фарбування коренів / В один тон</h3>
                 </div>
-                <p class="price-details">Ідеальне оновлення кольору та маскування відрослої прикореневої зони без освітлення. Рівномірний, насичений та блискучий колір по всій довжині.</p>[cite: 7]
+                <p class="price-details">Ідеальне оновлення кольору та маскування відрослої прикореневої зони без освітлення. Рівномірний, насичений та блискучий колір по всій довжині.</p>
                 <ul class="price-list">
-                    <li><span>Фарбування коренів (до 2 годин)</span> <span>2000 грн</span></li>[cite: 7]
-                    <li><span>В один тон (від)</span> <span>2400 грн</span></li>[cite: 7]
-                    <li style="margin-top: 5px; color: var(--text-secondary); border-bottom: none;">Ціна залежить від довжини:</li>[cite: 7]
-                    <li><span>1 - 2 довжина</span> <span>2300 / 2500 грн</span></li>[cite: 7]
-                    <li><span>3 - 4 довжина</span> <span>2800 / 3300 грн</span></li>[cite: 7]
-                    <li><span>5 довжина</span> <span>3500 / 4000 грн</span></li>[cite: 7]
+                    <li><span>Фарбування коренів (до 2 годин)</span> <span>2000 грн</span></li>
+                    <li><span>В один тон (від)</span> <span>2400 грн</span></li>
+                    <li style="margin-top: 5px; color: var(--text-secondary); border-bottom: none;">Ціна залежить від довжини:</li>
+                    <li><span>1 - 2 довжина</span> <span>2300 / 2500 грн</span></li>
+                    <li><span>3 - 4 довжина</span> <span>2800 / 3300 грн</span></li>
+                    <li><span>5 довжина</span> <span>3500 / 4000 грн</span></li>
                 </ul>
-                <p class="price-note">*Для дуже густого, пористого або нарощеного волосся передбачена доплата.</p>[cite: 7]
+                <p class="price-note">*Для дуже густого, пористого або нарощеного волосся передбачена доплата.</p>
             </div>
 
             <div class="price-card">
                 <div class="price-header">
-                    <h3 class="price-title">Тест-пасмо</h3>[cite: 7]
-                    <span class="price-amount">300 грн</span>[cite: 7]
+                    <h3 class="price-title">Тест-пасмо</h3>
+                    <span class="price-amount">300 грн</span>
                 </div>
-                <p class="price-details">Пробне освітлення невеликої пасма волосся для оцінки його стану та реакції на освітлення.<br><br>Допомагає визначити можливості волосся та спрогнозувати максимально безпечний і бажаний результат майбутнього фарбування.</p>[cite: 7]
-                <div class="price-duration">Тривалість — 30 хвилин</div>[cite: 7]
+                <p class="price-details">Пробне освітлення невеликої пасма волосся для оцінки його стану та реакції на освітлення.<br><br>Допомагає визначити можливості волосся та спрогнозувати максимально безпечний і бажаний результат майбутнього фарбування.</p>
+                <div class="price-duration">Тривалість — 30 хвилин</div>
             </div>
 
             <div class="price-card">
                 <div class="price-header">
-                    <h3 class="price-title">Контуринг / Бліки</h3>[cite: 7]
-                    <span class="price-amount">5000-6000 грн</span>[cite: 7]
+                    <h3 class="price-title">Контуринг / Бліки</h3>
+                    <span class="price-amount">5000-6000 грн</span>
                 </div>
-                <p class="price-details">Техніка з акцентом на розвітлення пасм біля обличчя та тонування в бажаний колір освітлених пасм.</p>[cite: 7]
+                <p class="price-details">Техніка з акцентом на розвітлення пасм біля обличчя та тонування в бажаний колір освітлених пасм.</p>
             </div>
 
             <div class="price-card">
                 <div class="price-header">
-                    <h3 class="price-title">Складне Фарбування</h3>[cite: 7]
+                    <h3 class="price-title">Складне Фарбування</h3>
                 </div>
-                <p class="price-details" style="font-size: 0.9rem; color: #fff;">Airtouch / Тотал блонд (по всій довжині) / Інтеграція сивини / Балаяж / Шатуш / Омбре / Мелірування</p>[cite: 7]
-                <p class="price-details">Висвітлення в техніці із захистом BRAE + тонування волосся + доглядова процедура + стрижка кінчиків.</p>[cite: 7]
+                <p class="price-details" style="font-size: 0.9rem; color: #fff;">Airtouch / Тотал блонд (по всій довжині) / Інтеграція сивини / Балаяж / Шатуш / Омбре / Мелірування</p>
+                <p class="price-details">Висвітлення в техніці із захистом BRAE + тонування волосся + доглядова процедура + стрижка кінчиків.</p>
                 <ul class="price-list">
-                    <li><span>1 - 2 довжина</span> <span>6000 / 6500 грн</span></li>[cite: 7]
-                    <li><span>3 - 4 довжина</span> <span>7000 / 8000 грн</span></li>[cite: 7]
-                    <li><span>5 довжина</span> <span>9000 / 10000 грн</span></li>[cite: 7]
+                    <li><span>1 - 2 довжина</span> <span>6000 / 6500 грн</span></li>
+                    <li><span>3 - 4 довжина</span> <span>7000 / 8000 грн</span></li>
+                    <li><span>5 довжина</span> <span>9000 / 10000 грн</span></li>
                 </ul>
-                <div class="price-duration">Тривалість — 5 годин</div>[cite: 7]
-                <p class="price-note" style="padding-top: 10px;">*Для дуже густого, пористого або нарощеного волосся передбачена доплата.</p>[cite: 7]
+                <div class="price-duration">Тривалість — 5 годин</div>
+                <p class="price-note" style="padding-top: 10px;">*Для дуже густого, пористого або нарощеного волосся передбачена доплата.</p>
             </div>
 
             <div class="price-card">
                 <div class="price-header">
-                    <h3 class="price-title">Вихід із темного</h3>[cite: 7]
-                    <span class="price-amount">12000-18000 грн</span>[cite: 7]
+                    <h3 class="price-title">Вихід із темного</h3>
+                    <span class="price-amount">12000-18000 грн</span>
                 </div>
-                <p class="price-details">У вартість входить:</p>[cite: 7]
+                <p class="price-details">У вартість входить:</p>
                 <ul class="price-list" style="color: var(--text-secondary); list-style: circle; padding-left: 20px;">
-                    <li style="border: none; margin-bottom: 2px; padding: 0;">Кислотна змивка</li>[cite: 7]
-                    <li style="border: none; margin-bottom: 2px; padding: 0;">Лужна змивка</li>[cite: 7]
-                    <li style="border: none; margin-bottom: 2px; padding: 0;">Однотонне фарбування волосся</li>[cite: 7]
-                    <li style="border: none; margin-bottom: 2px; padding: 0;">Доглядова процедура</li>[cite: 7]
-                    <li style="border: none; margin-bottom: 2px; padding: 0;">Стрижка</li>[cite: 7]
+                    <li style="border: none; margin-bottom: 2px; padding: 0;">Кислотна змивка</li>
+                    <li style="border: none; margin-bottom: 2px; padding: 0;">Лужна змивка</li>
+                    <li style="border: none; margin-bottom: 2px; padding: 0;">Однотонне фарбування волосся</li>
+                    <li style="border: none; margin-bottom: 2px; padding: 0;">Доглядова процедура</li>
+                    <li style="border: none; margin-bottom: 2px; padding: 0;">Стрижка</li>
                 </ul>
-                <div class="price-duration" style="margin-top: 15px;">Тривалість 7-8 годин</div>[cite: 7]
+                <div class="price-duration" style="margin-top: 15px;">Тривалість 7-8 годин</div>
             </div>
 
             <div class="price-card">
                 <div class="price-header">
-                    <h3 class="price-title">Холодне відновлення</h3>[cite: 7]
-                    <span class="price-amount">2500-3000 грн</span>[cite: 7]
+                    <h3 class="price-title">Холодне відновлення</h3>
+                    <span class="price-amount">2500-3000 грн</span>
                 </div>
-                <p class="price-details" style="font-size: 0.85rem; color: #fff;">Joico, Keune, Schwarzkopf</p>[cite: 7]
-                <p class="price-details">Процедура у кілька етапів очищає, зволожує та відновлює волосся зсередини. Насичує білками та амінокислотами, робить волосся гладким, блискучим та еластичним.</p>[cite: 7]
-                <div class="price-duration">Тривалість — 2 години</div>[cite: 7]
+                <p class="price-details" style="font-size: 0.85rem; color: #fff;">Joico, Keune, Schwarzkopf</p>
+                <p class="price-details">Процедура у кілька етапів очищає, зволожує та відновлює волосся зсередини. Насичує білками та амінокислотами, робить волосся гладким, блискучим та еластичним.</p>
+                <div class="price-duration">Тривалість — 2 години</div>
             </div>
 
             <div class="price-card">
                 <div class="price-header">
-                    <h3 class="price-title">Ботокс (Гаряча)</h3>[cite: 7]
-                    <span class="price-amount">3500-4000 грн</span>[cite: 7]
+                    <h3 class="price-title">Ботокс (Гаряча)</h3>
+                    <span class="price-amount">3500-4000 грн</span>
                 </div>
-                <p class="price-details">Процедура для вирівнювання та глибокого відновлення волосся. Насичує маслами та амінокислотами, надає ідеальну гладкість, блиск та шовковистість.</p>[cite: 7]
-                <div class="price-duration">Тривалість — 2,5 годин</div>[cite: 7]
+                <p class="price-details">Процедура для вирівнювання та глибокого відновлення волосся. Насичує маслами та амінокислотами, надає ідеальну гладкість, блиск та шовковистість.</p>
+                <div class="price-duration">Тривалість — 2,5 годин</div>
             </div>
 
             <div class="price-card">
                 <div class="price-header">
-                    <h3 class="price-title">Стрижки та укладки</h3>[cite: 7]
+                    <h3 class="price-title">Стрижки та укладки</h3>
                 </div>
                 <ul class="price-list">
-                    <li><span>Стрижка кінчиків</span> <span>500-700 грн</span></li>[cite: 7]
-                    <li><span>Стрижка по формі</span> <span>700-1000 грн</span></li>[cite: 7]
+                    <li><span>Стрижка кінчиків</span> <span>500-700 грн</span></li>
+                    <li><span>Стрижка по формі</span> <span>700-1000 грн</span></li>
                 </ul>
-                <p class="price-details" style="margin-top: 15px;">У вартість входить миття голови, укладка по формі, або накрутка на Dyson.</p>[cite: 7]
+                <p class="price-details" style="margin-top: 15px;">У вартість входить миття голови, укладка по формі, або накрутка на Dyson.</p>
             </div>
         </div>
     </section>
 
     <section id="works">
         <div class="section-header reveal">
-            <h2 class="section-title">НАШІ РОБОТИ</h2>[cite: 7]
+            <h2 class="section-title">НАШІ РОБОТИ</h2>
         </div>
         <div class="work-grid reveal">
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80');">[cite: 7]
-                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>[cite: 7]
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
             </div>
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80');">[cite: 7]
-                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>[cite: 7]
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
             </div>
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?w=600&q=80');">[cite: 7]
-                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>[cite: 7]
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ff5f2b2d6a?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
             </div>
-            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?w=600&q=80');">[cite: 7]
-                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>[cite: 7]
+            <div class="work-card" style="background-image: url('https://images.unsplash.com/photo-1516975080661-46bfa2c281c7?w=600&q=80');">
+                <div class="work-card-overlay"><a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="btn-lux">Instagram</a></div>
             </div>
         </div>
     </section>
 
     <section id="write-review">
         <div class="section-header reveal">
-            <h2 class="section-title">НАПИСАТИ ВІДГУК</h2>[cite: 7]
-            <p style="color: var(--text-secondary); max-width: 500px; margin: 15px auto 0;">Поділіться своїми враженнями від візиту до нашої студії</p>[cite: 7]
+            <h2 class="section-title">НАПИСАТИ ВІДГУК</h2>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 15px auto 0;">Поділіться своїми враженнями від візиту до нашої студії</p>
         </div>
         <div class="reveal" style="max-width: 600px; margin: 0 auto; width: 100%; text-align: center;">
-            <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x4127a7912f60c419:0xabb770f238f4355e!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" target="_blank" rel="noopener" class="btn-lux" style="display: inline-block; margin-top: 10px;">Написати</a>[cite: 7]
+            <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x4127a7912f60c419:0xabb770f238f4355e!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" target="_blank" rel="noopener" class="btn-lux" style="display: inline-block; margin-top: 10px;">Написати</a>
         </div>
     </section>
 
@@ -1019,49 +1023,49 @@
         <div class="contact-wrapper reveal">
             
             <div class="contact-map">
-                <iframe [cite: 7]
-                    src="https://maps.google.com/maps?q=Vatalinskaya+Beauty+Studio,+вулиця+Ахсарова,+16,+Харків&t=&z=16&ie=UTF8&iwloc=&output=embed" [cite: 7]
-                    allowfullscreen="" [cite: 7]
-                    loading="lazy" [cite: 7]
+                <iframe 
+                    src="https://maps.google.com/maps?q=Vatalinskaya+Beauty+Studio,+вулиця+Ахсарова,+16,+Харків&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                    allowfullscreen="" 
+                    loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
 
             <div class="contact-character-box">
-                <img src="image/photoboss.png" alt="Тетяна Ваталинська" class="contact-character-img" id="characterParallax">[cite: 7]
+                <img src="image/photoboss.png" alt="Тетяна Ваталинська" class="contact-character-img" id="characterParallax">
             </div>
 
             <div class="contact-info">
-                <h2>КОНТАКТИ</h2>[cite: 7]
-                <p>Зв'яжіться з нами у месенджерах або зателефонуйте</p>[cite: 7]
+                <h2>КОНТАКТИ</h2>
+                <p>Зв'яжіться з нами у месенджерах або зателефонуйте</p>
                 
-                <a href="https://maps.google.com/?q=Vatalinskaya+Beauty+Studio,+вулиця+Ахсарова,+16,+Харків" target="_blank" rel="noopener" class="highlight-link" style="display: block; margin-bottom: 10px;">[cite: 7]
-                    вул. Ахсарова, 16, Харків[cite: 7]
-                </a>[cite: 7]
+                <a href="https://maps.google.com/?q=Vatalinskaya+Beauty+Studio,+вулиця+Ахсарова,+16,+Харків" target="_blank" rel="noopener" class="highlight-link" style="display: block; margin-bottom: 10px;">
+                    вул. Ахсарова, 16, Харків
+                </a>
 
-                <a href="tel:+380505366959" class="highlight-link">[cite: 7]
-                    +38 (050) 536-69-59[cite: 7]
-                </a>[cite: 7]
+                <a href="tel:+380505366959" class="highlight-link">
+                    +38 (050) 536-69-59
+                </a>
 
                 <div class="social-links">
-                    <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="social-icon-link" title="Instagram">[cite: 7]
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>[cite: 7]
+                    <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="social-icon-link" title="Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                     </a>
-                    <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="social-icon-link" title="Telegram">[cite: 7]
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>[cite: 7]
+                    <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="social-icon-link" title="Telegram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                     </a>
-                    <a href="viber://chat?number=380505366959" class="social-icon-link" title="Viber" target="_blank" rel="noopener">[cite: 7]
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>[cite: 7]
+                    <a href="viber://chat?number=380505366959" class="social-icon-link" title="Viber" target="_blank" rel="noopener">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
                     </a>
-                    <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="social-icon-link" title="WhatsApp">[cite: 7]
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>[cite: 7]
+                    <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="social-icon-link" title="WhatsApp">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal 0: Фарбування волосся (з текстом під кожною фотографією) -->
+    <!-- Modal 0: Фарбування волосся -->
     <div class="modal-overlay sub-menu-modal" id="sub-modal-0">
         <div class="modal-window" style="max-width: 480px; padding: 25px 30px;">
             <button class="modal-close" onclick="closeAllSubModals()">✕</button>
@@ -1071,23 +1075,19 @@
                 <div class="v-stage">
                     <div class="v-card-3d">
                         <img src="image/bghear.jpg" alt="Фарбування волосся">
-                        <h4>Складне фарбування</h4>
-                        <p>Техніки Airtouch, Шатуш та Балаяж</p>
+                        <div class="v-card-text">Складне фарбування Airtouch із захистом волосся</div>
                     </div>
                     <div class="v-card-3d">
                         <img src="image/haircut.jpg" alt="Фарбування волосся додаткове">
-                        <h4>Тотал блонд</h4>
-                        <p>Ідеальне освітлення та дбайливий догляд</p>
+                        <div class="v-card-text">Розкішний тотал блонд та ідеальне тонування</div>
                     </div>
                     <div class="v-card-3d">
                         <img src="image/IMG_0711.jpg" alt="Фарбування волосся додаткове 2">
-                        <h4>Фарбування в один тон</h4>
-                        <p>Насичений колір та глибокий блиск</p>
+                        <div class="v-card-text">Глибоке фарбування в один тон з блиском</div>
                     </div>
                     <div class="v-card-3d">
                         <img src="image/hairrestoration.jpg" alt="Фарбування волосся додаткове 3">
-                        <h4>Вихід із темного</h4>
-                        <p>Безпечне змиття та збереження якості волосся</p>
+                        <div class="v-card-text">Контуринг та м'які переходи біля обличчя</div>
                     </div>
                 </div>
                 <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
@@ -1139,6 +1139,12 @@
                 <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                 </a>
+                <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
             </div>
         </div>
     </div>
@@ -1157,8 +1163,28 @@
                     <div class="v-card-3d">
                         <img src="image/bghear.jpg" alt="Реконструкція волосся додаткове" style="margin: 0; height: 280px;">
                     </div>
+                    <div class="v-card-3d">
+                        <img src="image/haircut.jpg" alt="Реконструкція волосся додаткове 2" style="margin: 0; height: 280px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/IMG_0711.jpg" alt="Реконструкція волосся додаткове 3" style="margin: 0; height: 280px;">
+                    </div>
                 </div>
                 <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            <div class="hero-socials" style="display: flex; gap: 12px; justify-content: center; margin-top: 15px;">
+                <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+                <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
             </div>
         </div>
     </div>
@@ -1174,26 +1200,49 @@
                     <div class="v-card-3d">
                         <img src="image/eyebrows.jpg" alt="Послуги бровіста" style="margin: 0; height: 280px;">
                     </div>
+                    <div class="v-card-3d">
+                        <img src="image/bghear.jpg" alt="Послуги бровіста додаткове" style="margin: 0; height: 280px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/haircut.jpg" alt="Послуги бровіста додаткове 2" style="margin: 0; height: 280px;">
+                    </div>
+                    <div class="v-card-3d">
+                        <img src="image/IMG_0711.jpg" alt="Послуги бровіста додаткове 3" style="margin: 0; height: 280px;">
+                    </div>
                 </div>
                 <button class="v-arrow down"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg></button>
+            </div>
+            <div class="hero-socials" style="display: flex; gap: 12px; justify-content: center; margin-top: 15px;">
+                <a href="https://www.instagram.com/vatalinskaya_beauty_studio/" target="_blank" rel="noopener" class="icon-ig" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://t.me/TatyanaVat" target="_blank" rel="noopener" class="icon-tg" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </a>
+                <a href="viber://chat?number=380505366959" class="icon-vb" aria-label="Viber" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.643V24l3.916-2.146c1.109.307 2.287.471 3.512.471 6.627 0 12-4.974 12-11.114C23.899 4.974 18.526 0 12 0zm5.952 15.025c-.246.685-1.392 1.258-1.928 1.332-.505.071-1.157.126-3.326-.757-2.868-1.182-4.733-4.137-4.877-4.329-.143-.193-1.164-1.552-1.164-2.962 0-1.41.737-2.103 1.001-2.388.264-.286.575-.357.766-.357.191 0 .382.002.55.011.177.01.414-.067.647.485.239.574.815 1.983.886 2.126.072.143.12.31.024.5-.096.19-.144.31-.287.477-.143.167-.301.373-.43.501-.143.143-.295.3-.127.592.168.292.746 1.234 1.602 1.998 1.102.981 2.031 1.285 2.322 1.428.291.143.461.12.632-.072.172-.192.742-.861.94-1.157.199-.296.398-.248.665-.144.267.104 1.693.798 1.984.943.291.145.485.216.557.334.072.119.072.686-.174 1.371z"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=380505366959&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="icon-wa" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Main Booking Modal -->
-    <div class="modal-overlay" id="mainModal">
+    <!-- Modal window for online booking or main actions if needed -->
+    <div class="modal-overlay" id="mainModal" onclick="closeModalOnBg(event)">
         <div class="modal-window">
             <button class="modal-close" onclick="closeModal()">✕</button>
-            <h3 style="margin-bottom: 20px; font-size: 1.8rem; text-align: center; color: var(--accent-gold);">Онлайн запис</h3>
-            <form class="lux-form" onsubmit="event.preventDefault(); alert('Дякуємо! Скоро ми з вами зв'яжемося.'); closeModal();">
+            <h3 style="font-size: 2rem; margin-bottom: 20px; text-align: center; color: var(--accent-gold);">Онлайн запис</h3>
+            <form class="lux-form" onsubmit="event.preventDefault(); alert('Дякуємо! Ми зв\'яжемося з вами найближчим часом.'); closeModal();">
                 <input type="text" placeholder="Ваше ім'я" required>
                 <input type="tel" placeholder="Номер телефону" required>
                 <select required>
                     <option value="" disabled selected>Оберіть послугу</option>
-                    <option value="coloring">Фарбування волосся</option>
-                    <option value="haircut">Стрижки та укладки</option>
-                    <option value="restoration">Реконструкція волосся</option>
-                    <option value="eyebrows">Послуги бровіста</option>
+                    <option value="hair">Фарбування волосся</option>
+                    <option value="cut">Стрижки та укладки</option>
+                    <option value="restore">Реконструкція волосся</option>
+                    <option value="brows">Послуги бровіста</option>
                 </select>
                 <button type="submit" class="btn-lux" style="width: 100%; text-align: center;">Записатися</button>
             </form>
@@ -1201,30 +1250,86 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 vatalinskaya beauty studio. Всі права захищені.</p>
+        <p>&copy; 2026 vatalinskaya beauty studio. Усі права захищені.</p>
     </footer>
 
     <script>
+        // Cursor glow effect
+        const cursorGlow = document.getElementById('cursorGlow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // Parallax background items
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            document.querySelectorAll('.p-item').forEach(item => {
+                const speed = parseFloat(item.getAttribute('data-speed'));
+                item.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+
+            // Boss image parallax slight effect
+            const bossImg = document.getElementById('characterParallax');
+            if(bossImg) {
+                const rect = bossImg.getBoundingClientRect();
+                if(rect.top < window.innerHeight && rect.bottom > 0) {
+                    const offset = (window.innerHeight - rect.top) * 0.03;
+                    bossImg.style.transform = `translateY(${offset}px)`;
+                }
+            }
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight * 0.85;
+                if (elementTop < windowHeight) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Main modal functions
         function openModal() {
             document.getElementById('mainModal').classList.add('active');
         }
         function closeModal() {
             document.getElementById('mainModal').classList.remove('active');
         }
+        function closeModalOnBg(e) {
+            if (e.target.id === 'mainModal') {
+                closeModal();
+            }
+        }
         function closeAllSubModals() {
             document.querySelectorAll('.sub-menu-modal').forEach(m => m.classList.remove('active'));
         }
 
-        // Vertical carousels initialization
-        document.querySelectorAll('.v-carousel-container').forEach(container => {
-            const cards = container.querySelectorAll('.v-card-3d');
-            const upBtn = container.querySelector('.v-arrow.up');
-            const downBtn = container.querySelector('.v-arrow.down');
+        // Close sub-modals on background click
+        document.querySelectorAll('.sub-menu-modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if(e.target === modal) {
+                    closeAllSubModals();
+                }
+            });
+        });
+
+        // Vertical 3D Carousels logic for sub-modals
+        document.querySelectorAll('.sub-menu-modal').forEach(modal => {
+            const stage = modal.querySelector('.v-stage');
+            const cards = stage ? Array.from(stage.querySelectorAll('.v-card-3d')) : [];
+            if(cards.length === 0) return;
+
             let currentIndex = 0;
 
             function updateCarousel() {
                 cards.forEach((card, idx) => {
-                    card.className = 'v-card-3d';
+                    card.classList.remove('active', 'prev-card', 'next-card');
                     if (idx === currentIndex) {
                         card.classList.add('active');
                     } else if (idx === (currentIndex - 1 + cards.length) % cards.length) {
@@ -1235,67 +1340,71 @@
                 });
             }
 
-            if (cards.length > 0) {
-                updateCarousel();
-            }
+            updateCarousel();
 
-            if (upBtn && downBtn) {
-                upBtn.addEventListener('click', () => {
+            const btnUp = modal.querySelector('.v-arrow.up');
+            const btnDown = modal.querySelector('.v-arrow.down');
+
+            if(btnUp) {
+                btnUp.addEventListener('click', () => {
                     currentIndex = (currentIndex - 1 + cards.length) % cards.length;
                     updateCarousel();
                 });
-                downBtn.addEventListener('click', () => {
+            }
+
+            if(btnDown) {
+                btnDown.addEventListener('click', () => {
                     currentIndex = (currentIndex + 1) % cards.length;
                     updateCarousel();
                 });
             }
 
+            // Touch / mouse swipe support for vertical carousel
             let startY = 0;
-            const stage = container.querySelector('.v-stage');
-            if (stage) {
-                stage.addEventListener('touchstart', e => {
-                    startY = e.touches[0].clientY;
-                }, {passive: true});
+            stage.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+            }, {passive: true});
 
-                stage.addEventListener('touchend', e => {
-                    let endY = e.changedTouches[0].clientY;
-                    if (startY - endY > 50) {
+            stage.addEventListener('touchend', (e) => {
+                let endY = e.changedTouches[0].clientY;
+                if(startY - endY > 40) {
+                    // Swipe Up -> Next
+                    currentIndex = (currentIndex + 1) % cards.length;
+                    updateCarousel();
+                } else if(endY - startY > 40) {
+                    // Swipe Down -> Prev
+                    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                    updateCarousel();
+                }
+            }, {passive: true});
+
+            // Mouse drag support
+            let isDragging = false;
+            let startMouseY = 0;
+
+            stage.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startMouseY = e.clientY;
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            stage.addEventListener('mousemove', (e) => {
+                if(!isDragging) return;
+                let diff = startMouseY - e.clientY;
+                if(Math.abs(diff) > 50) {
+                    if(diff > 0) {
                         currentIndex = (currentIndex + 1) % cards.length;
-                        updateCarousel();
-                    } else if (endY - startY > 50) {
+                    } else {
                         currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-                        updateCarousel();
                     }
-                });
-            }
-        });
-
-        // Parallax and cursor glow effects
-        document.addEventListener('mousemove', (e) => {
-            const cursorGlow = document.getElementById('cursorGlow');
-            if (cursorGlow) {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            }
-
-            const bossImg = document.getElementById('characterParallax');
-            if (bossImg) {
-                const x = (e.clientX / window.innerWidth - 0.5) * 20;
-                const y = (e.clientY / window.innerHeight - 0.5) * 20;
-                bossImg.style.transform = `translate(${x}px, ${y}px)`;
-            }
-        });
-
-        // Scroll reveal animation observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    updateCarousel();
+                    isDragging = false;
                 }
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
     </script>
 </body>
 </html>
