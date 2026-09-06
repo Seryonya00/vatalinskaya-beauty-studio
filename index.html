@@ -1373,4 +1373,50 @@
 
             // Touch / mouse swipe support for vertical carousel
             let startY = 0;
-            stage.addEventListener('touchstart', (e) =>
+            stage.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+            }, {passive: true});
+
+            stage.addEventListener('touchend', (e) => {
+                let endY = e.changedTouches[0].clientY;
+                if(startY - endY > 40) {
+                    // Swipe Up -> Next
+                    currentIndex = (currentIndex + 1) % cards.length;
+                    updateCarousel();
+                } else if(endY - startY > 40) {
+                    // Swipe Down -> Prev
+                    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                    updateCarousel();
+                }
+            }, {passive: true});
+
+            // Mouse drag support
+            let isDragging = false;
+            let startMouseY = 0;
+
+            stage.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startMouseY = e.clientY;
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            stage.addEventListener('mousemove', (e) => {
+                if(!isDragging) return;
+                let diff = startMouseY - e.clientY;
+                if(Math.abs(diff) > 50) {
+                    if(diff > 0) {
+                        currentIndex = (currentIndex + 1) % cards.length;
+                    } else {
+                        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                    }
+                    updateCarousel();
+                    isDragging = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
