@@ -831,7 +831,7 @@
                 Простір високої б'юті-культури. Ми створюємо індивідуальні образи, підкреслюючи вашу природну елегантність.
             </p>
             
-            <div onclick="openModal()" style="cursor: pointer; font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-bottom: 8px;">
+            <div style="font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-bottom: 8px;">
                 Записатися онлайн
             </div>
 
@@ -1229,26 +1229,6 @@
         </div>
     </div>
 
-    <!-- Modal window for online booking or main actions if needed -->
-    <div class="modal-overlay" id="mainModal" onclick="closeModalOnBg(event)">
-        <div class="modal-window">
-            <button class="modal-close" onclick="closeModal()">✕</button>
-            <h3 style="font-size: 2rem; margin-bottom: 20px; text-align: center; color: var(--accent-gold);">Онлайн запис</h3>
-            <form class="lux-form" onsubmit="event.preventDefault(); alert('Дякуємо! Ми зв\'яжемося з вами найближчим часом.'); closeModal();">
-                <input type="text" placeholder="Ваше ім'я" required>
-                <input type="tel" placeholder="Номер телефону" required>
-                <select required>
-                    <option value="" disabled selected>Оберіть послугу</option>
-                    <option value="hair">Фарбування волосся</option>
-                    <option value="cut">Стрижки та укладки</option>
-                    <option value="restore">Реконструкція волосся</option>
-                    <option value="brows">Послуги бровіста</option>
-                </select>
-                <button type="submit" class="btn-lux" style="width: 100%; text-align: center;">Записатися</button>
-            </form>
-        </div>
-    </div>
-
     <footer>
         <p>&copy; 2026 vatalinskaya beauty studio. Усі права захищені.</p>
     </footer>
@@ -1294,18 +1274,33 @@
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
 
-        // Main modal functions
-        function openModal() {
-            document.getElementById('mainModal').classList.add('active');
+        // Active section highlighting for side-nav and bottom-nav
+        const navSections = Array.from(document.querySelectorAll('section[id]'));
+        const sideNavLinks = document.querySelectorAll('.side-nav-item');
+        const bottomNavLinks = document.querySelectorAll('.bottom-nav a[href^="#"]');
+
+        function updateActiveNav() {
+            const scrollPos = window.pageYOffset + window.innerHeight * 0.35;
+            let currentId = navSections[0] ? navSections[0].id : '';
+
+            navSections.forEach(section => {
+                if (section.offsetTop <= scrollPos) {
+                    currentId = section.id;
+                }
+            });
+
+            sideNavLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+            });
+            bottomNavLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+            });
         }
-        function closeModal() {
-            document.getElementById('mainModal').classList.remove('active');
-        }
-        function closeModalOnBg(e) {
-            if (e.target.id === 'mainModal') {
-                closeModal();
-            }
-        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('resize', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
+
         function closeAllSubModals() {
             document.querySelectorAll('.sub-menu-modal').forEach(m => m.classList.remove('active'));
         }
