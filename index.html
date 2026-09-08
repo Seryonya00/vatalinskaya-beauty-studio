@@ -360,7 +360,7 @@
         }
 
         .hero-logo-img {
-            max-height: 280px;
+            max-height: clamp(130px, 30vw, 280px);
             width: auto;
             margin-top: 0px;
             margin-bottom: 12px;
@@ -370,7 +370,7 @@
         }
 
         .hero-title {
-            font-size: 4.8rem;
+            font-size: clamp(1.9rem, 7vw + 0.3rem, 4.8rem);
             line-height: 1.1;
             margin-bottom: 10px;
             background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
@@ -820,14 +820,13 @@
 
             .contact-character-img { max-height: 380px; }
             
-            .hero-logo-img { max-height: 234px; margin-top: 0px; margin-bottom: 24px; }
             #hero { 
                 justify-content: flex-start; 
                 padding-top: 84px; 
+                padding-bottom: 140px;
                 background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,1) 100%), 
                 url('image/bg5.webp') center/cover;
      }
-            .hero-title { font-size: 3.2rem; }
             .section-title { font-size: 2.5rem; }
             .side-nav { display: none; }
             
@@ -842,16 +841,9 @@
         }
 
         @media (max-width: 767px) {
-            #hero { justify-content: center; padding-top: 60px; }
+            #hero { justify-content: center; padding-top: 60px; padding-bottom: 150px; }
             .work-card { height: 250px; }
             .team-photo { height: 260px; }
-            .hero-logo-img {
-                max-height: 190px;
-                width: auto;
-                margin-top: 0;
-                margin-bottom: 18px;
-            }
-            .hero-title { font-size: 2.7rem; }
         }
         
 
@@ -863,8 +855,6 @@
             .b-nav-item svg { width: 20px; height: 20px; }
             .b-nav-item.home-btn { width: 50px; height: 50px; top: -45px; transform: translateX(-50%); }
             .b-nav-item.home-btn:hover { transform: translateX(-50%) translateY(-5px); }
-            .hero-logo-img { max-height: 160px; margin-bottom: 14px; }
-            .hero-title { font-size: 2.3rem; }
         }
     </style>
 </head>
